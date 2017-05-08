@@ -1,4 +1,4 @@
-package com.app.faltauno;
+package com.app.faltauno.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.app.faltauno.R;
 
 public class ActivityOne extends AppCompatActivity {
 

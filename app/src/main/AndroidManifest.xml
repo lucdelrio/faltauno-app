@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:icon="@mipmap/falta_uno"
             android:label="@string/app_name">
             <intent-filter>
@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityOne" />
-        <activity android:name=".ActivityTwo" />
-        <activity android:name=".ActivityMatchCreation"></activity>
+        <activity android:name=".activities.ActivityOne" />
+        <activity android:name=".activities.ActivityTwo" />
+        <activity android:name=".activities.ActivityMatchCreation"></activity>
     </application>
 
 </manifest>

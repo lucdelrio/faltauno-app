@@ -1,4 +1,4 @@
-package com.app.faltauno;
+package com.app.faltauno.activities;
 
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;

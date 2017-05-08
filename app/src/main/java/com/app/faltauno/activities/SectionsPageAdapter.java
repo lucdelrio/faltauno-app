@@ -1,4 +1,4 @@
-package com.app.faltauno;
+package com.app.faltauno.activities;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
