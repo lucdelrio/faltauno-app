@@ -3,4 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_one">ActivityOne</string>
+    <string name="title_activity_two">ActivityTwo</string>
+    <string name="title_activity_three">ActivityThree</string>
+    <string name="title_activity_four">ActivityFour</string>
+    <string name="title_activity_tab1_fragment">Tab1Fragment</string>
+    <string name="title_activity_tab2_fragment">Tab2Fragment</string>
+    <string name="title_activity_tab3_fragment">Tab3Fragment</string>
+    <string name="title_activity_match_creation">ActivityMatchCreation</string>
 </resources>
