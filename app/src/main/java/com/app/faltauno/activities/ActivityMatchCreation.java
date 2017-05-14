@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.model.Match;
@@ -13,16 +14,17 @@ public class ActivityMatchCreation extends AppCompatActivity {
 
     private Match match;
 
-    EditText ownerName, countOfPlayers, schedule, date, gender, address, city;
+    EditText ownerName, countOfPlayers, time, date, gender, address, city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_creation);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         ownerName = (EditText) findViewById(R.id.owner_name);
         countOfPlayers = (EditText) findViewById(R.id.count_of_players);
-        schedule = (EditText) findViewById(R.id.schedule);
+        time = (EditText) findViewById(R.id.time);
         date = (EditText) findViewById(R.id.date);
         gender = (EditText) findViewById(R.id.gender);
         address = (EditText) findViewById(R.id.address);
@@ -81,5 +83,8 @@ public class ActivityMatchCreation extends AppCompatActivity {
         }
     }
 
-
+    public void showMatchCreatedToast(View view){
+        Toast matchCreatedToast = Toast.makeText(getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
+        matchCreatedToast.show();
+    }
 }
