@@ -32,7 +32,6 @@ public class ActivityMatchCreation extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_creation);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         ownerName = (EditText) findViewById(R.id.owner_name);
         countOfPlayers = (EditText) findViewById(R.id.count_of_players);
