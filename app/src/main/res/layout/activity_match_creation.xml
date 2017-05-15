@@ -98,6 +98,121 @@
             android:onClick="onButtonClick"
             android:text="Volver" />
     </LinearLayout>
+=======
+    tools:context="com.app.faltauno.activities.ActivityMatchCreation"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
+
+    <EditText
+        android:id="@+id/owner_name"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Organizador"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="348dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Dirección"
+        android:inputType="textPostalAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/owner_name" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Ciudad"
+        android:inputType="textPostalAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Fecha"
+        android:inputType="date"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city"
+        tools:layout_conversion_absoluteHeight="42dp"
+        tools:layout_conversion_absoluteWidth="100dp"
+        tools:layout_conversion_absoluteX="172dp"
+        tools:layout_conversion_absoluteY="80dp" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Hora"
+        android:inputType="time"
+        app:layout_constraintLeft_toRightOf="@+id/date"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
+
+    <EditText
+        android:id="@+id/count_of_players"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Cantidad de Jugadores"
+        android:inputType="number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="Género"
+        android:inputType="text"
+        app:layout_constraintLeft_toRightOf="@+id/count_of_players"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <Button
+        android:id="@+id/createMatch"
+        android:layout_width="126dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="24dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="showMatchCreatedToast"
+        android:text="Crear partido"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="16dp"
+        android:onClick="onButtonClick"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/createMatch" />
 
 </android.support.constraint.ConstraintLayout>

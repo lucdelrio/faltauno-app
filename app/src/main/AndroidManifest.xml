@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".activities.ActivityOne" />
         <activity android:name=".activities.ActivityTwo" />
-        <activity android:name=".activities.ActivityMatchCreation"></activity>
+        <activity android:name=".activities.ActivityMatchCreation" android:parentActivityName=".activities.MainActivity"></activity>
     </application>
 
 </manifest>
