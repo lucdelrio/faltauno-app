@@ -1,40 +1,38 @@
-package com.app.faltauno.model;
+package com.app.faltauno.entity;
 
-import java.io.Serializable;
-import java.io.StringReader;
-import java.util.Date;
+import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by lucas on 07/05/17.
+ * Created by lucas on 15/05/17.
  */
 
 public class Match {
 
-    private String matchId;
+    private Integer matchId;
     private String ownerName;
-    private int countOfPlayers;
-    private int schedule;
-    private Date date;
+    private String countOfPlayers;
+    private String time;
+    private String date;
     private String gender;
     private String address;
     private String city;
 
-    public Match(String matchId, String ownerName, int countOfPlayers, int schedule, Date date, String gender, String address, String city){
+    public Match(Integer matchId, String ownerName, String countOfPlayers, String time, String date, String gender, String address, String city) {
         this.setMatchId(matchId);
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
-        this.setSchedule(schedule);
+        this.setTime(time);
         this.setDate(date);
         this.setGender(gender);
         this.setAddress(address);
         this.setCity(city);
     }
 
-    public void setMatchId(String matchId){
+    public void setMatchId(Integer matchId){
         this.matchId = matchId;
     }
 
-    public String getMatchId(){
+    public int getMatchId(){
         return this.matchId;
     }
 
@@ -46,27 +44,27 @@ public class Match {
         return ownerName;
     }
 
-    public void setCountOfPlayers(int count){
+    public void setCountOfPlayers(String count){
         this.countOfPlayers = count;
     }
 
-    public int getCountOfPlayers() {
+    public String getCountOfPlayers() {
         return countOfPlayers;
     }
 
-    public void setSchedule(int schedule){
-        this.schedule = schedule;
+    public void setTime(String time){
+        this.time = time;
     }
 
-    public int getSchedule(){
-        return schedule;
+    public String getTime(){
+        return time;
     }
 
-    public void setDate(Date date){
+    public void setDate(String date){
         this.date = date;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
 
@@ -93,5 +91,4 @@ public class Match {
     public String getCity() {
         return city;
     }
-
 }
