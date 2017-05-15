@@ -14,7 +14,7 @@ public interface ApiService {
 
     @POST("/match")
     @FormUrlEncoded
-    Call<MatchData> postMatch(@Field("match_id") long matchId,
+    Call<MatchData> postMatch(@Field("match_id") int matchId,
                                     @Field("owner_name") String ownerName,
                                     @Field("count_of_players") int countOfPlayers,
                                     @Field("time") String time,
