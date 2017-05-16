@@ -3,23 +3,21 @@ package com.app.faltauno.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MatchData {
+import java.util.Date;
 
-    @SerializedName("match_id")
-    @Expose
-    private Integer matchId;
+public class MatchData {
 
     @SerializedName("owner_name")
     private String ownerName;
 
     @SerializedName("count_of_players")
-    private String countOfPlayers;
+    private Integer countOfPlayers;
 
     @SerializedName("time")
-    private String time;
+    private Date time;
 
     @SerializedName("date")
-    private String date;
+    private Date date;
 
     @SerializedName("gender")
     private String gender;
@@ -30,14 +28,6 @@ public class MatchData {
     @SerializedName("city")
     private String city;
 
-    public void setMatchId(Integer id){
-        this.matchId = id;
-    }
-
-    public Integer getMatchId(){
-        return matchId;
-    }
-
     public void setOwnerName(String owner){
         this.ownerName = owner;
     }
@@ -46,27 +36,27 @@ public class MatchData {
         return ownerName;
     }
 
-    public void setCountOfPlayers(String count){
+    public void setCountOfPlayers(Integer count){
         this.countOfPlayers = count;
     }
 
-    public String getCountOfPlayers() {
+    public Integer getCountOfPlayers() {
         return countOfPlayers;
     }
 
-    public void setTime(String time){
+    public void setTime(Date time){
         this.time = time;
     }
 
-    public String getTime(){
+    public Date getTime(){
         return time;
     }
 
-    public void setDate(String date){
+    public void setDate(Date date){
         this.date = date;
     }
 
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
 
@@ -97,9 +87,8 @@ public class MatchData {
     @Override
     public String toString() {
         return "MatchData{" +
-                "matchId='" + matchId + '\'' +
-                ", ownerName='" + ownerName + '\'' +
-                ", countOfPlayers=" + countOfPlayers +
+                "  owner_name='" + ownerName + '\'' +
+                ", count_of_players=" + countOfPlayers +
                 ", time=" + time +
                 ", date='" + date + '\'' +
                 ", gender='" + gender + '\'' +

@@ -5,30 +5,32 @@ package com.app.faltauno.services;
  */
 import com.app.faltauno.data.MatchData;
 
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
 
     @POST("/match")
     @FormUrlEncoded
-    Call<MatchData> postMatch(@Field("match_id") int matchId,
-                                    @Field("owner_name") String ownerName,
-                                    @Field("count_of_players") int countOfPlayers,
-                                    @Field("time") String time,
-                                    @Field("date") String date,
+    Call<MatchData> postMatch(@Field("owner_name") String ownerName,
+                                    @Field("count_of_players") Integer countOfPlayers,
+                                    @Field("time") Date time,
+                                    @Field("date") Date date,
                                     @Field("gender") String gender,
                                     @Field("address") String address,
                                     @Field("city") String city);
 
-    @POST("/match")
+    @GET("/match")
     @FormUrlEncoded
     Call<MatchData> getMatch(@Field("owner_name") String ownerName,
-                                    @Field("count_of_players") String countOfPlayers,
-                                    @Field("time") String time,
-                                    @Field("date") String date,
+                                    @Field("count_of_players") Integer countOfPlayers,
+                                    @Field("time") Date time,
+                                    @Field("date") Date date,
                                     @Field("gender") String gender,
                                     @Field("address") String address,
                                     @Field("city") String city);

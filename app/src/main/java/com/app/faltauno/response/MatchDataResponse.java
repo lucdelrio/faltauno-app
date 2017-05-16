@@ -2,6 +2,8 @@ package com.app.faltauno.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class MatchDataResponse{
 
     @SerializedName("match_id")
@@ -11,13 +13,13 @@ public class MatchDataResponse{
     private String ownerName;
 
     @SerializedName("count_of_players")
-    private String countOfPlayers;
+    private Integer countOfPlayers;
 
     @SerializedName("time")
-    private String time;
+    private Date time;
 
     @SerializedName("date")
-    private String date;
+    private Date date;
 
     @SerializedName("gender")
     private String gender;
@@ -28,7 +30,7 @@ public class MatchDataResponse{
     @SerializedName("city")
     private String city;
 
-    public Integer getMatchId(){
+    public long getMatchId(){
         return matchId;
     }
 
@@ -36,15 +38,15 @@ public class MatchDataResponse{
         return ownerName;
     }
 
-    public String getCountOfPlayers() {
+    public Integer getCountOfPlayers() {
         return countOfPlayers;
     }
 
-    public String getTime(){
+    public Date getTime(){
         return time;
     }
 
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
 

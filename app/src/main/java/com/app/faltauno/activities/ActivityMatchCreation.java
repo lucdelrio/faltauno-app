@@ -2,9 +2,11 @@ package com.app.faltauno.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.ParseException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -15,10 +17,15 @@ import com.app.faltauno.R;
 import com.app.faltauno.data.MatchData;
 import com.app.faltauno.services.ApiService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.R.attr.format;
 import static android.content.ContentValues.TAG;
 
 public class ActivityMatchCreation extends Activity{
@@ -69,15 +76,33 @@ public class ActivityMatchCreation extends Activity{
                     !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
                     !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
                     !TextUtils.isEmpty(city)) {
-                createMatch(ownerName, Integer.parseInt(countOfPlayers), time, date, gender, address, city);
+
+                String timeString = time;
+                SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
+                Date convertedTime = new Date();
+
+                String dateString = date;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
+                Date convertedDate = new Date();
+                try {
+                    try {
+                        convertedTime = timeFormat.parse(timeString);
+                        convertedDate = dateFormat.parse(dateString);
+                    } catch (java.text.ParseException e) {
+                        e.printStackTrace();
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                createMatch(ownerName, Integer.parseInt(countOfPlayers), convertedTime, convertedDate, gender, address, city);
             }
 
         }
     }
 
 
-    public void createMatch(String ownerName, int countOfPlayers, String time, String date, String gender, String address, String city) {
-        apiService.postMatch(1, ownerName, countOfPlayers, time, date, gender, address, city).enqueue(new Callback<MatchData>() {
+    public void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
+        apiService.postMatch(ownerName, countOfPlayers, time, date, gender, address, city).enqueue(new Callback<MatchData>() {
             @Override
             public void onResponse(Call<MatchData> call, Response<MatchData> response) {
 

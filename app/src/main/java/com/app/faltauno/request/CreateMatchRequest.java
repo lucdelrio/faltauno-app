@@ -1,16 +1,18 @@
 package com.app.faltauno.request;
 
+import java.util.Date;
+
 public class CreateMatchRequest {
 
     private String ownerName;
-    private String countOfPlayers;
-    private String time;
-    private String date;
+    private Integer countOfPlayers;
+    private Date time;
+    private Date date;
     private String gender;
     private String address;
     private String city;
 
-    public CreateMatchRequest(String ownerName, String countOfPlayers, String time, String date, String gender, String address, String city) {
+    public CreateMatchRequest(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
         this.ownerName = ownerName;
         this.countOfPlayers = countOfPlayers;
         this.time = time;
@@ -24,15 +26,15 @@ public class CreateMatchRequest {
         return ownerName;
     }
 
-    public String getCountOfPlayers() {
+    public Integer getCountOfPlayers() {
         return countOfPlayers;
     }
 
-    public String getTime(){
+    public Date getTime(){
         return time;
     }
 
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
 

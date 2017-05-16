@@ -2,22 +2,24 @@ package com.app.faltauno.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 /**
  * Created by lucas on 15/05/17.
  */
 
 public class Match {
 
-    private Integer matchId;
+    private long matchId;
     private String ownerName;
-    private String countOfPlayers;
-    private String time;
-    private String date;
+    private Integer countOfPlayers;
+    private Date time;
+    private Date date;
     private String gender;
     private String address;
     private String city;
 
-    public Match(Integer matchId, String ownerName, String countOfPlayers, String time, String date, String gender, String address, String city) {
+    public Match(long matchId, String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
         this.setMatchId(matchId);
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
@@ -28,11 +30,11 @@ public class Match {
         this.setCity(city);
     }
 
-    public void setMatchId(Integer matchId){
+    public void setMatchId(long matchId){
         this.matchId = matchId;
     }
 
-    public int getMatchId(){
+    public long getMatchId(){
         return this.matchId;
     }
 
@@ -44,27 +46,27 @@ public class Match {
         return ownerName;
     }
 
-    public void setCountOfPlayers(String count){
+    public void setCountOfPlayers(Integer count){
         this.countOfPlayers = count;
     }
 
-    public String getCountOfPlayers() {
+    public Integer getCountOfPlayers() {
         return countOfPlayers;
     }
 
-    public void setTime(String time){
+    public void setTime(Date time){
         this.time = time;
     }
 
-    public String getTime(){
+    public Date getTime(){
         return time;
     }
 
-    public void setDate(String date){
+    public void setDate(Date date){
         this.date = date;
     }
 
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
 
