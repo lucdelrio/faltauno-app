@@ -50,7 +50,7 @@ public class ActivityMatchCreation extends Activity{
 
     }
 
-    public void onButtonClick(View view) {
+    public void onMatchCreationButtonClick(View view) {
 
         EditText editOwnerName = (EditText) findViewById(R.id.owner_name);
         EditText editCountOfPlayers = (EditText) findViewById(R.id.count_of_players);
@@ -68,38 +68,44 @@ public class ActivityMatchCreation extends Activity{
         String address = editAddress.getText().toString();
         String city = editCity.getText().toString();
 
-        if(view.getId() == R.id.back){
-            Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
-            startActivity(intent);
-        }else if(view.getId() == R.id.createMatch) {
-            if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(countOfPlayers) &&
-                    !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
-                    !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
-                    !TextUtils.isEmpty(city)) {
+        Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
 
-                String timeString = time;
-                SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
-                Date convertedTime = new Date();
+        if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(countOfPlayers) &&
+            !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
+            !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
+            !TextUtils.isEmpty(city)) {
 
-                String dateString = date;
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
-                Date convertedDate = new Date();
+            String timeString = time;
+            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
+            Date convertedTime = new Date();
+
+            String dateString = date;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
+            Date convertedDate = new Date();
+            try {
                 try {
-                    try {
-                        convertedTime = timeFormat.parse(timeString);
-                        convertedDate = dateFormat.parse(dateString);
-                    } catch (java.text.ParseException e) {
-                        e.printStackTrace();
-                    }
-                } catch (ParseException e) {
+                    convertedTime = timeFormat.parse(timeString);
+                    convertedDate = dateFormat.parse(dateString);
+                } catch (java.text.ParseException e) {
                     e.printStackTrace();
                 }
-                createMatch(ownerName, Integer.parseInt(countOfPlayers), convertedTime, convertedDate, gender, address, city);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-
+            createMatch(ownerName, Integer.parseInt(countOfPlayers), convertedTime, convertedDate, gender, address, city);
+            showMatchCreatedToast(view);
+            startActivity(intent);
+        }
+        else {
+            showFormErrorToast(view);
         }
     }
 
+    public void onBackButtonClick(View view) {
+        Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
+        startActivity(intent);
+
+    }
 
     public void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
         apiService.postMatch(ownerName, countOfPlayers, time, date, gender, address, city).enqueue(new Callback<MatchData>() {
