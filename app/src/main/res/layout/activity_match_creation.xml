@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,116 +8,122 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/owner_name"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:hint="Nombre del Organizador"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="348dp"
-        android:layout_height="52dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:hint="Dirección"
-        android:inputType="textPostalAddress"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/owner_name" />
+                <EditText
+                    android:id="@+id/owner_name"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:hint="Nombre del Organizador"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="40dp"/>
 
-    <EditText
-        android:id="@+id/city"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:hint="Ciudad"
-        android:inputType="textPostalAddress"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address" />
+                <EditText
+                    android:id="@+id/address"
+                    android:hint="Dirección"
+                    android:inputType="textPostalAddress"
+                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/owner_name"
+                    android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:hint="Fecha"
-        android:inputType="date"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/city"
-        tools:layout_conversion_absoluteHeight="42dp"
-        tools:layout_conversion_absoluteWidth="100dp"
-        tools:layout_conversion_absoluteX="172dp"
-        tools:layout_conversion_absoluteY="80dp" />
+                <EditText
+                    android:id="@+id/city"
+                    android:hint="Ciudad"
+                    android:inputType="textPostalAddress"
+                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/owner_name"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Hora"
-        android:inputType="time"
-        app:layout_constraintLeft_toRightOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+                <EditText
+                    android:id="@+id/date"
+                    android:hint="Fecha"
+                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/city"
+                    android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/count_of_players"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:hint="Cantidad de Jugadores"
-        android:inputType="number"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+                <EditText
+                    android:id="@+id/time"
+                    android:hint="Hora"
+                    android:inputType="time"
+                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/city"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/gender"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:hint="Género"
-        android:inputType="text"
-        app:layout_constraintLeft_toRightOf="@+id/count_of_players"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+                <EditText
+                    android:id="@+id/count_of_players"
+                    android:hint="Cantidad de Jugadores"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/time"
+                    android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/createMatch"
-        android:layout_width="126dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="24dp"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="onMatchCreationButtonClick"
-        android:text="Crear partido"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+                <!-- -->
+                <EditText
+                    android:id="@+id/gender"
+                    android:hint="Género"
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/time"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="16dp"
-        android:onClick="onBackButtonClick"
-        android:text="Volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/createMatch" />
+                <Button
+                    android:id="@+id/createMatch"
+                    android:layout_height="50dp"
+                    android:layout_width="125dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:onClick="showMatchCreatedToast"
+                    android:text="Crear partido"
+                    android:textAlignment="center"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/gender"
+                    android:layout_marginTop="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"/>
+
+                <Button
+                    android:id="@+id/back"
+                    android:layout_height="50dp"
+                    android:layout_width="125dp"
+                    android:onClick="onButtonClick"
+                    android:text="Volver"
+                    android:textAlignment="center"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_below="@+id/gender"
+                    android:layout_toLeftOf="@id/createMatch"
+                    android:layout_marginRight="20dp"/>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

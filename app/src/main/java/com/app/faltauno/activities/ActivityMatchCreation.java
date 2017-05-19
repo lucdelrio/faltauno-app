@@ -10,8 +10,18 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+//RODRIGO
+import android.app.DatePickerDialog;
+import android.widget.DatePicker;
+import android.app.DatePickerDialog;
+
+//RODRIGO
+import java.util.Calendar;
+import java.util.Date;
 
 import com.app.faltauno.R;
 import com.app.faltauno.data.MatchData;
@@ -34,6 +44,7 @@ public class ActivityMatchCreation extends Activity{
     private TextView mResponseTv;
 
     EditText ownerName, countOfPlayers, time, date, gender, address, city;
+    DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +54,35 @@ public class ActivityMatchCreation extends Activity{
         ownerName = (EditText) findViewById(R.id.owner_name);
         countOfPlayers = (EditText) findViewById(R.id.count_of_players);
         time = (EditText) findViewById(R.id.time);
-        date = (EditText) findViewById(R.id.date);
         gender = (EditText) findViewById(R.id.gender);
         address = (EditText) findViewById(R.id.address);
         city = (EditText) findViewById(R.id.city);
+        date = (EditText) findViewById(R.id.date);
 
+        //RODRIGO
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(ActivityMatchCreation.this,
+                        new DatePickerDialog.OnDateSetListener(){
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+        //RODRIGO
+        //Calendar currentDate = Calendar.getInstance();
+        //datePickerDialog.getDatePicker().setMaxDate(currentDate.getTimeInMillis());
     }
 
     public void onMatchCreationButtonClick(View view) {
