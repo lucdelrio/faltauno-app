@@ -3,32 +3,23 @@ package com.app.faltauno.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.ParseException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.faltauno.R;
-import com.app.faltauno.data.MatchData;
+import com.app.faltauno.request.Communicator;
 import com.app.faltauno.services.ApiService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static android.R.attr.format;
-import static android.content.ContentValues.TAG;
 
 public class ActivityMatchCreation extends Activity{
+
+    private Communicator communicator;
 
     private ApiService apiService;
     private TextView mResponseTv;
@@ -101,35 +92,14 @@ public class ActivityMatchCreation extends Activity{
         }
     }
 
+    private void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city){
+        communicator.matchPost(ownerName, countOfPlayers, time, date, gender, address, city);
+    }
+
     public void onBackButtonClick(View view) {
         Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
         startActivity(intent);
 
-    }
-
-    public void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
-        apiService.postMatch(ownerName, countOfPlayers, time, date, gender, address, city).enqueue(new Callback<MatchData>() {
-            @Override
-            public void onResponse(Call<MatchData> call, Response<MatchData> response) {
-
-                if(response.isSuccessful()) {
-                    showResponse(response.body().toString());
-                    Log.i(TAG, "post submitted to API." + response.body().toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MatchData> call, Throwable t) {
-                Log.e(TAG, "Unable to submit post to API.");
-            }
-        });
-    }
-
-    public void showResponse(String response) {
-        if(mResponseTv.getVisibility() == View.GONE) {
-            mResponseTv.setVisibility(View.VISIBLE);
-        }
-        mResponseTv.setText(response);
     }
 
     public void showFormErrorToast(View view){
