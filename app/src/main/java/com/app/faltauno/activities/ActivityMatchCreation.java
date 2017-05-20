@@ -3,15 +3,20 @@ package com.app.faltauno.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.ParseException;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 //RODRIGO
@@ -38,12 +43,20 @@ import retrofit2.Response;
 import static android.R.attr.format;
 import static android.content.ContentValues.TAG;
 
-public class ActivityMatchCreation extends Activity{
+public class ActivityMatchCreation extends AppCompatActivity{
 
     private ApiService apiService;
     private TextView mResponseTv;
 
-    EditText ownerName, countOfPlayers, time, date, gender, address, city;
+    EditText ownerName;
+    Spinner countOfPlayers;
+    ArrayAdapter<CharSequence> countOfPlayersAdapter;
+    EditText time;
+    EditText date;
+    Spinner gender;
+    ArrayAdapter<CharSequence> genderAdapter;
+    EditText address;
+    EditText city;
     DatePickerDialog datePickerDialog;
 
     @Override
@@ -52,12 +65,22 @@ public class ActivityMatchCreation extends Activity{
         setContentView(R.layout.activity_match_creation);
 
         ownerName = (EditText) findViewById(R.id.owner_name);
-        countOfPlayers = (EditText) findViewById(R.id.count_of_players);
         time = (EditText) findViewById(R.id.time);
-        gender = (EditText) findViewById(R.id.gender);
         address = (EditText) findViewById(R.id.address);
         city = (EditText) findViewById(R.id.city);
         date = (EditText) findViewById(R.id.date);
+
+        //Crear selector de cantidad de jugadores
+        countOfPlayers = (Spinner)findViewById(R.id.count_of_players);
+        countOfPlayersAdapter = ArrayAdapter.createFromResource(this,R.array.opciones_cant_jugadores, android.R.layout.simple_spinner_item);
+        countOfPlayersAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        countOfPlayers.setAdapter(countOfPlayersAdapter);
+
+        //Crear selector de genero
+        gender = (Spinner)findViewById(R.id.gender);
+        genderAdapter = ArrayAdapter.createFromResource(this,R.array.opciones_genero, android.R.layout.simple_spinner_item);
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(genderAdapter);
 
         //RODRIGO
         date.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +108,7 @@ public class ActivityMatchCreation extends Activity{
         //datePickerDialog.getDatePicker().setMaxDate(currentDate.getTimeInMillis());
     }
 
-    public void onMatchCreationButtonClick(View view) {
+    /*public void onMatchCreationButtonClick(View view) {
 
         EditText editOwnerName = (EditText) findViewById(R.id.owner_name);
         EditText editCountOfPlayers = (EditText) findViewById(R.id.count_of_players);
@@ -134,13 +157,13 @@ public class ActivityMatchCreation extends Activity{
         else {
             showFormErrorToast(view);
         }
-    }
+    }*/
 
-    public void onBackButtonClick(View view) {
+    /*public void onBackButtonClick(View view) {
         Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
         startActivity(intent);
 
-    }
+    }*/
 
     public void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
         apiService.postMatch(ownerName, countOfPlayers, time, date, gender, address, city).enqueue(new Callback<MatchData>() {
