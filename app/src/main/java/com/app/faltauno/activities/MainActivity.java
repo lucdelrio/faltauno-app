@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_new_match);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.agregar_partido_boton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,34 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/topBar">
-
-            <android.support.design.widget.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </android.support.design.widget.AppBarLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Partidos disponibles"
-                android:id="@+id/matchesEnabledTitle"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#07061b"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:elegantTextHeight="true"
-                android:singleLine="true" />
-
-        </RelativeLayout>
-
-
-
 
         <RelativeLayout
             android:layout_below="@+id/topBar"
@@ -47,6 +19,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
+
+            <TextView
+                android:id="@+id/matchesEnabledTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:text="Partidos disponibles"
+                android:textAlignment="center"
+                android:textColor="#BBB"
+                android:textSize="25dp"
+                android:typeface="normal" />
 
             <android.support.v4.view.ViewPager
                 android:layout_width="match_parent"
@@ -58,26 +43,23 @@
             </android.support.v4.view.ViewPager>
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/add_new_match"
+                android:id="@+id/agregar_partido_boton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:src="@drawable/ic_action_add"
-                app:elevation="4dp"
-                app:backgroundTint="#00ff44"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:onClick="addNewMatch"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="5dp"
+                android:onClick="agregar_partido"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                app:elevation="4dp"
+                app:backgroundTint="@color/colorAccent"
                 app:borderWidth="0dp"
                 app:rippleColor="#fcfcfc" />
 
         </RelativeLayout>
-
-
-
 
 
         <RelativeLayout
