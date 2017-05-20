@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:label="Creación de Partido"
-    tools:context="com.app.faltauno.activities.ActivityMatchCreation">
+    android:label="Creación de Partido">
+
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        android:gravity="right">
+
+        <Button
+            android:id="@+id/crearPartido_button"
+            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Crear partido" />
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:hint="Nombre del Organizador"
                 android:inputType="textPersonName" />
 
@@ -103,6 +120,7 @@
                 android:layout_below="@+id/count_of_players"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="30dp"
                 android:text="Genero"
                 android:textSize="18sp" />
             <Spinner
@@ -115,36 +133,6 @@
                 android:layout_toRightOf="@+id/genero_label"
                 android:layout_toEndOf="@+id/genero_label" />
 
-            <!--<Button
-                android:id="@+id/createMatch"
-                android:layout_height="50dp"
-                android:layout_width="125dp"
-                android:background="@color/colorPrimaryDark"
-                android:onClick="showMatchCreatedToast"
-                android:text="Crear partido"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_below="@+id/gender"
-                android:layout_marginTop="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"/>
-
-            <Button
-                android:id="@+id/back"
-                android:layout_height="50dp"
-                android:layout_width="125dp"
-                android:onClick="onButtonClick"
-                android:text="Volver"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="50dp"
-                android:layout_below="@+id/gender"
-                android:layout_toLeftOf="@id/createMatch"
-                android:layout_marginRight="20dp"/>-->
-
         </RelativeLayout>
     </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
