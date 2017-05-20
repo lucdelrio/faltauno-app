@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.app.faltauno.R;
 
-public class ActivityOne extends AppCompatActivity {
+public class BuscarPartido extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class ActivityOne extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.partidos:
-                        Intent intent0 = new Intent(ActivityOne.this, MainActivity.class);
+                        Intent intent0 = new Intent(BuscarPartido.this, MainActivity.class);
                         startActivity(intent0);
                         break;
 
@@ -42,7 +42,7 @@ public class ActivityOne extends AppCompatActivity {
                         break;
 
                     case R.id.profile:
-                        Intent intent2 = new Intent(ActivityOne.this, ActivityTwo.class);
+                        Intent intent2 = new Intent(BuscarPartido.this, VerPerfilDeUsuario.class);
                         startActivity(intent2);
                         break;
                 }

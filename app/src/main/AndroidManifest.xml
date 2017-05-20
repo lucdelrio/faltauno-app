@@ -25,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActivityOne" />
-        <activity android:name=".activities.ActivityTwo" />
+        <activity android:name=".activities.BuscarPartido" />
+        <activity android:name=".activities.VerPerfilDeUsuario" />
         <activity
-            android:name=".activities.ActivityMatchCreation"
+            android:name=".activities.CrearPartido"
             android:parentActivityName=".activities.MainActivity"
             android:label="Crear partido">
         </activity>

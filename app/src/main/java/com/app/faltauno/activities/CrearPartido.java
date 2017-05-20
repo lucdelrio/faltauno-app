@@ -1,28 +1,17 @@
 package com.app.faltauno.activities;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.ParseException;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 //RODRIGO
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
-import android.app.DatePickerDialog;
 
 //RODRIGO
 import java.util.Calendar;
@@ -32,72 +21,67 @@ import com.app.faltauno.R;
 import com.app.faltauno.data.MatchData;
 import com.app.faltauno.services.ApiService;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.R.attr.format;
 import static android.content.ContentValues.TAG;
 
-public class ActivityMatchCreation extends AppCompatActivity{
+public class CrearPartido extends AppCompatActivity{
 
     private ApiService apiService;
     private TextView mResponseTv;
 
-    EditText ownerName;
-    Spinner countOfPlayers;
-    ArrayAdapter<CharSequence> countOfPlayersAdapter;
-    EditText time;
-    EditText date;
-    Spinner gender;
-    ArrayAdapter<CharSequence> genderAdapter;
-    EditText address;
-    EditText city;
+    EditText organizador;
+    EditText direccion;
+    EditText cuidad;
+    EditText fecha;
+    EditText hora;
+    Spinner cant_jugadores;
+    ArrayAdapter<CharSequence> cant_jugadores_adapter;
+    Spinner genero;
+    ArrayAdapter<CharSequence> genero_adapter;
     DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_match_creation);
+        setContentView(R.layout.layout_crear_partido);
 
-        ownerName = (EditText) findViewById(R.id.owner_name);
-        time = (EditText) findViewById(R.id.time);
-        address = (EditText) findViewById(R.id.address);
-        city = (EditText) findViewById(R.id.city);
-        date = (EditText) findViewById(R.id.date);
+        organizador = (EditText) findViewById(R.id.input_organizador);
+        hora = (EditText) findViewById(R.id.input_hora);
+        direccion = (EditText) findViewById(R.id.input_direccion);
+        cuidad = (EditText) findViewById(R.id.input_cuidad);
+        fecha = (EditText) findViewById(R.id.input_fecha);
 
         //Crear selector de cantidad de jugadores
-        countOfPlayers = (Spinner)findViewById(R.id.count_of_players);
-        countOfPlayersAdapter = ArrayAdapter.createFromResource(this,R.array.opciones_cant_jugadores, android.R.layout.simple_spinner_item);
-        countOfPlayersAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        countOfPlayers.setAdapter(countOfPlayersAdapter);
+        cant_jugadores = (Spinner)findViewById(R.id.selector_cant_jugadores);
+        cant_jugadores_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_cant_jugadores, android.R.layout.simple_spinner_item);
+        cant_jugadores_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cant_jugadores.setAdapter(cant_jugadores_adapter);
 
         //Crear selector de genero
-        gender = (Spinner)findViewById(R.id.gender);
-        genderAdapter = ArrayAdapter.createFromResource(this,R.array.opciones_genero, android.R.layout.simple_spinner_item);
-        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        gender.setAdapter(genderAdapter);
+        genero = (Spinner)findViewById(R.id.selector_genero);
+        genero_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_genero, android.R.layout.simple_spinner_item);
+        genero_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genero.setAdapter(genero_adapter);
 
         //RODRIGO
-        date.setOnClickListener(new View.OnClickListener() {
+        fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current date , month and year from calender
+                // calender class's instance and get current fecha , month and year from calender
                 final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
-                datePickerDialog = new DatePickerDialog(ActivityMatchCreation.this,
+                // fecha picker dialog
+                datePickerDialog = new DatePickerDialog(CrearPartido.this,
                         new DatePickerDialog.OnDateSetListener(){
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                fecha.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -112,32 +96,32 @@ public class ActivityMatchCreation extends AppCompatActivity{
 
         EditText editOwnerName = (EditText) findViewById(R.id.owner_name);
         EditText editCountOfPlayers = (EditText) findViewById(R.id.count_of_players);
-        EditText editTime = (EditText) findViewById(R.id.time);
-        EditText editDate = (EditText) findViewById(R.id.date);
-        EditText editGender = (EditText) findViewById(R.id.gender);
-        EditText editAddress = (EditText) findViewById(R.id.address);
-        EditText editCity = (EditText) findViewById(R.id.city);
+        EditText editTime = (EditText) findViewById(R.id.hora);
+        EditText editDate = (EditText) findViewById(R.id.fecha);
+        EditText editGender = (EditText) findViewById(R.id.genero);
+        EditText editAddress = (EditText) findViewById(R.id.direccion);
+        EditText editCity = (EditText) findViewById(R.id.cuidad);
 
-        String ownerName = editOwnerName.getText().toString();
-        String countOfPlayers = editCountOfPlayers.getText().toString();
-        String time = editTime.getText().toString();
-        String date = editDate.getText().toString();
-        String gender = editGender.getText().toString();
-        String address = editAddress.getText().toString();
-        String city = editCity.getText().toString();
+        String organizador = editOwnerName.getText().toString();
+        String cant_jugadores = editCountOfPlayers.getText().toString();
+        String hora = editTime.getText().toString();
+        String fecha = editDate.getText().toString();
+        String genero = editGender.getText().toString();
+        String direccion = editAddress.getText().toString();
+        String cuidad = editCity.getText().toString();
 
-        Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
+        Intent intent = new Intent(CrearPartido.this, MainActivity.class);
 
-        if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(countOfPlayers) &&
-            !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
-            !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
-            !TextUtils.isEmpty(city)) {
+        if(!TextUtils.isEmpty(organizador) && !TextUtils.isEmpty(cant_jugadores) &&
+            !TextUtils.isEmpty(hora) && !TextUtils.isEmpty(fecha) &&
+            !TextUtils.isEmpty(genero) && !TextUtils.isEmpty(direccion) &&
+            !TextUtils.isEmpty(cuidad)) {
 
-            String timeString = time;
+            String timeString = hora;
             SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
             Date convertedTime = new Date();
 
-            String dateString = date;
+            String dateString = fecha;
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
             Date convertedDate = new Date();
             try {
@@ -150,7 +134,7 @@ public class ActivityMatchCreation extends AppCompatActivity{
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            createMatch(ownerName, Integer.parseInt(countOfPlayers), convertedTime, convertedDate, gender, address, city);
+            createMatch(organizador, Integer.parseInt(cant_jugadores), convertedTime, convertedDate, genero, direccion, cuidad);
             showMatchCreatedToast(view);
             startActivity(intent);
         }
@@ -160,7 +144,7 @@ public class ActivityMatchCreation extends AppCompatActivity{
     }*/
 
     /*public void onBackButtonClick(View view) {
-        Intent intent = new Intent(ActivityMatchCreation.this, MainActivity.class);
+        Intent intent = new Intent(CrearPartido.this, MainActivity.class);
         startActivity(intent);
 
     }*/
