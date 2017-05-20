@@ -11,4 +11,12 @@
     <string name="title_activity_tab2_fragment">Tab2Fragment</string>
     <string name="title_activity_tab3_fragment">Tab3Fragment</string>
     <string name="title_activity_match_creation">ActivityMatchCreation</string>
+    <string-array name="opciones_genero">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="opciones_cant_jugadores">
+        <item>11</item>
+        <item>5</item>
+    </string-array>
 </resources>

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_main);
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
@@ -43,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.search:
-                        Intent intent1 = new Intent(MainActivity.this, ActivityOne.class);
+                        Intent intent1 = new Intent(MainActivity.this, BuscarPartido.class);
                         startActivity(intent1);
                         break;
 
                     case R.id.profile:
-                        Intent intent2 = new Intent(MainActivity.this, ActivityTwo.class);
+                        Intent intent2 = new Intent(MainActivity.this, VerPerfilDeUsuario.class);
                         startActivity(intent2);
                         break;
                 }
@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_new_match);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.agregar_partido_boton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentAddNewMatch = new Intent(MainActivity.this, ActivityMatchCreation.class);
+                Intent intentAddNewMatch = new Intent(MainActivity.this, CrearPartido.class);
                 startActivity(intentAddNewMatch);
             }
         });

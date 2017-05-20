@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:label="Creación de Partido">
+
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:id="@+id/contenedor_boton_guardar_nuevo_partido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        android:gravity="right">
+
+        <Button
+            android:id="@+id/guardar_nuevo_partido_boton"
+            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+            tools:targetApi="21"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Crear partido" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/contenedor_boton_guardar_nuevo_partido">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/input_organizador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:hint="Nombre del Organizador"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/input_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_organizador"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:hint="Dirección"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/input_cuidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/input_direccion"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:hint="Ciudad"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/input_fecha"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_cuidad"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:hint="Fecha" />
+
+            <EditText
+                android:id="@+id/input_hora"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/input_cuidad"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:hint="Hora"
+                android:inputType="time" />
+
+            <TextView
+                android:id="@+id/label_cant_jugadores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/input_fecha"
+                android:layout_alignStart="@+id/input_fecha"
+                android:layout_below="@+id/input_fecha"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="30dp"
+                android:text="Cantidad de jugadores"
+                android:textSize="18sp" />
+            <Spinner
+                android:id="@+id/selector_cant_jugadores"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2"
+                android:layout_alignTop="@+id/label_cant_jugadores"
+                android:layout_toRightOf="@+id/label_cant_jugadores"
+                android:layout_toEndOf="@+id/label_cant_jugadores" />
+
+            <TextView
+                android:id="@+id/label_genero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/label_cant_jugadores"
+                android:layout_alignStart="@+id/label_cant_jugadores"
+                android:layout_below="@+id/selector_cant_jugadores"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="30dp"
+                android:text="Genero"
+                android:textSize="18sp" />
+            <Spinner
+                android:id="@+id/selector_genero"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_alignTop="@+id/label_genero"
+                android:layout_toRightOf="@+id/label_genero"
+                android:layout_toEndOf="@+id/label_genero" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
