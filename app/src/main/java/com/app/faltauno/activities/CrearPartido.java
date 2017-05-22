@@ -1,5 +1,6 @@
 package com.app.faltauno.activities;
 
+import android.app.TimePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,14 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
-//RODRIGO
+
+//Para campo Fecha
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
-
-//RODRIGO
 import java.util.Calendar;
 import java.util.Date;
+
+//Para campo Hora
+
 
 import com.app.faltauno.R;
 import com.app.faltauno.data.MatchData;
@@ -42,6 +46,7 @@ public class CrearPartido extends AppCompatActivity{
     Spinner genero;
     ArrayAdapter<CharSequence> genero_adapter;
     DatePickerDialog datePickerDialog;
+    TimePickerDialog timePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,30 +71,76 @@ public class CrearPartido extends AppCompatActivity{
         genero_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genero.setAdapter(genero_adapter);
 
-        //RODRIGO
+        //Despliegue de Calendario en Fecha
         fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current fecha , month and year from calender
+                //Se instancia clase Calendario con fecha actual
                 final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                int mAnio = c.get(Calendar.YEAR); // anio actual
+                int mMes = c.get(Calendar.MONTH); // mes actual
+                int mDia = c.get(Calendar.DAY_OF_MONTH); // dia actual
+                int milisegundos = c.get(Calendar.MILLISECOND);
+                //datePickerDialog.getDatePicker().setMinDate(milisegundos);
                 // fecha picker dialog
                 datePickerDialog = new DatePickerDialog(CrearPartido.this,
                         new DatePickerDialog.OnDateSetListener(){
                             @Override
-                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                // set day of month , month and year value in the edit text
-                                fecha.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            public void onDateSet(DatePicker view, int anio, int meseDelAnio, int dayOfMonth) {
+                                //Set dia, mes y año en el EditText
+                                //view.setMinDate(System.currentTimeMillis());
+                                fecha.setText(dayOfMonth + "/" + (meseDelAnio + 1) + "/" + anio);
                             }
-                        }, mYear, mMonth, mDay);
+                        }, mAnio, mMes, mDia);
                 datePickerDialog.show();
             }
         });
-        //RODRIGO
-        //Calendar currentDate = Calendar.getInstance();
-        //datePickerDialog.getDatePicker().setMaxDate(currentDate.getTimeInMillis());
+
+        hora.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int mHora = c.get(Calendar.HOUR);
+                int mMinutos = c.get(Calendar.MINUTE);
+
+                timePickerDialog = new TimePickerDialog(CrearPartido.this,
+                        new TimePickerDialog.OnTimeSetListener(){
+                    @Override
+                    public void onTimeSet(TimePicker view, int horaDelDia, int minuto) {
+                        //String AM_PM;
+                        //int am_pm;
+
+                        hora.setText(horaDelDia + " : " + minuto + "  ");
+                    }
+                }, mHora, mMinutos, false);
+                timePickerDialog.show();
+            }
+        });
+
+
+        //mirar esto
+        /*
+        public static void showTime(final Context context, final TextView textView) {
+
+            final Calendar myCalendar = Calendar.getInstance();
+            TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String am_pm = "";
+                    myCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                    myCalendar.set(Calendar.MINUTE, minute);
+                    if (myCalendar.get(Calendar.AM_PM) == Calendar.AM)
+                        am_pm = "AM";
+                    else if (myCalendar.get(Calendar.AM_PM) == Calendar.PM)
+                        am_pm = "PM";
+                    String strHrsToShow = (myCalendar.get(Calendar.HOUR) == 0) ? "12" : myCalendar.get(Calendar.HOUR) + "";
+                    //UIHelper.showLongToastInCenter(context, strHrsToShow + ":" + myCalendar.get(Calendar.MINUTE) + " " + am_pm);
+                    textView.setText(strHrsToShow + ":" + myCalendar.get(Calendar.MINUTE) + " " + am_pm);
+                }
+            };
+            new TimePickerDialog(context, mTimeSetListener, myCalendar.get(Calendar.HOUR), myCalendar.get(Calendar.MINUTE), false).show();
+        }
+        */
     }
 
     /*public void onMatchCreationButtonClick(View view) {
