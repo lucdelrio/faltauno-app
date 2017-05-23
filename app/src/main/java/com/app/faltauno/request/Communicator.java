@@ -44,8 +44,8 @@ public class Communicator {
     public void matchPost(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
 
         ApiService service = getClient(SERVER_URL).create(ApiService.class);
-
-        Call<MatchDataResponse> call = service.postMatch(ownerName, countOfPlayers, time, date, gender, address, city);
+        MatchDataResponse match = new MatchDataResponse(ownerName, countOfPlayers, time, date, gender, address, city);
+        Call<MatchDataResponse> call = service.postMatch(match);
 
         call.enqueue(new Callback<MatchDataResponse>() {
             @Override

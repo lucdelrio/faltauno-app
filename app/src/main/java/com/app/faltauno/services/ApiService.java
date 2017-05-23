@@ -8,6 +8,7 @@ import com.app.faltauno.response.MatchDataResponse;
 import java.util.Date;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -17,13 +18,7 @@ public interface ApiService {
 
     @POST("/match")
     @FormUrlEncoded
-    Call<MatchDataResponse> postMatch(@Field("owner_name") String ownerName,
-                                      @Field("count_of_players") Integer countOfPlayers,
-                                      @Field("time") Date time,
-                                      @Field("date") Date date,
-                                      @Field("gender") String gender,
-                                      @Field("address") String address,
-                                      @Field("city") String city);
+    Call<MatchDataResponse> postMatch (@Body MatchDataResponse match);
 
     @GET("/match")
     @FormUrlEncoded

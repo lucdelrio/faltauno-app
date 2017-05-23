@@ -31,6 +31,8 @@ public class ActivityMatchCreation extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_creation);
 
+        communicator = new Communicator();
+
         ownerName = (EditText) findViewById(R.id.owner_name);
         countOfPlayers = (EditText) findViewById(R.id.count_of_players);
         time = (EditText) findViewById(R.id.time);
