@@ -22,7 +22,6 @@ import java.util.Date;
 
 
 import com.app.faltauno.R;
-import com.app.faltauno.data.MatchData;
 import com.app.faltauno.services.ApiService;
 
 import retrofit2.Call;
@@ -200,7 +199,7 @@ public class CrearPartido extends AppCompatActivity{
 
     }*/
 
-    public void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
+    /*public void createMatch(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
         apiService.postMatch(ownerName, countOfPlayers, time, date, gender, address, city).enqueue(new Callback<MatchData>() {
             @Override
             public void onResponse(Call<MatchData> call, Response<MatchData> response) {
@@ -233,5 +232,5 @@ public class CrearPartido extends AppCompatActivity{
     public void showMatchCreatedToast(View view){
         Toast matchCreatedToast = Toast.makeText(getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
         matchCreatedToast.show();
-    }
+    }*/
 }
