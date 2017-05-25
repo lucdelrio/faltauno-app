@@ -17,11 +17,9 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @POST("/match")
-    @FormUrlEncoded
     Call<MatchDataResponse> postMatch (@Body MatchDataResponse match);
 
     @GET("/match")
-    @FormUrlEncoded
     Call<MatchDataResponse> getMatch(@Field("owner_name") String ownerName,
                                      @Field("count_of_players") Integer countOfPlayers,
                                      @Field("time") Date time,
