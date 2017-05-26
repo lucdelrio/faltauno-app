@@ -13,6 +13,8 @@ import android.view.View;
 
 import com.app.faltauno.R;
 
+import static android.support.design.R.styleable.BottomNavigationView;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
