@@ -21,7 +21,7 @@ public class Communicator {
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(String baseUrl) {
+    public static Retrofit getClient() {
         //Here a logging interceptor is created
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -43,7 +43,7 @@ public class Communicator {
 
     public void matchPost(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
 
-        ApiService service = getClient(SERVER_URL).create(ApiService.class);
+        ApiService service = getClient().create(ApiService.class);
         MatchDataResponse match = new MatchDataResponse(ownerName, countOfPlayers, time, date, gender, address, city);
         Call<MatchDataResponse> call = service.postMatch(match);
 
