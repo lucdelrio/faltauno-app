@@ -33,29 +33,28 @@ public class Communicator {
         //The Retrofit builder will have the client attached, in order to get connection logs
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
+                    .baseUrl(SERVER_URL)
                     .client(httpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(SERVER_URL)
                     .build();
         }
         return retrofit;
     }
 
-    public void matchPost(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
+    public void matchPost(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
 
         ApiService service = getClient().create(ApiService.class);
         MatchData match = new MatchData(ownerName, countOfPlayers, time, date, gender, address, city);
-        Call<MatchData> call = service.postMatch(match);
+        Call<Void> call = service.postMatch(match);
 
-        call.enqueue(new Callback<MatchData>() {
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<MatchData> call, Response<MatchData> response) {
-                BusProvider.getInstance().post(new MatchEvent(response.body()));
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.e(TAG, "Success");
             }
 
             @Override
-            public void onFailure(Call<MatchData> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 // handle execution failures like no internet connectivity
                 BusProvider.getInstance().post(new ErrorEvent(-2, t.getMessage()));
             }

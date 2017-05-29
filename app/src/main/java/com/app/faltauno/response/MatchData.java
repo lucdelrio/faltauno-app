@@ -1,10 +1,8 @@
 package com.app.faltauno.response;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class MatchData implements Serializable {
 
@@ -18,10 +16,10 @@ public class MatchData implements Serializable {
     private Integer countOfPlayers;
 
     @SerializedName("time")
-    private Date time;
+    private String time;
 
     @SerializedName("date")
-    private Date date;
+    private String date;
 
     @SerializedName("gender")
     private String gender;
@@ -32,7 +30,7 @@ public class MatchData implements Serializable {
     @SerializedName("city")
     private String city;
 
-    public MatchData(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
+    public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
         this.setTime(time);
@@ -63,19 +61,19 @@ public class MatchData implements Serializable {
         return countOfPlayers;
     }
 
-    public void setTime(Date time){
+    public void setTime(String time){
         this.time = time;
     }
 
-    public Date getTime(){
+    public String getTime(){
         return time;
     }
 
-    public void setDate(Date date){
+    public void setDate(String date){
         this.date = date;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
 
