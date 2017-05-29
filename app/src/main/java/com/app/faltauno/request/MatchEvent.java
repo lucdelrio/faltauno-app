@@ -1,22 +1,22 @@
 package com.app.faltauno.request;
 
-import com.app.faltauno.response.MatchDataResponse;
+import com.app.faltauno.response.MatchData;
 
 /**
  * Created by lucas on 18/05/17.
  */
 public class MatchEvent {
-    private MatchDataResponse serverResponse;
+    private MatchData serverResponse;
 
-    public MatchEvent(MatchDataResponse serverResponse) {
+    public MatchEvent(MatchData serverResponse) {
         this.serverResponse = serverResponse;
     }
 
-    public MatchDataResponse getServerResponse() {
+    public MatchData getServerResponse() {
         return serverResponse;
     }
 
-    public void setServerResponse(MatchDataResponse serverResponse) {
+    public void setServerResponse(MatchData serverResponse) {
         this.serverResponse = serverResponse;
     }
 }

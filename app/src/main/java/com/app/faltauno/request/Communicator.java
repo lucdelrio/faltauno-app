@@ -2,7 +2,7 @@ package com.app.faltauno.request;
 
 import android.util.Log;
 
-import com.app.faltauno.response.MatchDataResponse;
+import com.app.faltauno.response.MatchData;
 import com.app.faltauno.services.ApiService;
 
 import java.util.Date;
@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://10.0.2.2:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
 
@@ -44,18 +44,39 @@ public class Communicator {
     public void matchPost(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
 
         ApiService service = getClient().create(ApiService.class);
-        MatchDataResponse match = new MatchDataResponse(ownerName, countOfPlayers, time, date, gender, address, city);
-        Call<MatchDataResponse> call = service.postMatch(match);
+        MatchData match = new MatchData(ownerName, countOfPlayers, time, date, gender, address, city);
+        Call<MatchData> call = service.postMatch(match);
 
-        call.enqueue(new Callback<MatchDataResponse>() {
+        call.enqueue(new Callback<MatchData>() {
             @Override
-            public void onResponse(Call<MatchDataResponse> call, Response<MatchDataResponse> response) {
+            public void onResponse(Call<MatchData> call, Response<MatchData> response) {
                 BusProvider.getInstance().post(new MatchEvent(response.body()));
                 Log.e(TAG, "Success");
             }
 
             @Override
-            public void onFailure(Call<MatchDataResponse> call, Throwable t) {
+            public void onFailure(Call<MatchData> call, Throwable t) {
+                // handle execution failures like no internet connectivity
+                BusProvider.getInstance().post(new ErrorEvent(-2, t.getMessage()));
+            }
+        });
+    }
+
+    public void getMatch(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
+
+        ApiService service = getClient().create(ApiService.class);
+
+        Call<MatchData> call = service.getMatch(ownerName, countOfPlayers, time, date, gender, address, city);
+
+        call.enqueue(new Callback<MatchData>() {
+            @Override
+            public void onResponse(Call<MatchData> call, Response<MatchData> response) {
+                BusProvider.getInstance().post(new MatchEvent(response.body()));
+                Log.e(TAG, "Success");
+            }
+
+            @Override
+            public void onFailure(Call<MatchData> call, Throwable t) {
                 // handle execution failures like no internet connectivity
                 BusProvider.getInstance().post(new ErrorEvent(-2, t.getMessage()));
             }

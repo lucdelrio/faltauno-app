@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Date;
 
-public class MatchDataResponse implements Serializable {
+public class MatchData implements Serializable {
 
     @SerializedName("match_id")
     private Integer matchId;
@@ -32,7 +32,7 @@ public class MatchDataResponse implements Serializable {
     @SerializedName("city")
     private String city;
 
-    public MatchDataResponse(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
+    public MatchData(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city) {
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
         this.setTime(time);
