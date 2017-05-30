@@ -115,8 +115,6 @@ public class CrearPartido extends AppCompatActivity{
             }
         });
 
-
-
     }
 
     public void onMatchCreationButtonClick(View view) {
@@ -137,13 +135,13 @@ public class CrearPartido extends AppCompatActivity{
                 !TextUtils.isEmpty(city)) {
 
             String timeString = time;
-            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
-            Date convertedTime = new Date();
+            //SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
+            //Date convertedTime = new Date();
 
             String dateString = date;
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
-            Date convertedDate = new Date();
-            try {
+            //SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
+            //Date convertedDate = new Date();
+            /*try {
                 try {
                     convertedTime = timeFormat.parse(timeString);
                     convertedDate = dateFormat.parse(dateString);
@@ -152,8 +150,8 @@ public class CrearPartido extends AppCompatActivity{
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
-            }
-            crearPartido(ownerName, Integer.parseInt(countOfPlayers), convertedTime, convertedDate, gender, address, city);
+            }*/
+            crearPartido(ownerName, Integer.parseInt(countOfPlayers), time, date, gender, address, city);
             showMatchCreatedToast(view);
             startActivity(intent);
         }
@@ -162,7 +160,7 @@ public class CrearPartido extends AppCompatActivity{
         }
     }
 
-    private void crearPartido(String ownerName, Integer countOfPlayers, Date time, Date date, String gender, String address, String city){
+    private void crearPartido(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city){
         communicator.matchPost(ownerName, countOfPlayers, time, date, gender, address, city);
     }
 

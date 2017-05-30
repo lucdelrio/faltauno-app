@@ -17,7 +17,7 @@ import retrofit2.http.Query;
 public interface ApiService {
 
     @POST("match")
-    Call<MatchData> postMatch (@Body MatchData match);
+    Call<Void> postMatch (@Body MatchData match);
 
     @GET("match")
     Call<MatchData> getMatch(@Query("owner_name") String ownerName,
