@@ -9,10 +9,10 @@ public class MatchData implements Serializable {
     @SerializedName("match_id")
     private Integer matchId;
 
-    @SerializedName("owner_name")
+    @SerializedName("ownerName")
     private String ownerName;
 
-    @SerializedName("count_of_players")
+    @SerializedName("countOfPlayers")
     private Integer countOfPlayers;
 
     @SerializedName("time")
