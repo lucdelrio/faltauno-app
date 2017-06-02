@@ -10,8 +10,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import com.app.faltauno.R;
+import com.app.faltauno.request.Communicator;
+import com.app.faltauno.response.MatchData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.support.design.R.styleable.BottomNavigationView;
 
@@ -21,11 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
+    private Communicator communicator;
 
+    private ArrayList<MatchData> listaDePartidos = new ArrayList<MatchData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Display a indeterminate progress bar on title bar
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.layout_main);
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
@@ -68,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentAddNewMatch);
             }
         });
+
     }
 
 }

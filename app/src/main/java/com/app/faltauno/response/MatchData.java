@@ -40,7 +40,6 @@ public class MatchData implements Serializable {
         this.setCity(city);
     }
 
-
     public long getMatchId(){
         return matchId;
     }

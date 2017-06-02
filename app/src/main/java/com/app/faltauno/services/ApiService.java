@@ -6,26 +6,23 @@ package com.app.faltauno.services;
 import com.app.faltauno.response.MatchData;
 
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
 
     @POST("match")
-    Call<Void> postMatch (@Body MatchData match);
+    Call <Void> postMatch (@Body MatchData match);
 
     @GET("match")
-    Call<MatchData> getMatch(@Query("owner_name") String ownerName,
-                             @Query("count_of_players") Integer countOfPlayers,
-                             @Query("time") String time,
-                             @Query("date") String date,
-                             @Query("gender") String gender,
-                             @Query("address") String address,
-                             @Query("city") String city);
+    Call <List<MatchData>> getMatch();
 
 }

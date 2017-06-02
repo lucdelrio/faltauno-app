@@ -5,7 +5,10 @@ import android.util.Log;
 import com.app.faltauno.response.MatchData;
 import com.app.faltauno.services.ApiService;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -15,9 +18,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
 
@@ -61,21 +65,21 @@ public class Communicator {
         });
     }
 
-    public void getMatch(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
+    public List<MatchData> getMatch() {
 
         ApiService service = getClient().create(ApiService.class);
+        Call<List<MatchData>> call = service.getMatch();
 
-        Call<MatchData> call = service.getMatch(ownerName, countOfPlayers, time, date, gender, address, city);
-
-        call.enqueue(new Callback<MatchData>() {
+        call.enqueue(new Call<List<MatchData>>() {
             @Override
-            public void onResponse(Call<MatchData> call, Response<MatchData> response) {
-                BusProvider.getInstance().post(new MatchEvent(response.body()));
+            public void onResponse(Call<List<MatchData>> call, Response<List<MatchData>>  response) {
+
+                List<MatchData> listaDePartidos = response.body();
                 Log.e(TAG, "Success");
             }
 
             @Override
-            public void onFailure(Call<MatchData> call, Throwable t) {
+            public void onFailure(Call<List<MatchData>> call, Throwable t) {
                 // handle execution failures like no internet connectivity
                 BusProvider.getInstance().post(new ErrorEvent(-2, t.getMessage()));
             }
