@@ -4,6 +4,8 @@ package com.app.faltauno.services;
  * Created by lucas on 14/05/17.
  */
 import com.app.faltauno.response.MatchData;
+import com.app.faltauno.response.MatchDataResponse;
+import com.app.faltauno.response.MatchResults;
 
 import java.util.Date;
 import java.util.List;
@@ -19,10 +21,10 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @POST("match")
+    @POST("matches")
     Call <Void> postMatch (@Body MatchData match);
 
-    @GET("match")
-    Call <List<MatchData>> getMatch();
+    @GET("matches")
+    Call <List<MatchDataResponse>> getMatch();
 
 }

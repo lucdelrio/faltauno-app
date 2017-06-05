@@ -3,6 +3,7 @@ package com.app.faltauno.request;
 import android.util.Log;
 
 import com.app.faltauno.response.MatchData;
+import com.app.faltauno.response.MatchDataResponse;
 import com.app.faltauno.services.ApiService;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
 
@@ -65,24 +66,4 @@ public class Communicator {
         });
     }
 
-    public List<MatchData> getMatch() {
-
-        ApiService service = getClient().create(ApiService.class);
-        Call<List<MatchData>> call = service.getMatch();
-
-        call.enqueue(new Call<List<MatchData>>() {
-            @Override
-            public void onResponse(Call<List<MatchData>> call, Response<List<MatchData>>  response) {
-
-                List<MatchData> listaDePartidos = response.body();
-                Log.e(TAG, "Success");
-            }
-
-            @Override
-            public void onFailure(Call<List<MatchData>> call, Throwable t) {
-                // handle execution failures like no internet connectivity
-                BusProvider.getInstance().post(new ErrorEvent(-2, t.getMessage()));
-            }
-        });
-    }
 }
