@@ -21,10 +21,10 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @POST("match")
+    @POST("matches")
     Call <Void> postMatch (@Body MatchData match);
 
-    @GET("match")
-    Call <MatchResults> getMatch();
+    @GET("matches")
+    Call <List<MatchDataResponse>> getMatch();
 
 }
