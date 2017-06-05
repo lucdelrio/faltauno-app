@@ -4,6 +4,8 @@ package com.app.faltauno.services;
  * Created by lucas on 14/05/17.
  */
 import com.app.faltauno.response.MatchData;
+import com.app.faltauno.response.MatchDataResponse;
+import com.app.faltauno.response.MatchResults;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,6 @@ public interface ApiService {
     Call <Void> postMatch (@Body MatchData match);
 
     @GET("match")
-    Call <List<MatchData>> getMatch();
+    Call <MatchResults> getMatch();
 
 }
