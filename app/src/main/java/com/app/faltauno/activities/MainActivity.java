@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataResponse>> call = service.getMatch();
+        Call<List<MatchDataResponse>> call = service.getListMatches();
 
         call.enqueue(new Callback<List<MatchDataResponse>>() {
             @Override

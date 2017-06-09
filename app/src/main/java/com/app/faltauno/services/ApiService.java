@@ -24,7 +24,10 @@ public interface ApiService {
     @POST("matches")
     Call <Void> postMatch (@Body MatchData match);
 
+    //No tendria que ser getMatches?
     @GET("matches")
-    Call <List<MatchDataResponse>> getMatch();
+    Call <List<MatchDataResponse>> getListMatches();
 
+    @GET("matches/id")
+    Call <MatchDataResponse> getMatch();
 }

@@ -9,4 +9,7 @@ import java.util.List;
 public class MatchResults {
     public List<MatchDataResponse> matchesList;
 
+    //RODRIGO -> MOSTRAR PARTIDO
+    public MatchDataResponse matchSelect;
+
 }
