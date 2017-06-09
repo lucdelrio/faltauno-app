@@ -30,6 +30,7 @@ public class MostrarPartido extends AppCompatActivity {
     TextView hora;
     TextView genero;
     TextView cupo;
+    private List<MatchDataResponse> listaDePartidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,28 +53,40 @@ public class MostrarPartido extends AppCompatActivity {
     private void getMatch(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<MatchDataResponse> call = service.getMatch();
+        Call<List<MatchDataResponse>> call = service.getListMatches();
 
-        call.enqueue(new Callback<MatchDataResponse>() {
+        call.enqueue(new Callback<List<MatchDataResponse>>() {
             @Override
-            public void onFailure(Call<MatchDataResponse> call, Throwable t) {
+            public void onFailure(Call<List<MatchDataResponse>> call, Throwable t) {
                 Log.d("APIPlug", "Error Occured: " + t.getMessage());
 
             }
 
             @Override
-            public void onResponse(Call<MatchDataResponse> call, Response<MatchDataResponse> response) {
+            public void onResponse(Call<List<MatchDataResponse>> call, Response<List<MatchDataResponse>> response) {
                 Log.d("APIPlug", "Successfully response fetched" );
 
-                //listaDePartidos = response.body();
+                listaDePartidos = response.body();
 
-                //if(listaDePartidos.size()>0) {
-                //    showList();
-               // }else{
-                //    Log.d("APIPlug", "No item found");
-                //}
+                if(listaDePartidos.size()>0) {
+                    mostrarDatosPartido(1);
+                }else{
+                    Log.d("APIPlug", "No item found");
+                }
             }
         });
     }
+
+    private void mostrarDatosPartido(Integer id) {
+        Log.d("APIPlug", "Mostrar Datos del Partido");
+        this.organizador.setText(listaDePartidos.get(id).getOwnerName());
+        this.direccion.setText(listaDePartidos.get(id).getAddress());
+        this.ciudad.setText(listaDePartidos.get(id).getCity());
+        this.fecha.setText(listaDePartidos.get(id).getDate());
+        this.hora.setText(listaDePartidos.get(id).getTime());
+        this.genero.setText(listaDePartidos.get(id).getGender());
+        this.cupo.setText(listaDePartidos.get(id).getCupo());
+    }
+
 
 }

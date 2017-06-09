@@ -30,7 +30,10 @@ public class MatchData implements Serializable {
     @SerializedName("city")
     private String city;
 
-    public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
+    @SerializedName("cupo")
+    private String cupo;
+
+    public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city, String cupo) {
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
         this.setTime(time);
@@ -38,6 +41,7 @@ public class MatchData implements Serializable {
         this.setGender(gender);
         this.setAddress(address);
         this.setCity(city);
+        this.setCupo(cupo);
     }
 
     public long getMatchId(){
@@ -91,6 +95,12 @@ public class MatchData implements Serializable {
     public String getAddress(){
         return address;
     }
+
+    public void setCupo(String cupo){
+        this.cupo = cupo;
+    }
+
+    public String getCupo() {return cupo;}
 
     public void setCity(String city){
         this.city = city;

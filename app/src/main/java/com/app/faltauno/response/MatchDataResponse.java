@@ -41,6 +41,8 @@ public class MatchDataResponse {
     @Expose
     private String city;
 
+    @SerializedName("cupo")
+    private String cupo;
 
     public long getMatchId(){
         return matchId;
@@ -105,4 +107,10 @@ public class MatchDataResponse {
     public String getCity() {
         return city;
     }
+
+    public void setCupo(String cupo){
+        this.cupo = cupo;
+    }
+
+    public String getCupo() {return cupo;}
 }

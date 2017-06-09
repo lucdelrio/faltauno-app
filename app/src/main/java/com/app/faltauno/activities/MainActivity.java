@@ -134,6 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
         txtPartidos = (TextView) findViewById(R.id.matchesList);
 
-        txtPartidos.setText(listaDePartidos.toString());
+        txtPartidos.setText(listaDePartidos.get(1).getCountOfPlayers());
     }
 }
