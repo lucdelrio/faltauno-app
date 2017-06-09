@@ -15,6 +15,8 @@ import android.widget.Spinner;
 //Para campo Fecha
 import android.app.DatePickerDialog;
 import android.widget.TimePicker;
+
+//Para dar mensaje que se creo partido
 import android.widget.Toast;
 
 //Para campo Hora
