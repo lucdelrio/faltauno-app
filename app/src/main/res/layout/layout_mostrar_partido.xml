@@ -22,12 +22,12 @@
             style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
             tools:targetApi="21"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:onClick="onMostrarPartidoPostularseButtonClick"
             android:text="Postularme"
-            android:textSize="30dp"/>
+            android:textSize="20dp"/>
 
     </RelativeLayout>
 
@@ -35,7 +35,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:background="@drawable/imagen_cancha_mostrar_partido" />
 
     <!-- Texto organizador -->
@@ -48,9 +48,9 @@
         android:layout_below="@+id/imageView"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:text="ORGANIZADOR:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -58,12 +58,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_organizador"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto direccion -->
     <TextView
@@ -76,7 +76,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:text="DIRECCION:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -88,7 +88,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_direccion"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto ciudad -->
     <TextView
@@ -101,7 +101,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:text="CIUDAD:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -113,7 +113,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_ciudad"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto fecha -->
     <TextView
@@ -126,7 +126,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:text="FECHA:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -138,7 +138,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_fecha"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto hora -->
     <TextView
@@ -151,7 +151,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:text="HORA:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -163,7 +163,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_hora"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto cantidad de jugadores -->
     <TextView
@@ -176,7 +176,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:text="CANTIDAD DE JUGADORES:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -188,7 +188,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_cant_jugadores"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto genero-->
     <TextView
@@ -201,7 +201,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:text="GENERO:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -213,7 +213,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_genero"
         android:text="xx"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <!-- Texto cupo-->
     <TextView
@@ -223,9 +223,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="50dp"
         android:text="CUPO:"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -234,8 +234,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:textSize="30dp"
-        android:layout_marginBottom="70dp"
+        android:textSize="20dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginRight="50dp"
         android:text="xx" />
 
