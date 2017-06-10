@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#000000"
+        android:background="#000"
         android:gravity="right">
 
         <!-- Boton crear partido -->
@@ -27,7 +27,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:onClick="onMatchCreationButtonClick"
-            android:text="Crear partido" />
+            android:text="Crear partido"
+            android:background="#000"/>
 
     </RelativeLayout>
 
@@ -104,6 +105,16 @@
                 android:hint="Hora"
                 android:inputType="time" />
 
+            <!-- Campo cupo-->
+            <EditText
+                android:id="@+id/input_cupo"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_fecha"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:hint="Cupo" />
+
             <!-- Spinner cantidad de jugadores-->
             <TextView
                 android:id="@+id/label_cant_jugadores"
@@ -111,16 +122,16 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/input_fecha"
                 android:layout_alignStart="@+id/input_fecha"
-                android:layout_below="@+id/input_fecha"
+                android:layout_below="@+id/input_cupo"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="Cantidad de jugadores"
                 android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/selector_cant_jugadores"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="2"
@@ -136,7 +147,7 @@
                 android:layout_alignLeft="@+id/label_cant_jugadores"
                 android:layout_alignStart="@+id/label_cant_jugadores"
                 android:layout_below="@+id/selector_cant_jugadores"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="30dp"
                 android:text="Genero"
@@ -144,7 +155,7 @@
 
             <Spinner
                 android:id="@+id/selector_genero"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:layout_alignTop="@+id/label_genero"
@@ -159,7 +170,7 @@
                 android:layout_alignLeft="@+id/label_cant_jugadores"
                 android:layout_alignStart="@+id/label_cant_jugadores"
                 android:layout_below="@+id/selector_genero"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="30dp"
                 android:text="Nivel"
@@ -167,7 +178,7 @@
 
             <Spinner
                 android:id="@+id/selector_nivel"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:layout_alignTop="@+id/label_nivel"
@@ -182,7 +193,7 @@
                 android:layout_alignLeft="@+id/label_cant_jugadores"
                 android:layout_alignStart="@+id/label_cant_jugadores"
                 android:layout_below="@+id/selector_nivel"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="30dp"
                 android:text="Categoria"
@@ -190,21 +201,12 @@
 
             <Spinner
                 android:id="@+id/selector_categoria"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:layout_alignTop="@+id/label_categoria"
                 android:layout_toRightOf="@+id/label_categoria"
                 android:layout_toEndOf="@+id/label_categoria" />
-
-            <!-- Campo cupo-->
-            <EditText
-                android:id="@+id/input_cupo"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/label_categoria"
-                android:layout_marginLeft="15dp"
-                android:hint="Cupo" />
 
         </RelativeLayout>
     </ScrollView>

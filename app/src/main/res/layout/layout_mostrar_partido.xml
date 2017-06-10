@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FFF"
+        android:background="#000"
         android:gravity="center" >
 
         <Button
@@ -27,7 +27,9 @@
             android:gravity="center"
             android:onClick="onMostrarPartidoPostularseButtonClick"
             android:text="Postularme"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:background="#000"
+            android:textColor="@color/colorWhite"/>
 
     </RelativeLayout>
 
