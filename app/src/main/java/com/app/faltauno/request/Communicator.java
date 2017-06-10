@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.1.6:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
 
@@ -46,7 +46,8 @@ public class Communicator {
         return retrofit;
     }
 
-    public void matchPost(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city, String level, String category, String quota) {
+    public void matchPost(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address,
+                          String city, String level, String category, String quota) {
 
         ApiService service = getClient().create(ApiService.class);
         MatchData match = new MatchData(ownerName, countOfPlayers, time, date, gender, address, city, level, category, quota);

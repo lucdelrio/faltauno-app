@@ -99,6 +99,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.mostrar_partido_boton);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMostrarPartido = new Intent(MainActivity.this, MostrarPartido.class);
+                startActivity(intentMostrarPartido);
+            }
+        });
+
     }
 
     private void getMatches(){
@@ -134,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
 
         txtPartidos = (TextView) findViewById(R.id.matchesList);
 
-        txtPartidos.setText(listaDePartidos.get(1).getCountOfPlayers());
+        txtPartidos.setText(listaDePartidos.get(1).getOwnerName().toString());
+        txtPartidos.setText(listaDePartidos.get(1).getTime().toString());
+        //txtPartidos.setText(listaDePartidos.toString());
+
     }
 }

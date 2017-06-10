@@ -28,6 +28,4 @@ public interface ApiService {
     @GET("matches")
     Call <List<MatchDataResponse>> getListMatches();
 
-    @GET("matches/id")
-    Call <MatchDataResponse> getMatch();
 }

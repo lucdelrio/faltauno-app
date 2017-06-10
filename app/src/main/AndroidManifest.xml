@@ -32,6 +32,12 @@
             android:parentActivityName=".activities.MainActivity"
             android:label="Crear partido">
         </activity>
+        <activity
+            android:name=".activities.MostrarPartido"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Detalles de Partido">
+        </activity>
+
     </application>
 
 </manifest>

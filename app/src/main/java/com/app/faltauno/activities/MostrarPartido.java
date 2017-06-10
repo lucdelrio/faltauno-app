@@ -30,12 +30,15 @@ public class MostrarPartido extends AppCompatActivity {
     TextView hora;
     TextView genero;
     TextView cupo;
+    TextView nivel;
+    TextView categoria;
+    TextView cant_jugadores;
     private List<MatchDataResponse> listaDePartidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_crear_partido);
+        setContentView(R.layout.layout_mostrar_partido);
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
         direccion = (TextView) findViewById(R.id.out_put_direccion_seleccionado);
@@ -44,6 +47,11 @@ public class MostrarPartido extends AppCompatActivity {
         hora = (TextView) findViewById(R.id.out_put_hora_seleccionado);
         genero = (TextView) findViewById(R.id.out_put_genero_seleccionado);
         cupo = (TextView) findViewById(R.id.out_put_cupo_seleccionado);
+        nivel = (TextView) findViewById(R.id.out_put_nivel_seleccionado);
+        categoria = (TextView) findViewById(R.id.out_put_categoria_selccionado);
+        cant_jugadores = (TextView) findViewById(R.id.out_put_cant_jugadores_seleccionado);
+
+        getMatch();
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
@@ -69,7 +77,7 @@ public class MostrarPartido extends AppCompatActivity {
                 listaDePartidos = response.body();
 
                 if(listaDePartidos.size()>0) {
-                    mostrarDatosPartido(1);
+                    mostrarDatosPartido(4);
                 }else{
                     Log.d("APIPlug", "No item found");
                 }
@@ -79,13 +87,16 @@ public class MostrarPartido extends AppCompatActivity {
 
     private void mostrarDatosPartido(Integer id) {
         Log.d("APIPlug", "Mostrar Datos del Partido");
-        this.organizador.setText(listaDePartidos.get(id).getOwnerName());
+        organizador.setText(listaDePartidos.get(id).getOwnerName());
         this.direccion.setText(listaDePartidos.get(id).getAddress());
         this.ciudad.setText(listaDePartidos.get(id).getCity());
         this.fecha.setText(listaDePartidos.get(id).getDate());
         this.hora.setText(listaDePartidos.get(id).getTime());
         this.genero.setText(listaDePartidos.get(id).getGender());
         this.cupo.setText(listaDePartidos.get(id).getCupo());
+        this.nivel.setText(listaDePartidos.get(id).getNivel());
+        this.categoria.setText(listaDePartidos.get(id).getCategoria());
+        this.cant_jugadores.setText(listaDePartidos.get(id).getCountOfPlayers().toString());
     }
 
 }

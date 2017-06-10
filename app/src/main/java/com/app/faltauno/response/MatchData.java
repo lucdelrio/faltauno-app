@@ -40,7 +40,7 @@ public class MatchData implements Serializable {
     private String categoria;
 
     public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender,
-                     String address, String city, String cupo, String category, String level) {
+                     String address, String city, String category, String level, String cupo) {
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
         this.setTime(time);

@@ -22,7 +22,7 @@
             style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
             tools:targetApi="21"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:onClick="onMostrarPartidoPostularseButtonClick"
@@ -48,7 +48,7 @@
         android:layout_below="@+id/imageView"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:text="ORGANIZADOR:"
         android:textSize="20dp"
         android:textStyle="bold"/>
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_organizador"
@@ -215,6 +215,56 @@
         android:text="xx"
         android:textSize="20dp" />
 
+    <!-- Texto nivel-->
+    <TextView
+        android:id="@+id/out_put_nivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_genero"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="NIVEL:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_nivel_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_genero_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_nivel"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto categoria-->
+    <TextView
+        android:id="@+id/out_put_categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_nivel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="CATEGORIA:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_categoria_selccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_nivel_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_categoria"
+        android:text="xx"
+        android:textSize="20dp" />
+
     <!-- Texto cupo-->
     <TextView
         android:id="@+id/out_put_cupo"
@@ -223,7 +273,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         android:text="CUPO:"
         android:textSize="20dp"
         android:textStyle="bold"/>
@@ -235,8 +285,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:textSize="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginRight="50dp"
+        android:textColor="@color/colorAccent"
         android:text="xx" />
 
 </RelativeLayout>

@@ -44,6 +44,12 @@ public class MatchDataResponse {
     @SerializedName("cupo")
     private String cupo;
 
+    @SerializedName("nivel")
+    private String nivel;
+
+    @SerializedName("categoria")
+    private String categoria;
+
     public long getMatchId(){
         return matchId;
     }
@@ -108,9 +114,15 @@ public class MatchDataResponse {
         return city;
     }
 
-    public void setCupo(String cupo){
-        this.cupo = cupo;
-    }
+    public void setCupo(String cupo){ this.cupo = cupo; }
 
     public String getCupo() {return cupo;}
+
+    public void setNivel(String nivel){ this.nivel = nivel; }
+
+    public String getNivel() {return nivel;}
+
+    public void setCategoria(String categoria){ this.categoria = categoria; }
+
+    public String getCategoria() {return categoria;}
 }
