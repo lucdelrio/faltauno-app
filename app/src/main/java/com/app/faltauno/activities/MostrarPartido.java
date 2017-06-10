@@ -88,5 +88,4 @@ public class MostrarPartido extends AppCompatActivity {
         this.cupo.setText(listaDePartidos.get(id).getCupo());
     }
 
-
 }

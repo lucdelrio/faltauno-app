@@ -22,4 +22,15 @@
         <item>9</item>
         <item>11</item>
     </string-array>
+    <string-array name="opciones_nivel">
+        <item>Amateur</item>
+        <item>SemiProfesional</item>
+        <item>Profesional</item>
+    </string-array>
+    <string-array name="opciones_categoria">
+        <item>Niños</item>
+        <item>Adolescentes</item>
+        <item>Adultos</item>
+        <item>Mixto</item>
+    </string-array>
 </resources>

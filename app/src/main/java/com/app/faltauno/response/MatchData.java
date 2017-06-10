@@ -33,7 +33,14 @@ public class MatchData implements Serializable {
     @SerializedName("cupo")
     private String cupo;
 
-    public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city, String cupo) {
+    @SerializedName("nivel")
+    private String nivel;
+
+    @SerializedName("categoria")
+    private String categoria;
+
+    public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender,
+                     String address, String city, String cupo, String category, String level) {
         this.setOwnerName(ownerName);
         this.setCountOfPlayers(countOfPlayers);
         this.setTime(time);
@@ -42,6 +49,8 @@ public class MatchData implements Serializable {
         this.setAddress(address);
         this.setCity(city);
         this.setCupo(cupo);
+        this.setCategory(category);
+        this.setLevel(level);
     }
 
     public long getMatchId(){
@@ -108,6 +117,22 @@ public class MatchData implements Serializable {
 
     public String getCity() {
         return city;
+    }
+
+    public void setCategory(String category){
+        this.categoria = category;
+    }
+
+    public String getCategory() {
+        return categoria;
+    }
+
+    public void setLevel(String level){
+        this.nivel = level;
+    }
+
+    public String getLevel() {
+        return nivel;
     }
 
 }

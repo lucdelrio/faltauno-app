@@ -38,10 +38,15 @@ public class CrearPartido extends AppCompatActivity{
     EditText ciudad;
     EditText fecha;
     EditText hora;
+    EditText cupo;
     Spinner cant_jugadores;
     ArrayAdapter<CharSequence> cant_jugadores_adapter;
     Spinner genero;
     ArrayAdapter<CharSequence> genero_adapter;
+    Spinner nivel;
+    ArrayAdapter<CharSequence> nivel_adapter;
+    Spinner categoria;
+    ArrayAdapter<CharSequence> categoria_adapter;
     DatePickerDialog datePickerDialog;
     TimePickerDialog timePickerDialog;
 
@@ -57,6 +62,8 @@ public class CrearPartido extends AppCompatActivity{
         direccion = (EditText) findViewById(R.id.input_direccion);
         ciudad = (EditText) findViewById(R.id.input_ciudad);
         fecha = (EditText) findViewById(R.id.input_fecha);
+        cupo = (EditText) findViewById(R.id.input_cupo);
+
 
         //Crear selector de cantidad de jugadores
         cant_jugadores = (Spinner)findViewById(R.id.selector_cant_jugadores);
@@ -69,6 +76,18 @@ public class CrearPartido extends AppCompatActivity{
         genero_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_genero, android.R.layout.simple_spinner_item);
         genero_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genero.setAdapter(genero_adapter);
+
+        //Crear selector de nivel
+        nivel = (Spinner)findViewById(R.id.selector_nivel);
+        nivel_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_nivel, android.R.layout.simple_spinner_item);
+        nivel_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        nivel.setAdapter(nivel_adapter);
+
+        //Crear selector de categoria
+        categoria = (Spinner)findViewById(R.id.selector_categoria);
+        categoria_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_categoria, android.R.layout.simple_spinner_item);
+        categoria_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categoria.setAdapter(categoria_adapter);
 
         //Despliegue de Calendario en Fecha
         fecha.setOnClickListener(new View.OnClickListener() {
@@ -128,13 +147,17 @@ public class CrearPartido extends AppCompatActivity{
         String gender = genero.getSelectedItem().toString();
         String address = direccion.getText().toString();
         String city = ciudad.getText().toString();
+        String level = nivel.getSelectedItem().toString();
+        String category = categoria.getSelectedItem().toString();
+        String quota = cupo.getText().toString();
 
         Intent intent = new Intent(CrearPartido.this, MainActivity.class);
 
         if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(countOfPlayers) &&
                 !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
                 !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
-                !TextUtils.isEmpty(city)) {
+                !TextUtils.isEmpty(city) && !TextUtils.isEmpty(level) &&
+                !TextUtils.isEmpty(category) && !TextUtils.isEmpty(quota)) {
 
             String timeString = time;
             //SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
@@ -153,7 +176,8 @@ public class CrearPartido extends AppCompatActivity{
             } catch (ParseException e) {
                 e.printStackTrace();
             }*/
-            crearPartido(ownerName, Integer.parseInt(countOfPlayers), time, date, gender, address, city);
+            crearPartido(ownerName, Integer.parseInt(countOfPlayers), time, date, gender, address, city,
+                    level, category, quota);
             showMatchCreatedToast(view);
             startActivity(intent);
         }
@@ -162,8 +186,9 @@ public class CrearPartido extends AppCompatActivity{
         }
     }
 
-    private void crearPartido(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city){
-        communicator.matchPost(ownerName, countOfPlayers, time, date, gender, address, city);
+    private void crearPartido(String ownerName, Integer countOfPlayers, String time, String date, String gender,
+                              String address, String city, String level, String category, String quota){
+        communicator.matchPost(ownerName, countOfPlayers, time, date, gender, address, city, level, category, quota);
     }
 
     public void onBackButtonClick(View view) {
