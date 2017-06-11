@@ -3,7 +3,13 @@ package com.app.faltauno.request;
 import android.util.Log;
 
 import com.app.faltauno.response.MatchData;
+
 import com.app.faltauno.services.ApiService;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -16,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.1.6:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
 

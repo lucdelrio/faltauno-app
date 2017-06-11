@@ -19,6 +19,6 @@ public interface ApiService {
     Call <Void> postMatch (@Body MatchData match);
 
     @GET("matches")
-    Call <List<MatchDataAdapter>> getMatches();
+    Call <List<MatchDataResponse>> getListMatches();
 
 }

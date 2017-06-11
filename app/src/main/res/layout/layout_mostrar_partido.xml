@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:label="Creación de Partido">
+
+    <!-- Boton para postularse -->
+    <RelativeLayout
+        android:id="@+id/contenedor_boton_guardar_nuevo_partido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#000"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/boton_postularse_a_partido"
+            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+            tools:targetApi="21"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:onClick="onMostrarPartidoPostularseButtonClick"
+            android:text="Postularme"
+            android:textSize="20dp"
+            android:background="#000"
+            android:textColor="@color/colorWhite"/>
+
+    </RelativeLayout>
+
+    <!--Imagen de portada -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/imagen_cancha_mostrar_partido" />
+
+    <!-- Texto organizador -->
+    <TextView
+        android:id="@+id/out_put_organizador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="ORGANIZADOR:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_organizador_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_organizador"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto direccion -->
+    <TextView
+        android:id="@+id/out_put_direccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_organizador"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="DIRECCION:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_direccion_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_organizador_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_direccion"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto ciudad -->
+    <TextView
+        android:id="@+id/out_put_ciudad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_direccion"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="CIUDAD:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_ciudad_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_direccion_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_ciudad"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto fecha -->
+    <TextView
+        android:id="@+id/out_put_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_ciudad"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="FECHA:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_fecha_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_ciudad_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_fecha"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto hora -->
+    <TextView
+        android:id="@+id/out_put_hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_fecha"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="HORA:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_hora_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_fecha_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_hora"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto cantidad de jugadores -->
+    <TextView
+        android:id="@+id/out_put_cant_jugadores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_hora"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="CANTIDAD DE JUGADORES:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_cant_jugadores_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_hora_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_cant_jugadores"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto genero-->
+    <TextView
+        android:id="@+id/out_put_genero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_cant_jugadores"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="GENERO:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_genero_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_cant_jugadores_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_genero"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto nivel-->
+    <TextView
+        android:id="@+id/out_put_nivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_genero"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="NIVEL:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_nivel_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_genero_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_nivel"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto categoria-->
+    <TextView
+        android:id="@+id/out_put_categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/out_put_nivel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="CATEGORIA:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_categoria_selccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/out_put_nivel_seleccionado"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/out_put_categoria"
+        android:text="xx"
+        android:textSize="20dp" />
+
+    <!-- Texto cupo-->
+    <TextView
+        android:id="@+id/out_put_cupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="60dp"
+        android:text="CUPO:"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/out_put_cupo_seleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textSize="20dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="50dp"
+        android:textColor="@color/colorAccent"
+        android:text="xx" />
+
+</RelativeLayout>
