@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerViewadapter);
     }
 
-    private static class MyOnClickListener implements View.OnClickListener {
+    private class MyOnClickListener implements View.OnClickListener {
 
         private final Context context;
 
@@ -172,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
+            Intent intentAddNewMatch = new Intent(MainActivity.this, CrearPartido.class);
+            startActivity(intentAddNewMatch);
             //removeItem(v);
         }
     }

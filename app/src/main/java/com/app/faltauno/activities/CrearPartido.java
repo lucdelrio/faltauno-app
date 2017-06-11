@@ -151,7 +151,7 @@ public class CrearPartido extends AppCompatActivity{
             } catch (ParseException e) {
                 e.printStackTrace();
             }*/
-            crearPartido(ownerName, Integer.parseInt(countOfPlayers), time, date, gender, address, city);
+            crearPartido(ownerName, "a", Integer.parseInt(countOfPlayers), time, date, gender, address, city, "l", "c", "q");
             showMatchCreatedToast(view);
             startActivity(intent);
         }
@@ -160,8 +160,10 @@ public class CrearPartido extends AppCompatActivity{
         }
     }
 
-    private void crearPartido(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city){
-        communicator.matchPost(ownerName, countOfPlayers, time, date, gender, address, city);
+    private void crearPartido(String ownerName, String email, Integer countOfPlayers, String time,
+                                String date, String gender, String address,
+                                String city, String level, String category, String quota){
+        communicator.matchPost(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota);
     }
 
     public void onBackButtonClick(View view) {

@@ -12,6 +12,9 @@ public class MatchData implements Serializable {
     @SerializedName("ownerName")
     private String ownerName;
 
+    @SerializedName("email")
+    private String email;
+
     @SerializedName("countOfPlayers")
     private Integer countOfPlayers;
 
@@ -30,14 +33,28 @@ public class MatchData implements Serializable {
     @SerializedName("city")
     private String city;
 
-    public MatchData(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
+    @SerializedName("quota")
+    private String quota;
+
+    @SerializedName("level")
+    private String level;
+
+    @SerializedName("category")
+    private String category;
+
+    public MatchData(String ownerName, String email, Integer countOfPlayers, String time, String date, String gender,
+                     String address, String city, String level, String category, String quota) {
         this.setOwnerName(ownerName);
+        this.setEmail(email);
         this.setCountOfPlayers(countOfPlayers);
         this.setTime(time);
         this.setDate(date);
         this.setGender(gender);
         this.setAddress(address);
         this.setCity(city);
+        this.setCategory(category);
+        this.setLevel(level);
+        this.setQuota(quota);
     }
 
     public long getMatchId(){
@@ -92,12 +109,43 @@ public class MatchData implements Serializable {
         return address;
     }
 
-    public void setCity(String city){
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory(){
+        return category;
+    }
+
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public String getCity() {
+    public String getCity(){
         return city;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getLevel(){
+        return level;
+    }
+
+    public void setQuota(String quota) {
+        this.quota = quota;
+    }
+
+    public String getQuota(){
+        return quota;
+    }
 }

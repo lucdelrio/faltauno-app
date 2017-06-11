@@ -13,6 +13,8 @@ public class MatchDataAdapter {
 
     private String ownerName;
 
+    private String email;
+
     private Integer countOfPlayers;
 
     private String time;
@@ -25,6 +27,11 @@ public class MatchDataAdapter {
 
     private String city;
 
+    private String level;
+
+    private String category;
+
+    private String quota;
 
     public long getMatchId(){
         return matchId;
@@ -88,5 +95,37 @@ public class MatchDataAdapter {
 
     public String getCity() {
         return city;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getLevel(){
+        return level;
+    }
+
+    public void setQuota(String quota) {
+        this.quota = quota;
+    }
+
+    public String getQuota(){
+        return quota;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory(){
+        return category;
     }
 }

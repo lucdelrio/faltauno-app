@@ -40,10 +40,11 @@ public class Communicator {
         return retrofit;
     }
 
-    public void matchPost(String ownerName, Integer countOfPlayers, String time, String date, String gender, String address, String city) {
+    public void matchPost(String ownerName, String email, Integer countOfPlayers, String time, String date, String gender, String address,
+                          String city, String level, String category, String quota)  {
 
         ApiService service = getClient().create(ApiService.class);
-        MatchData match = new MatchData(ownerName, countOfPlayers, time, date, gender, address, city);
+        MatchData match = new MatchData(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota);
         Call<Void> call = service.postMatch(match);
 
         call.enqueue(new Callback<Void>() {
