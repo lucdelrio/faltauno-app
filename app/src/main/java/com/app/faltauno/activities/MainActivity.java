@@ -1,9 +1,7 @@
 package com.app.faltauno.activities;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -17,9 +15,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
@@ -120,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataAdapter>> call = service.getMatch();
+        Call<List<MatchDataAdapter>> call = service.getMatches();
 
         call.enqueue(new Callback<List<MatchDataAdapter>>() {
             @Override
