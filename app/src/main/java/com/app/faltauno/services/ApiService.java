@@ -4,7 +4,7 @@ package com.app.faltauno.services;
  * Created by lucas on 14/05/17.
  */
 import com.app.faltauno.response.MatchData;
-import com.app.faltauno.response.MatchDataResponse;
+import com.app.faltauno.response.MatchDataAdapter;
 
 import java.util.List;
 

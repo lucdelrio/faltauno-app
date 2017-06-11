@@ -7,48 +7,31 @@ import com.google.gson.annotations.SerializedName;
  * Created by lucas on 05/06/17.
  */
 
-public class MatchDataResponse {
+public class MatchDataAdapter {
 
-    @SerializedName("matchId")
-    @Expose
     private Long matchId;
 
-    @SerializedName("ownerName")
-    @Expose
     private String ownerName;
 
-    @SerializedName("countOfPlayers")
-    @Expose
+    private String email;
+
     private Integer countOfPlayers;
 
-    @SerializedName("time")
-    @Expose
     private String time;
 
-    @SerializedName("date")
-    @Expose
     private String date;
 
-    @SerializedName("gender")
-    @Expose
     private String gender;
 
-    @SerializedName("address")
-    @Expose
     private String address;
 
-    @SerializedName("city")
-    @Expose
     private String city;
 
-    @SerializedName("cupo")
-    private String cupo;
+    private String level;
 
-    @SerializedName("nivel")
-    private String nivel;
+    private String category;
 
-    @SerializedName("categoria")
-    private String categoria;
+    private String quota;
 
     public long getMatchId(){
         return matchId;
@@ -114,15 +97,35 @@ public class MatchDataResponse {
         return city;
     }
 
-    public void setCupo(String cupo){ this.cupo = cupo; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getCupo() {return cupo;}
+    public String getEmail(){
+        return email;
+    }
 
-    public void setNivel(String nivel){ this.nivel = nivel; }
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
-    public String getNivel() {return nivel;}
+    public String getLevel(){
+        return level;
+    }
 
-    public void setCategoria(String categoria){ this.categoria = categoria; }
+    public void setQuota(String quota) {
+        this.quota = quota;
+    }
 
-    public String getCategoria() {return categoria;}
+    public String getQuota(){
+        return quota;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory(){
+        return category;
+    }
 }
