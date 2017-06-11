@@ -1,30 +1,29 @@
 package com.app.faltauno.activities;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.LabeledIntent;
-import android.os.Bundle;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.app.faltauno.R;
-import com.app.faltauno.request.BusProvider;
 import com.app.faltauno.request.Communicator;
-import com.app.faltauno.request.ErrorEvent;
-import com.app.faltauno.request.MatchEvent;
-import com.app.faltauno.response.MatchData;
-import com.app.faltauno.response.MatchDataResponse;
-import com.app.faltauno.response.MatchResults;
+import com.app.faltauno.response.MatchDataAdapter;
 import com.app.faltauno.services.ApiService;
 
 import java.util.ArrayList;
@@ -34,28 +33,31 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.support.design.R.styleable.BottomNavigationView;
-
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
-    private Communicator communicator;
+    static View.OnClickListener myOnClickListener;
 
-    private TextView txtPartidos;
+    List<MatchDataAdapter> getMatchDataAdapter;
 
+    private List<MatchDataAdapter> listaDePartidos;
 
-    private List<MatchDataResponse> listaDePartidos;
+    RecyclerView recyclerView;
+
+    RecyclerView.LayoutManager recyclerViewlayoutManager;
+
+    RecyclerView.Adapter recyclerViewadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Display a indeterminate progress bar on title bar
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.layout_main);
+        //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        setContentView(R.layout.activity_main);
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
@@ -88,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        myOnClickListener = new MyOnClickListener(this);
+        setContentView(R.layout.activity_main);
+
+        getMatchDataAdapter = new ArrayList<>();
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerViewlayoutManager = new LinearLayoutManager(this);
+
+        recyclerView.setLayoutManager(recyclerViewlayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         getMatches();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.agregar_partido_boton);
@@ -101,26 +116,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataResponse>> call = service.getMatch();
+        Call<List<MatchDataAdapter>> call = service.getMatch();
 
-        call.enqueue(new Callback<List<MatchDataResponse>>() {
+        call.enqueue(new Callback<List<MatchDataAdapter>>() {
             @Override
-            public void onFailure(Call<List<MatchDataResponse>> call, Throwable t) {
+            public void onFailure(Call<List<MatchDataAdapter>> call, Throwable t) {
                 Log.d("APIPlug", "Error Occured: " + t.getMessage());
 
             }
 
             @Override
-            public void onResponse(Call<List<MatchDataResponse>> call, Response<List<MatchDataResponse>> response) {
+            public void onResponse(Call<List<MatchDataAdapter>> call, Response<List<MatchDataAdapter>> response) {
                 Log.d("APIPlug", "Successfully response fetched" );
 
                 listaDePartidos = response.body();
 
                 if(listaDePartidos.size()>0) {
-                    showList();
+                    showList(listaDePartidos);
                 }else{
                     Log.d("APIPlug", "No item found");
                 }
@@ -128,12 +144,36 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Our method to show list
-    private void showList() {
-        Log.d("APIPlug", "Show List");
+    private void showList(List<MatchDataAdapter> array){
 
-        txtPartidos = (TextView) findViewById(R.id.matchesList);
+        for(int i = 0; i<array.size(); i++) {
 
-        txtPartidos.setText(listaDePartidos.toString());
+            MatchDataAdapter matchDataAdapter = new MatchDataAdapter();
+
+            matchDataAdapter.setOwnerName(array.get(i).getOwnerName());
+            matchDataAdapter.setGender(array.get(i).getGender());
+            matchDataAdapter.setCity(array.get(i).getCity());
+
+            getMatchDataAdapter.add(matchDataAdapter);
+        }
+
+        recyclerViewadapter = new RecyclerViewAdapter(getMatchDataAdapter, this);
+
+        recyclerView.setAdapter(recyclerViewadapter);
     }
+
+    private static class MyOnClickListener implements View.OnClickListener {
+
+        private final Context context;
+
+        private MyOnClickListener(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onClick(View v) {
+            //removeItem(v);
+        }
+    }
+
 }

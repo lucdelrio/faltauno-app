@@ -7,38 +7,22 @@ import com.google.gson.annotations.SerializedName;
  * Created by lucas on 05/06/17.
  */
 
-public class MatchDataResponse {
+public class MatchDataAdapter {
 
-    @SerializedName("matchId")
-    @Expose
     private Long matchId;
 
-    @SerializedName("ownerName")
-    @Expose
     private String ownerName;
 
-    @SerializedName("countOfPlayers")
-    @Expose
     private Integer countOfPlayers;
 
-    @SerializedName("time")
-    @Expose
     private String time;
 
-    @SerializedName("date")
-    @Expose
     private String date;
 
-    @SerializedName("gender")
-    @Expose
     private String gender;
 
-    @SerializedName("address")
-    @Expose
     private String address;
 
-    @SerializedName("city")
-    @Expose
     private String city;
 
 
