@@ -70,9 +70,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             super(itemView);
 
-            NameTextView = (TextView) itemView.findViewById(R.id.textView4) ;
-            CityTextView = (TextView) itemView.findViewById(R.id.textView6) ;
-            GenderTextView = (TextView) itemView.findViewById(R.id.textView8) ;
+            NameTextView = (TextView) itemView.findViewById(R.id.text_organizador) ;
+            CityTextView = (TextView) itemView.findViewById(R.id.text_ciudad) ;
+            GenderTextView = (TextView) itemView.findViewById(R.id.text_genero) ;
         }
     }
 }

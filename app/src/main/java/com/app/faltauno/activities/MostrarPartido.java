@@ -55,7 +55,7 @@ public class MostrarPartido extends AppCompatActivity {
         genero = (TextView) findViewById(R.id.out_put_genero_seleccionado);
         cupo = (TextView) findViewById(R.id.out_put_cupo_seleccionado);
         nivel = (TextView) findViewById(R.id.out_put_nivel_seleccionado);
-        categoria = (TextView) findViewById(R.id.out_put_categoria_selccionado);
+        categoria = (TextView) findViewById(R.id.out_put_categoria_seleccionado);
         cant_jugadores = (TextView) findViewById(R.id.out_put_cant_jugadores_seleccionado);
 
         getMatch();

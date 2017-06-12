@@ -3,17 +3,12 @@ package com.app.faltauno.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -140,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
             RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForPosition(selectedItemPosition);
             System.out.println(viewHolder.getAdapterPosition());
-            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.textView4);
+            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.text_organizador);
             String selectedName = (String) textViewName.getText();
 
             int selectedItemId = 0;
