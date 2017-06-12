@@ -9,29 +9,41 @@ import com.google.gson.annotations.SerializedName;
 
 public class MatchDataAdapter {
 
+    @SerializedName("match_id")
     private Long matchId;
 
+    @SerializedName("ownerName")
     private String ownerName;
 
+    @SerializedName("email")
     private String email;
 
+    @SerializedName("countOfPlayers")
     private Integer countOfPlayers;
 
+    @SerializedName("time")
     private String time;
 
+    @SerializedName("date")
     private String date;
 
+    @SerializedName("gender")
     private String gender;
 
+    @SerializedName("address")
     private String address;
 
+    @SerializedName("city")
     private String city;
 
+    @SerializedName("quota")
+    private String quota;
+
+    @SerializedName("level")
     private String level;
 
+    @SerializedName("category")
     private String category;
-
-    private String quota;
 
     public long getMatchId(){
         return matchId;

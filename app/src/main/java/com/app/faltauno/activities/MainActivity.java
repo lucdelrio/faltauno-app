@@ -8,6 +8,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,6 +92,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        myOnClickListener = new MyOnClickListener(this);
+        setContentView(R.layout.activity_main);
+
+        getMatchDataAdapter = new ArrayList<>();
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerViewlayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(recyclerViewlayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         getMatches();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.agregar_partido_boton);
@@ -105,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataAdapter>> call = service.getMatches();
+        Call<List<MatchDataAdapter>> call = service.getListMatches();
 
         call.enqueue(new Callback<List<MatchDataAdapter>>() {
             @Override

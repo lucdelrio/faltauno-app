@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
-import com.app.faltauno.response.MatchDataResponse;
+import com.app.faltauno.response.MatchDataAdapter;
 import com.app.faltauno.services.ApiService;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class MostrarPartido extends AppCompatActivity {
     TextView nivel;
     TextView categoria;
     TextView cant_jugadores;
-    private List<MatchDataResponse> listaDePartidos;
+    private List<MatchDataAdapter> listaDePartidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +61,17 @@ public class MostrarPartido extends AppCompatActivity {
     private void getMatch(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataResponse>> call = service.getListMatches();
+        Call<List<MatchDataAdapter>> call = service.getListMatches();
 
-        call.enqueue(new Callback<List<MatchDataResponse>>() {
+        call.enqueue(new Callback<List<MatchDataAdapter>>() {
             @Override
-            public void onFailure(Call<List<MatchDataResponse>> call, Throwable t) {
+            public void onFailure(Call<List<MatchDataAdapter>> call, Throwable t) {
                 Log.d("APIPlug", "Error Occured: " + t.getMessage());
 
             }
 
             @Override
-            public void onResponse(Call<List<MatchDataResponse>> call, Response<List<MatchDataResponse>> response) {
+            public void onResponse(Call<List<MatchDataAdapter>> call, Response<List<MatchDataAdapter>> response) {
                 Log.d("APIPlug", "Successfully response fetched" );
 
                 listaDePartidos = response.body();
@@ -93,9 +93,9 @@ public class MostrarPartido extends AppCompatActivity {
         this.fecha.setText(listaDePartidos.get(id).getDate());
         this.hora.setText(listaDePartidos.get(id).getTime());
         this.genero.setText(listaDePartidos.get(id).getGender());
-        this.cupo.setText(listaDePartidos.get(id).getCupo());
-        this.nivel.setText(listaDePartidos.get(id).getNivel());
-        this.categoria.setText(listaDePartidos.get(id).getCategoria());
+        this.cupo.setText(listaDePartidos.get(id).getQuota());
+        this.nivel.setText(listaDePartidos.get(id).getLevel());
+        this.categoria.setText(listaDePartidos.get(id).getCategory());
         this.cant_jugadores.setText(listaDePartidos.get(id).getCountOfPlayers().toString());
     }
 
