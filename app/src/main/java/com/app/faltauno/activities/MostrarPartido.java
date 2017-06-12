@@ -1,5 +1,6 @@
 package com.app.faltauno.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,6 +24,7 @@ import retrofit2.Response;
 
 public class MostrarPartido extends AppCompatActivity {
 
+    private Integer idPartido;
     TextView organizador;
     TextView direccion;
     TextView ciudad;
@@ -33,12 +35,17 @@ public class MostrarPartido extends AppCompatActivity {
     TextView nivel;
     TextView categoria;
     TextView cant_jugadores;
+
     private List<MatchDataAdapter> listaDePartidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_mostrar_partido);
+
+        Intent intent = getIntent();
+        Bundle index = intent.getExtras();
+        this.idPartido =  Integer.parseInt(index.get("index").toString());
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
         direccion = (TextView) findViewById(R.id.out_put_direccion_seleccionado);
@@ -77,7 +84,7 @@ public class MostrarPartido extends AppCompatActivity {
                 listaDePartidos = response.body();
 
                 if(listaDePartidos.size()>0) {
-                    mostrarDatosPartido(4);
+                    mostrarDatosPartido(idPartido);
                 }else{
                     Log.d("APIPlug", "No item found");
                 }
@@ -85,8 +92,9 @@ public class MostrarPartido extends AppCompatActivity {
         });
     }
 
-    private void mostrarDatosPartido(Integer id) {
+    private void mostrarDatosPartido(int id) {
         Log.d("APIPlug", "Mostrar Datos del Partido");
+
         organizador.setText(listaDePartidos.get(id).getOwnerName());
         this.direccion.setText(listaDePartidos.get(id).getAddress());
         this.ciudad.setText(listaDePartidos.get(id).getCity());

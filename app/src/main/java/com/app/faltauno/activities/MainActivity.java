@@ -15,13 +15,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.app.faltauno.R;
-import com.app.faltauno.request.BusProvider;
 import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.MatchDataAdapter;
 import com.app.faltauno.services.ApiService;
@@ -33,14 +29,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.support.design.R.styleable.BottomNavigationView;
-
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private SectionsPageAdapter mSectionsPageAdapter;
-    private ViewPager mViewPager;
     static View.OnClickListener myOnClickListener;
 
     List<MatchDataAdapter> getMatchDataAdapter;
@@ -60,37 +52,6 @@ public class MainActivity extends AppCompatActivity {
         // Display a indeterminate progress bar on title bar
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_main);
-
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(true);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.partidos:
-
-                        break;
-
-                    case R.id.search:
-                        Intent intent1 = new Intent(MainActivity.this, BuscarPartido.class);
-                        startActivity(intent1);
-                        break;
-
-                    case R.id.profile:
-                        Intent intent2 = new Intent(MainActivity.this, VerPerfilDeUsuario.class);
-                        startActivity(intent2);
-                        break;
-                }
-
-                return false;
-            }
-        });
 
         myOnClickListener = new MyOnClickListener(this);
         setContentView(R.layout.activity_main);
@@ -171,9 +132,28 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intentAddNewMatch = new Intent(MainActivity.this, CrearPartido.class);
-            startActivity(intentAddNewMatch);
-            //removeItem(v);
+            showMatchDetail(v);
+        }
+
+        private void showMatchDetail(View v) {
+            int selectedItemPosition = recyclerView.getChildPosition(v);
+
+            RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForPosition(selectedItemPosition);
+            System.out.println(viewHolder.getAdapterPosition());
+            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.textView4);
+            String selectedName = (String) textViewName.getText();
+
+            int selectedItemId = 0;
+            for (int i = 0; i < getMatchDataAdapter.size(); i++) {
+                if (selectedName.equals(getMatchDataAdapter.get(i).getOwnerName())) {
+                    selectedItemId = i;
+                }
+            }
+
+            Intent intentSeeMatchDetail = new Intent(MainActivity.this, MostrarPartido.class);
+            intentSeeMatchDetail.putExtra("index", selectedItemId);
+            startActivity(intentSeeMatchDetail);
+
         }
     }
 

@@ -39,6 +39,8 @@ public class CrearPartido extends AppCompatActivity{
     EditText fecha;
     EditText hora;
     EditText cupo;
+    EditText email;
+
     Spinner cant_jugadores;
     ArrayAdapter<CharSequence> cant_jugadores_adapter;
     Spinner genero;
@@ -58,12 +60,12 @@ public class CrearPartido extends AppCompatActivity{
         communicator = new Communicator();
 
         organizador = (EditText) findViewById(R.id.input_organizador);
+        email = (EditText) findViewById(R.id.input_email);
         hora = (EditText) findViewById(R.id.input_hora);
         direccion = (EditText) findViewById(R.id.input_direccion);
         ciudad = (EditText) findViewById(R.id.input_ciudad);
         fecha = (EditText) findViewById(R.id.input_fecha);
         cupo = (EditText) findViewById(R.id.input_cupo);
-
 
         //Crear selector de cantidad de jugadores
         cant_jugadores = (Spinner)findViewById(R.id.selector_cant_jugadores);
@@ -141,6 +143,7 @@ public class CrearPartido extends AppCompatActivity{
     public void onMatchCreationButtonClick(View view) {
 
         String ownerName = organizador.getText().toString();
+        String ownerEmail = email.getText().toString();
         String countOfPlayers = cant_jugadores.getSelectedItem().toString();
         String time = hora.getText().toString();
         String date = fecha.getText().toString();
@@ -151,35 +154,21 @@ public class CrearPartido extends AppCompatActivity{
         String category = categoria.getSelectedItem().toString();
         String quota = cupo.getText().toString();
 
-        Intent intent = new Intent(CrearPartido.this, MainActivity.class);
-
-        if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(countOfPlayers) &&
+        if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(ownerEmail) &&
+                !TextUtils.isEmpty(countOfPlayers) &&
                 !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
                 !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
                 !TextUtils.isEmpty(city) && !TextUtils.isEmpty(level) &&
                 !TextUtils.isEmpty(category) && !TextUtils.isEmpty(quota)) {
 
-            String timeString = time;
-            //SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
-            //Date convertedTime = new Date();
-
-            String dateString = date;
-            //SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
-            //Date convertedDate = new Date();
-            /*try {
-                try {
-                    convertedTime = timeFormat.parse(timeString);
-                    convertedDate = dateFormat.parse(dateString);
-                } catch (java.text.ParseException e) {
-                    e.printStackTrace();
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }*/
-            crearPartido(ownerName, "a", Integer.parseInt(countOfPlayers), time, date, gender, address, city,
+            crearPartido(ownerName, ownerEmail, Integer.parseInt(countOfPlayers), time, date, gender, address, city,
                     level, category, quota);
+
+            Intent intentMainActivity = new Intent(CrearPartido.this, MainActivity.class);
+            startActivity(intentMainActivity);
+
             showMatchCreatedToast(view);
-            startActivity(intent);
+
         }
         else {
             showFormErrorToast(view);
@@ -189,13 +178,7 @@ public class CrearPartido extends AppCompatActivity{
     private void crearPartido(String ownerName, String email, Integer countOfPlayers, String time, String date, String gender,
                               String address, String city, String level, String category, String quota){
         
-	communicator.matchPost(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota);
-    }
-
-    public void onBackButtonClick(View view) {
-        Intent intent = new Intent(CrearPartido.this, MainActivity.class);
-        startActivity(intent);
-
+	    communicator.matchPost(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota);
     }
 
     public void showFormErrorToast(View view){
@@ -209,27 +192,3 @@ public class CrearPartido extends AppCompatActivity{
     }
 
 }
-
-
-//mirar esto
-        /*
-        public static void showTime(final Context context, final TextView textView) {
-
-            final Calendar myCalendar = Calendar.getInstance();
-            TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    String am_pm = "";
-                    myCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                    myCalendar.set(Calendar.MINUTE, minute);
-                    if (myCalendar.get(Calendar.AM_PM) == Calendar.AM)
-                        am_pm = "AM";
-                    else if (myCalendar.get(Calendar.AM_PM) == Calendar.PM)
-                        am_pm = "PM";
-                    String strHrsToShow = (myCalendar.get(Calendar.HOUR) == 0) ? "12" : myCalendar.get(Calendar.HOUR) + "";
-                    //UIHelper.showLongToastInCenter(context, strHrsToShow + ":" + myCalendar.get(Calendar.MINUTE) + " " + am_pm);
-                    textView.setText(strHrsToShow + ":" + myCalendar.get(Calendar.MINUTE) + " " + am_pm);
-                }
-            };
-            new TimePickerDialog(context, mTimeSetListener, myCalendar.get(Calendar.HOUR), myCalendar.get(Calendar.MINUTE), false).show();
-        }
-        */

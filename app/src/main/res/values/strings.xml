@@ -7,9 +7,6 @@
     <string name="title_activity_two">ActivityTwo</string>
     <string name="title_activity_three">ActivityThree</string>
     <string name="title_activity_four">ActivityFour</string>
-    <string name="title_activity_tab1_fragment">Tab1Fragment</string>
-    <string name="title_activity_tab2_fragment">Tab2Fragment</string>
-    <string name="title_activity_tab3_fragment">Tab3Fragment</string>
     <string name="title_activity_match_creation">ActivityMatchCreation</string>
     <string-array name="opciones_genero">
         <item>Masculino</item>
