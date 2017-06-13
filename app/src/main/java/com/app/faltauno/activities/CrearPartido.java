@@ -164,8 +164,6 @@ public class CrearPartido extends AppCompatActivity{
             crearPartido(ownerName, ownerEmail, Integer.parseInt(countOfPlayers), time, date, gender, address, city,
                     level, category, quota);
 
-            Intent intentMainActivity = new Intent(CrearPartido.this, MainActivity.class);
-            startActivity(intentMainActivity);
 
             showMatchCreatedToast(view);
 
@@ -175,10 +173,16 @@ public class CrearPartido extends AppCompatActivity{
         }
     }
 
+    public void notificarListaDePartidos(){
+
+        Intent intentMainActivity = new Intent(CrearPartido.this, MainActivity.class);
+        startActivity(intentMainActivity);
+
+    }
     private void crearPartido(String ownerName, String email, Integer countOfPlayers, String time, String date, String gender,
                               String address, String city, String level, String category, String quota){
         
-	    communicator.matchPost(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota);
+	    communicator.matchPost(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota, this);
     }
 
     public void showFormErrorToast(View view){

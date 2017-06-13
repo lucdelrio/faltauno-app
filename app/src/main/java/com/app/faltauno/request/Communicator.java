@@ -2,6 +2,7 @@ package com.app.faltauno.request;
 
 import android.util.Log;
 
+import com.app.faltauno.activities.CrearPartido;
 import com.app.faltauno.response.MatchData;
 
 import com.app.faltauno.services.ApiService;
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
     //private static final String SERVER_URL = "http://192.168.1.6:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
@@ -48,7 +49,7 @@ public class Communicator {
     }
 
     public void matchPost(String ownerName, String email, Integer countOfPlayers, String time, String date, String gender, String address,
-                          String city, String level, String category, String quota)  {
+                          String city, String level, String category, String quota, final CrearPartido activity)  {
 
         ApiService service = getClient().create(ApiService.class);
         MatchData match = new MatchData(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota);
@@ -57,6 +58,8 @@ public class Communicator {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                activity.notificarListaDePartidos();
+
                 Log.e(TAG, "Success");
             }
 

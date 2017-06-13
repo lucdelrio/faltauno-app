@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
@@ -72,6 +73,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+        getMatches();
+
+
+    }
+
+
+
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
@@ -90,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
                 listaDePartidos = response.body();
 
+                Toast onResumeCreatedToast = Toast.makeText(getApplicationContext(), String.valueOf(listaDePartidos.size()), Toast.LENGTH_LONG);
+                onResumeCreatedToast.show();
+
                 if(listaDePartidos.size()>0) {
                     showList(listaDePartidos);
                 }else{
@@ -100,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showList(List<MatchDataAdapter> array){
+        getMatchDataAdapter.clear();
 
         for(int i = 0; i<array.size(); i++) {
 
