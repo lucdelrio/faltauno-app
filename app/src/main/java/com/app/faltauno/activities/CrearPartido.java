@@ -2,7 +2,6 @@ package com.app.faltauno.activities;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.net.ParseException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,11 +23,9 @@ import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
-import com.app.faltauno.response.MatchData;
+import com.app.faltauno.response.Partido;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class CrearPartido extends AppCompatActivity{
 
@@ -143,34 +140,34 @@ public class CrearPartido extends AppCompatActivity{
 
     public void onMatchCreationButtonClick(View view) {
 
-        String ownerName = organizador.getText().toString();
-        String ownerEmail = email.getText().toString();
-        String countOfPlayers = cant_jugadores.getSelectedItem().toString();
-        String time = hora.getText().toString();
-        String date = fecha.getText().toString();
-        String gender = genero.getSelectedItem().toString();
-        String address = direccion.getText().toString();
-        String city = ciudad.getText().toString();
-        String level = nivel.getSelectedItem().toString();
-        String category = categoria.getSelectedItem().toString();
-        String quota = cupo.getText().toString();
+        String nombreOrganizador = organizador.getText().toString();
+        String email = this.email.getText().toString();
+        String tamanioDeCancha = cant_jugadores.getSelectedItem().toString();
+        String hora = this.hora.getText().toString();
+        String fecha = this.fecha.getText().toString();
+        String genero = this.genero.getSelectedItem().toString();
+        String direccion = this.direccion.getText().toString();
+        String ciudad = this.ciudad.getText().toString();
+        String nivel = this.nivel.getSelectedItem().toString();
+        String categoria = this.categoria.getSelectedItem().toString();
+        String cupo = this.cupo.getText().toString();
 
-        if(!TextUtils.isEmpty(ownerName) && !TextUtils.isEmpty(ownerEmail) &&
-                !TextUtils.isEmpty(countOfPlayers) &&
-                !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date) &&
-                !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(address) &&
-                !TextUtils.isEmpty(city) && !TextUtils.isEmpty(level) &&
-                !TextUtils.isEmpty(category) && !TextUtils.isEmpty(quota)) {
+        if(!TextUtils.isEmpty(nombreOrganizador) && !TextUtils.isEmpty(email) &&
+                !TextUtils.isEmpty(tamanioDeCancha) &&
+                !TextUtils.isEmpty(hora) && !TextUtils.isEmpty(fecha) &&
+                !TextUtils.isEmpty(genero) && !TextUtils.isEmpty(direccion) &&
+                !TextUtils.isEmpty(ciudad) && !TextUtils.isEmpty(nivel) &&
+                !TextUtils.isEmpty(categoria) && !TextUtils.isEmpty(cupo)) {
 
-            MatchData datosDePartido = new MatchData(ownerName, ownerEmail, Integer.parseInt(countOfPlayers),
-                                                        time, date, gender, address, city,
-                                                        level, category, quota);
+            Partido datosDePartido = new Partido(nombreOrganizador, email, Integer.parseInt(tamanioDeCancha),
+                                                        hora, fecha, genero, direccion, ciudad,
+                                                        nivel, categoria, cupo);
 
             crearPartido(datosDePartido);
 
         }
         else {
-            showFormErrorToast(view);
+            toastErrorEnFormulario(view);
         }
     }
 
@@ -180,12 +177,12 @@ public class CrearPartido extends AppCompatActivity{
         startActivity(intentMainActivity);
 
     }
-    private void crearPartido(MatchData datosDePartido){
+    private void crearPartido(Partido datosDePartido){
         
-	    communicator.matchPost(datosDePartido, this);
+	    communicator.postPartido(datosDePartido, this);
     }
 
-    public void showFormErrorToast(View view){
+    public void toastErrorEnFormulario(View view){
         Toast formErrorToast = Toast.makeText(getApplicationContext(), "Hay campos vacíos", Toast.LENGTH_SHORT);
         formErrorToast.show();
     }

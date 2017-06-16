@@ -8,24 +8,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.faltauno.R;
-import com.app.faltauno.response.MatchDataAdapter;
+import com.app.faltauno.response.PartidoRespuesta;
 
 import java.util.List;
 
 /**
  * Created by JUNED on 6/16/2016.
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
     Context context;
 
-    List<MatchDataAdapter> getMatchDataAdapter;
+    List<PartidoRespuesta> getPartidoRespuesta;
 
-    public RecyclerViewAdapter(List<MatchDataAdapter> getDataAdapter, Context context){
+    public Tarjeta(List<PartidoRespuesta> getDataAdapter, Context context){
 
         super();
 
-        this.getMatchDataAdapter = getDataAdapter;
+        this.getPartidoRespuesta = getDataAdapter;
         this.context = context;
     }
 
@@ -44,20 +44,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        MatchDataAdapter matchDataAdapter =  getMatchDataAdapter.get(position);
+        PartidoRespuesta partidoRespuesta =  getPartidoRespuesta.get(position);
 
-        holder.NameTextView.setText(matchDataAdapter.getOwnerName());
+        holder.NameTextView.setText(partidoRespuesta.getNombreOrganizador());
 
-        holder.GenderTextView.setText(matchDataAdapter.getGender());
+        holder.GenderTextView.setText(partidoRespuesta.getGenero());
 
-        holder.CityTextView.setText(matchDataAdapter.getCity());
+        holder.CityTextView.setText(partidoRespuesta.getCiudad());
 
     }
 
     @Override
     public int getItemCount() {
 
-        return getMatchDataAdapter.size();
+        return getPartidoRespuesta.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

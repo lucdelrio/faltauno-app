@@ -1,17 +1,11 @@
 package com.app.faltauno.request;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.app.faltauno.activities.CrearPartido;
-import com.app.faltauno.response.MatchData;
+import com.app.faltauno.response.Partido;
 
 import com.app.faltauno.services.ApiService;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -23,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Communicator {
-    private static final String TAG = "Communicator";
+
     private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
     //private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
     //private static final String SERVER_URL = "http://192.168.1.6:8080/faltauno-api/";
@@ -50,31 +44,33 @@ public class Communicator {
         return retrofit;
     }
 
-    public void matchPost(MatchData datosDePartido, final CrearPartido activity)  {
+    public void postPartido(Partido datosDePartido, final CrearPartido activity)  {
 
         ApiService service = getClient().create(ApiService.class);
-        MatchData match = new MatchData(datosDePartido.getOwnerName(), datosDePartido.getEmail(),
-                                        datosDePartido.getCountOfPlayers(), datosDePartido.getTime(),
-                                        datosDePartido.getDate(), datosDePartido.getGender(), datosDePartido.getAddress(),
-                                        datosDePartido.getCity(), datosDePartido.getLevel(),
-                                        datosDePartido.getCategory(), datosDePartido.getQuota());
-        Call<Void> call = service.postMatch(match);
+        Partido partido = new Partido(datosDePartido.getNombreOrganizador(), datosDePartido.getEmail(),
+                                        datosDePartido.getTamanioDeCancha(), datosDePartido.getHora(),
+                                        datosDePartido.getFecha(), datosDePartido.getGenero(), datosDePartido.getDireccion(),
+                                        datosDePartido.getCiudad(), datosDePartido.getNivel(),
+                                        datosDePartido.getCategoria(), datosDePartido.getCupo());
+
+        Call<Void> call = service.postPartido(partido);
 
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+
                 activity.notificarListaDePartidos();
 
-                Toast matchCreatedToast = Toast.makeText(activity.getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
-                matchCreatedToast.show();
+                Toast toastPartidoCreado = Toast.makeText(activity.getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
+                toastPartidoCreado.show();
 
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
 
-                Toast conectionErrorToast = Toast.makeText(activity.getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
-                conectionErrorToast.show();
+                Toast toastErrorDeConexion = Toast.makeText(activity.getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                toastErrorDeConexion.show();
             }
         });
     }

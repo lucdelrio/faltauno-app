@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
-import com.app.faltauno.response.MatchDataAdapter;
+import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
 import java.util.ArrayList;
@@ -27,13 +27,14 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG = "MainActivity";
 
     static View.OnClickListener myOnClickListener;
 
-    List<MatchDataAdapter> getMatchDataAdapter;
+    List<PartidoRespuesta> getPartidoRespuesta;
 
-    private List<MatchDataAdapter> listaDePartidos;
+    private List<PartidoRespuesta> listaDePartidos;
 
     RecyclerView recyclerView;
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         myOnClickListener = new MyOnClickListener(this);
         setContentView(R.layout.activity_main);
 
-        getMatchDataAdapter = new ArrayList<>();
+        getPartidoRespuesta = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -84,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataAdapter>> call = service.getListMatches();
+        Call<List<PartidoRespuesta>> call = service.getListaDePartidos();
 
-        call.enqueue(new Callback<List<MatchDataAdapter>>() {
+        call.enqueue(new Callback<List<PartidoRespuesta>>() {
             @Override
-            public void onFailure(Call<List<MatchDataAdapter>> call, Throwable t) {
+            public void onFailure(Call<List<PartidoRespuesta>> call, Throwable t) {
 
                 Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
                 conectionErrorToast.show();
@@ -96,38 +97,39 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call<List<MatchDataAdapter>> call, Response<List<MatchDataAdapter>> response) {
+            public void onResponse(Call<List<PartidoRespuesta>> call, Response<List<PartidoRespuesta>> response) {
                 Log.d("APIPlug", "Successfully response fetched" );
 
                 listaDePartidos = response.body();
 
                 if(listaDePartidos.size()>0) {
-                    showList(listaDePartidos);
+                    mostrarListaDePartidos(listaDePartidos);
 
                 }else{
 
-                    Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Sin partidos disponibles", Toast.LENGTH_LONG);
-                    conectionErrorToast.show();
+                    Toast toastErrorDeConexion = Toast.makeText(getApplicationContext(), "Sin partidos disponibles", Toast.LENGTH_LONG);
+                    toastErrorDeConexion.show();
                 }
             }
         });
     }
 
-    private void showList(List<MatchDataAdapter> array){
-        getMatchDataAdapter.clear();
+    private void mostrarListaDePartidos(List<PartidoRespuesta> array){
+
+        getPartidoRespuesta.clear();
 
         for(int i = 0; i<array.size(); i++) {
 
-            MatchDataAdapter matchDataAdapter = new MatchDataAdapter();
+            PartidoRespuesta partidoRespuesta = new PartidoRespuesta();
 
-            matchDataAdapter.setOwnerName(array.get(i).getOwnerName());
-            matchDataAdapter.setGender(array.get(i).getGender());
-            matchDataAdapter.setCity(array.get(i).getCity());
+            partidoRespuesta.setNombreOrganizador(array.get(i).getNombreOrganizador());
+            partidoRespuesta.setGenero(array.get(i).getGenero());
+            partidoRespuesta.setCiudad(array.get(i).getCiudad());
 
-            getMatchDataAdapter.add(matchDataAdapter);
+            getPartidoRespuesta.add(partidoRespuesta);
         }
 
-        recyclerViewadapter = new RecyclerViewAdapter(getMatchDataAdapter, this);
+        recyclerViewadapter = new Tarjeta(getPartidoRespuesta, this);
 
         recyclerView.setAdapter(recyclerViewadapter);
     }
@@ -146,23 +148,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void showMatchDetail(View v) {
-            int selectedItemPosition = recyclerView.getChildPosition(v);
 
-            RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForPosition(selectedItemPosition);
+            int posicionDelItemSeleccionado = recyclerView.getChildPosition(v);
+
+            RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForPosition(posicionDelItemSeleccionado);
             System.out.println(viewHolder.getAdapterPosition());
             TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.text_organizador);
-            String selectedName = (String) textViewName.getText();
+            String nombreSeleccionado = (String) textViewName.getText();
 
-            int selectedItemId = 0;
-            for (int i = 0; i < getMatchDataAdapter.size(); i++) {
-                if (selectedName.equals(getMatchDataAdapter.get(i).getOwnerName())) {
-                    selectedItemId = i;
+            int idItemSeleccionado = 0;
+            for (int i = 0; i < getPartidoRespuesta.size(); i++) {
+                if (nombreSeleccionado.equals(getPartidoRespuesta.get(i).getNombreOrganizador())) {
+                    idItemSeleccionado = i;
                 }
             }
 
-            Intent intentSeeMatchDetail = new Intent(MainActivity.this, MostrarPartido.class);
-            intentSeeMatchDetail.putExtra("index", selectedItemId);
-            startActivity(intentSeeMatchDetail);
+            Intent detalleDePartido = new Intent(MainActivity.this, MostrarPartido.class);
+            detalleDePartido.putExtra("index", idItemSeleccionado);
+            startActivity(detalleDePartido);
 
         }
     }

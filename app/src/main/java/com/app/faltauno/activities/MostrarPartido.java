@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
-import com.app.faltauno.response.MatchDataAdapter;
+import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
 import java.util.List;
@@ -34,9 +34,9 @@ public class MostrarPartido extends AppCompatActivity {
     TextView cupo;
     TextView nivel;
     TextView categoria;
-    TextView cant_jugadores;
+    TextView tamanioDeCancha;
 
-    private List<MatchDataAdapter> listaDePartidos;
+    private List<PartidoRespuesta> listaDePartidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class MostrarPartido extends AppCompatActivity {
         cupo = (TextView) findViewById(R.id.out_put_cupo_seleccionado);
         nivel = (TextView) findViewById(R.id.out_put_nivel_seleccionado);
         categoria = (TextView) findViewById(R.id.out_put_categoria_seleccionado);
-        cant_jugadores = (TextView) findViewById(R.id.out_put_cant_jugadores_seleccionado);
+        tamanioDeCancha = (TextView) findViewById(R.id.out_put_tamanio_de_cancha_seleccionado);
 
         getMatch();
     }
@@ -68,17 +68,17 @@ public class MostrarPartido extends AppCompatActivity {
     private void getMatch(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
-        Call<List<MatchDataAdapter>> call = service.getListMatches();
+        Call<List<PartidoRespuesta>> call = service.getListaDePartidos();
 
-        call.enqueue(new Callback<List<MatchDataAdapter>>() {
+        call.enqueue(new Callback<List<PartidoRespuesta>>() {
             @Override
-            public void onFailure(Call<List<MatchDataAdapter>> call, Throwable t) {
+            public void onFailure(Call<List<PartidoRespuesta>> call, Throwable t) {
                 Log.d("APIPlug", "Error Occured: " + t.getMessage());
 
             }
 
             @Override
-            public void onResponse(Call<List<MatchDataAdapter>> call, Response<List<MatchDataAdapter>> response) {
+            public void onResponse(Call<List<PartidoRespuesta>> call, Response<List<PartidoRespuesta>> response) {
 
                 listaDePartidos = response.body();
 
@@ -93,16 +93,16 @@ public class MostrarPartido extends AppCompatActivity {
 
     private void mostrarDatosPartido(int id) {
 
-        organizador.setText(listaDePartidos.get(id).getOwnerName());
-        this.direccion.setText(listaDePartidos.get(id).getAddress());
-        this.ciudad.setText(listaDePartidos.get(id).getCity());
-        this.fecha.setText(listaDePartidos.get(id).getDate());
-        this.hora.setText(listaDePartidos.get(id).getTime());
-        this.genero.setText(listaDePartidos.get(id).getGender());
-        this.cupo.setText(listaDePartidos.get(id).getQuota());
-        this.nivel.setText(listaDePartidos.get(id).getLevel());
-        this.categoria.setText(listaDePartidos.get(id).getCategory());
-        this.cant_jugadores.setText(listaDePartidos.get(id).getCountOfPlayers().toString());
+        organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
+        this.direccion.setText(listaDePartidos.get(id).getDireccion());
+        this.ciudad.setText(listaDePartidos.get(id).getCiudad());
+        this.fecha.setText(listaDePartidos.get(id).getFecha());
+        this.hora.setText(listaDePartidos.get(id).getHora());
+        this.genero.setText(listaDePartidos.get(id).getGenero());
+        this.cupo.setText(listaDePartidos.get(id).getCupo());
+        this.nivel.setText(listaDePartidos.get(id).getNivel());
+        this.categoria.setText(listaDePartidos.get(id).getCategoria());
+        this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
     }
 
 }
