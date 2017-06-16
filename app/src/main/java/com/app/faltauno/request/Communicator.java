@@ -1,6 +1,7 @@
 package com.app.faltauno.request;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.app.faltauno.activities.CrearPartido;
 import com.app.faltauno.response.MatchData;
@@ -23,7 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
     private static final String TAG = "Communicator";
-    private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
+    //private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
     //private static final String SERVER_URL = "http://192.168.1.6:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
@@ -60,13 +62,16 @@ public class Communicator {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 activity.notificarListaDePartidos();
 
-                Log.e(TAG, "Success");
+                Toast matchCreatedToast = Toast.makeText(activity.getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
+                matchCreatedToast.show();
+
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                // handle execution failures like no internet connectivity
-                BusProvider.getInstance().post(new ErrorEvent(-2, t.getMessage()));
+
+                Toast conectionErrorToast = Toast.makeText(activity.getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                conectionErrorToast.show();
             }
         });
     }

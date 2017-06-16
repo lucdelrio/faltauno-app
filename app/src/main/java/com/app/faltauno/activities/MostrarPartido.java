@@ -79,7 +79,6 @@ public class MostrarPartido extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<List<MatchDataAdapter>> call, Response<List<MatchDataAdapter>> response) {
-                Log.d("APIPlug", "Successfully response fetched" );
 
                 listaDePartidos = response.body();
 

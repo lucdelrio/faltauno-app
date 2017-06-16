@@ -164,9 +164,6 @@ public class CrearPartido extends AppCompatActivity{
             crearPartido(ownerName, ownerEmail, Integer.parseInt(countOfPlayers), time, date, gender, address, city,
                     level, category, quota);
 
-
-            showMatchCreatedToast(view);
-
         }
         else {
             showFormErrorToast(view);
@@ -186,13 +183,8 @@ public class CrearPartido extends AppCompatActivity{
     }
 
     public void showFormErrorToast(View view){
-        Toast formErrorToast = Toast.makeText(getApplicationContext(), "Hay campos vacíos", Toast.LENGTH_LONG);
+        Toast formErrorToast = Toast.makeText(getApplicationContext(), "Hay campos vacíos", Toast.LENGTH_SHORT);
         formErrorToast.show();
-    }
-
-    public void showMatchCreatedToast(View view){
-        Toast matchCreatedToast = Toast.makeText(getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
-        matchCreatedToast.show();
     }
 
 }

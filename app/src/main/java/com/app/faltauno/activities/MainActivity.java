@@ -79,10 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         getMatches();
 
-
     }
-
-
 
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
@@ -92,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<MatchDataAdapter>>() {
             @Override
             public void onFailure(Call<List<MatchDataAdapter>> call, Throwable t) {
-                Log.d("APIPlug", "Error Occured: " + t.getMessage());
+
+                Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                conectionErrorToast.show();
 
             }
 
@@ -102,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
 
                 listaDePartidos = response.body();
 
-                Toast onResumeCreatedToast = Toast.makeText(getApplicationContext(), String.valueOf(listaDePartidos.size()), Toast.LENGTH_LONG);
-                onResumeCreatedToast.show();
-
                 if(listaDePartidos.size()>0) {
                     showList(listaDePartidos);
+
                 }else{
-                    Log.d("APIPlug", "No item found");
+
+                    Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Sin partidos disponibles", Toast.LENGTH_LONG);
+                    conectionErrorToast.show();
                 }
             }
         });
