@@ -144,7 +144,7 @@ public class CrearPartido extends AppCompatActivity{
 
         String nombreOrganizador = organizador.getText().toString();
         String email = this.email.getText().toString();
-        String tamanioDeCancha = cant_jugadores.getSelectedItem().toString();
+        String tamanioDeCancha = this.tamanio_de_cancha.getSelectedItem().toString();
         String hora = this.hora.getText().toString();
         String fecha = this.fecha.getText().toString();
         String genero = this.genero.getSelectedItem().toString();
