@@ -159,7 +159,7 @@
 
             <!-- Spinner genero-->
             <TextView
-                android:id="@+id/label_genero"
+                android:id="@+id/label_cancha_de"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/label_cant_jugadores"
@@ -176,9 +176,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:layout_alignTop="@+id/label_genero"
-                android:layout_toRightOf="@+id/label_genero"
-                android:layout_toEndOf="@+id/label_genero" />
+                android:layout_alignTop="@+id/label_cancha_de"
+                android:layout_toRightOf="@+id/label_cancha_de"
+                android:layout_toEndOf="@+id/label_cancha_de" />
 
             <!-- Spinner nivel-->
             <TextView

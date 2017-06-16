@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
             RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForPosition(selectedItemPosition);
             System.out.println(viewHolder.getAdapterPosition());
-            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.text_organizador);
+            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.text_fecha);
             String selectedName = (String) textViewName.getText();
 
             int selectedItemId = 0;

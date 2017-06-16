@@ -15,26 +15,6 @@
         android:layout_height="wrap_content">
 
         <TableRow>
-
-            <TextView
-                android:id="@+id/label_organizador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Organizador: "/>
-
-            <TextView
-                android:id="@+id/text_organizador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/label_organizador"
-                android:textSize="15dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </TableRow>
-
-        <TableRow>
-
             <TextView
                 android:id="@+id/label_ciudad"
                 android:layout_width="wrap_content"
@@ -54,12 +34,65 @@
         </TableRow>
 
         <TableRow>
+            <TextView
+                android:id="@+id/label_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Fecha: "/>
 
+            <TextView
+                android:id="@+id/text_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_fecha"
+                android:textSize="15dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/label_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/text_fecha"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Hora: "/>
+
+            <TextView
+                android:id="@+id/text_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_hora"
+                android:textSize="15dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/label_cancha_de"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancha de: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/text_cancha_de"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_cancha_de"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow>
             <TextView
                 android:id="@+id/label_genero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Género :"
+                android:text="Genero: "
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="15dp" />
 
@@ -70,8 +103,43 @@
                 android:layout_toRightOf="@id/label_genero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="15dp" />
-
         </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/label_nivel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nivel: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/text_nivel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_nivel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/label_cupo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cupo: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/text_cupo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_nivel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+    </TableRow>
 
     </TableLayout>
 
