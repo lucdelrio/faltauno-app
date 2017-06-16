@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
+import com.app.faltauno.response.MatchData;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -161,8 +162,11 @@ public class CrearPartido extends AppCompatActivity{
                 !TextUtils.isEmpty(city) && !TextUtils.isEmpty(level) &&
                 !TextUtils.isEmpty(category) && !TextUtils.isEmpty(quota)) {
 
-            crearPartido(ownerName, ownerEmail, Integer.parseInt(countOfPlayers), time, date, gender, address, city,
-                    level, category, quota);
+            MatchData datosDePartido = new MatchData(ownerName, ownerEmail, Integer.parseInt(countOfPlayers),
+                                                        time, date, gender, address, city,
+                                                        level, category, quota);
+
+            crearPartido(datosDePartido);
 
         }
         else {
@@ -176,10 +180,9 @@ public class CrearPartido extends AppCompatActivity{
         startActivity(intentMainActivity);
 
     }
-    private void crearPartido(String ownerName, String email, Integer countOfPlayers, String time, String date, String gender,
-                              String address, String city, String level, String category, String quota){
+    private void crearPartido(MatchData datosDePartido){
         
-	    communicator.matchPost(ownerName, email, countOfPlayers, time, date, gender, address, city, level, category, quota, this);
+	    communicator.matchPost(datosDePartido, this);
     }
 
     public void showFormErrorToast(View view){

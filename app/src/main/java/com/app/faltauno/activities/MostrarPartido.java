@@ -92,7 +92,6 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     private void mostrarDatosPartido(int id) {
-        Log.d("APIPlug", "Mostrar Datos del Partido");
 
         organizador.setText(listaDePartidos.get(id).getOwnerName());
         this.direccion.setText(listaDePartidos.get(id).getAddress());
