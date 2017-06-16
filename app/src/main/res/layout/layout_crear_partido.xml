@@ -106,8 +106,8 @@
                 android:hint="Fecha"
                 android:layout_alignBaseline="@+id/input_hora"
                 android:layout_alignBottom="@+id/input_hora"
-                android:layout_alignLeft="@+id/label_cant_jugadores"
-                android:layout_alignStart="@+id/label_cant_jugadores" />
+                android:layout_alignLeft="@+id/label_cancha_de"
+                android:layout_alignStart="@+id/label_cancha_de" />
 
             <!-- Campo hora-->
             <EditText
@@ -124,26 +124,26 @@
 
             <!-- Spinner cantidad de jugadores-->
             <TextView
-                android:id="@+id/label_cant_jugadores"
+                android:id="@+id/label_cancha_de"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/input_fecha"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
-                android:text="Cantidad de jugadores"
+                android:text="Cancha de:"
                 android:textSize="18sp" />
 
             <Spinner
-                android:id="@+id/selector_cant_jugadores"
+                android:id="@+id/selector_tamanio_de_cancha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="2"
-                android:layout_alignTop="@+id/label_cant_jugadores"
-                android:layout_toRightOf="@+id/label_cant_jugadores"
-                android:layout_toEndOf="@+id/label_cant_jugadores"
-                android:layout_alignBottom="@+id/label_cant_jugadores" />
+                android:layout_alignTop="@+id/label_cancha_de"
+                android:layout_toRightOf="@+id/label_cancha_de"
+                android:layout_toEndOf="@+id/label_cancha_de"
+                android:layout_alignBottom="@+id/label_cancha_de" />
 
             <!-- Campo cupo-->
             <EditText
@@ -152,8 +152,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:hint="Cupo"
-                android:layout_alignBaseline="@+id/label_cant_jugadores"
-                android:layout_alignBottom="@+id/label_cant_jugadores"
+                android:layout_alignBaseline="@+id/label_cancha_de"
+                android:layout_alignBottom="@+id/label_cancha_de"
                 android:layout_alignRight="@+id/input_hora"
                 android:layout_alignEnd="@+id/input_hora" />
 
@@ -162,9 +162,9 @@
                 android:id="@+id/label_genero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/label_cant_jugadores"
-                android:layout_alignStart="@+id/label_cant_jugadores"
-                android:layout_below="@+id/selector_cant_jugadores"
+                android:layout_alignLeft="@+id/label_cancha_de"
+                android:layout_alignStart="@+id/label_cancha_de"
+                android:layout_below="@+id/selector_tamanio_de_cancha"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="30dp"
@@ -185,8 +185,8 @@
                 android:id="@+id/label_nivel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/label_cant_jugadores"
-                android:layout_alignStart="@+id/label_cant_jugadores"
+                android:layout_alignLeft="@+id/label_cancha_de"
+                android:layout_alignStart="@+id/label_cancha_de"
                 android:layout_below="@+id/selector_genero"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
@@ -208,8 +208,8 @@
                 android:id="@+id/label_categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/label_cant_jugadores"
-                android:layout_alignStart="@+id/label_cant_jugadores"
+                android:layout_alignLeft="@+id/label_cancha_de"
+                android:layout_alignStart="@+id/label_cancha_de"
                 android:layout_below="@+id/selector_nivel"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"

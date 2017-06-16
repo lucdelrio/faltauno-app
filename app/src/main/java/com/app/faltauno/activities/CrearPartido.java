@@ -25,7 +25,9 @@ import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.Partido;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CrearPartido extends AppCompatActivity{
 
@@ -39,8 +41,8 @@ public class CrearPartido extends AppCompatActivity{
     EditText cupo;
     EditText email;
 
-    Spinner cant_jugadores;
-    ArrayAdapter<CharSequence> cant_jugadores_adapter;
+    Spinner tamanio_de_cancha;
+    ArrayAdapter<CharSequence> tamanio_de_cancha_adapter;
     Spinner genero;
     ArrayAdapter<CharSequence> genero_adapter;
     Spinner nivel;
@@ -66,10 +68,10 @@ public class CrearPartido extends AppCompatActivity{
         cupo = (EditText) findViewById(R.id.input_cupo);
 
         //Crear selector de cantidad de jugadores
-        cant_jugadores = (Spinner)findViewById(R.id.selector_cant_jugadores);
-        cant_jugadores_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_cant_jugadores, android.R.layout.simple_spinner_item);
-        cant_jugadores_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cant_jugadores.setAdapter(cant_jugadores_adapter);
+        tamanio_de_cancha = (Spinner)findViewById(R.id.selector_tamanio_de_cancha);
+        tamanio_de_cancha_adapter = ArrayAdapter.createFromResource(this,R.array.opciones_tamanio_de_cancha, android.R.layout.simple_spinner_item);
+        tamanio_de_cancha_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tamanio_de_cancha.setAdapter(tamanio_de_cancha_adapter);
 
         //Crear selector de genero
         genero = (Spinner)findViewById(R.id.selector_genero);
@@ -185,6 +187,11 @@ public class CrearPartido extends AppCompatActivity{
     public void toastErrorEnFormulario(View view){
         Toast formErrorToast = Toast.makeText(getApplicationContext(), "Hay campos vacíos", Toast.LENGTH_SHORT);
         formErrorToast.show();
+    }
+
+    public void showMatchCreatedToast(View view){
+        Toast matchCreatedToast = Toast.makeText(getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
+        matchCreatedToast.show();
     }
 
 }
