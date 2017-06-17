@@ -79,12 +79,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();  // Always call the superclass method first
 
         getMatches();
-
     }
 
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
-
         Call<List<PartidoRespuesta>> call = service.getListaDePartidos();
 
         call.enqueue(new Callback<List<PartidoRespuesta>>() {
@@ -122,12 +120,18 @@ public class MainActivity extends AppCompatActivity {
 
             PartidoRespuesta partidoRespuesta = new PartidoRespuesta();
 
-            partidoRespuesta.setNombreOrganizador(array.get(i).getNombreOrganizador());
-            partidoRespuesta.setGenero(array.get(i).getGenero());
             partidoRespuesta.setCiudad(array.get(i).getCiudad());
+            partidoRespuesta.setFecha(array.get(i).getFecha());
+            partidoRespuesta.setHora(array.get(i).getHora().toString());
+            partidoRespuesta.setTamanioDeCancha(array.get(i).getTamanioDeCancha());
+            partidoRespuesta.setGenero(array.get(i).getGenero());
+            partidoRespuesta.setNivel(array.get(i).getNivel());
+            partidoRespuesta.setCupo(array.get(i).getCupo());
+            partidoRespuesta.setIdPartido(array.get(i).getIdPartido());
 
             getPartidoRespuesta.add(partidoRespuesta);
         }
+
 
         recyclerViewadapter = new Tarjeta(getPartidoRespuesta, this);
 
@@ -152,13 +156,14 @@ public class MainActivity extends AppCompatActivity {
             int posicionDelItemSeleccionado = recyclerView.getChildPosition(v);
 
             RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForPosition(posicionDelItemSeleccionado);
-            System.out.println(viewHolder.getAdapterPosition());
-            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.text_organizador);
-            String nombreSeleccionado = (String) textViewName.getText();
+
+            TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.item_id);
+
+            String idPartido = (String) textViewName.getText();
 
             int idItemSeleccionado = 0;
-            for (int i = 0; i < getPartidoRespuesta.size(); i++) {
-                if (nombreSeleccionado.equals(getPartidoRespuesta.get(i).getNombreOrganizador())) {
+            for (char i = 0; i < getPartidoRespuesta.size(); i++) {
+                if (idPartido.equals(getPartidoRespuesta.get(i).getIdPartido().toString())){
                     idItemSeleccionado = i;
                 }
             }
