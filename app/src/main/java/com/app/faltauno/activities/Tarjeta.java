@@ -12,14 +12,13 @@ import com.app.faltauno.response.PartidoRespuesta;
 
 import java.util.List;
 
-/**
- * Created by JUNED on 6/16/2016.
- */
 public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
     Context context;
 
     List<PartidoRespuesta> getPartidoRespuesta;
+
+    private int indexPartido;
 
     public Tarjeta(List<PartidoRespuesta> getDataAdapter, Context context){
 
@@ -32,7 +31,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_items, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tarjeta, parent, false);
 
         view.setOnClickListener(MainActivity.myOnClickListener);
 
@@ -46,11 +45,16 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
         PartidoRespuesta partidoRespuesta =  getPartidoRespuesta.get(position);
 
-        holder.NameTextView.setText(partidoRespuesta.getNombreOrganizador());
+        setIndexPartido(position);
 
-        holder.GenderTextView.setText(partidoRespuesta.getGenero());
-
-        holder.CityTextView.setText(partidoRespuesta.getCiudad());
+        holder.CiudadTextView.setText(partidoRespuesta.getCiudad());
+        holder.FechaTextView.setText(partidoRespuesta.getFecha());
+        holder.HoraTextView.setText(partidoRespuesta.getHora());
+        holder.TamanioCanchaTextView.setText(partidoRespuesta.getTamanioDeCancha().toString());
+        holder.GeneroTextView.setText(partidoRespuesta.getGenero());
+        holder.NivelTextView.setText(partidoRespuesta.getNivel());
+        holder.CupoTextView.setText(partidoRespuesta.getCupo());
+        holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
 
     }
 
@@ -60,19 +64,36 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         return getPartidoRespuesta.size();
     }
 
+    public void setIndexPartido(int indexPartido) {
+
+        this.indexPartido = indexPartido;
+    }
+
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView NameTextView;
-        public TextView CityTextView;
-        public TextView GenderTextView;
+        public TextView CiudadTextView;
+        public TextView FechaTextView;
+        public TextView HoraTextView;
+        public TextView TamanioCanchaTextView;
+        public TextView GeneroTextView;
+        public TextView NivelTextView;
+        public TextView CupoTextView;
+        public TextView IDTextView;
 
         public ViewHolder(View itemView) {
 
             super(itemView);
 
-            NameTextView = (TextView) itemView.findViewById(R.id.text_organizador) ;
-            CityTextView = (TextView) itemView.findViewById(R.id.text_ciudad) ;
-            GenderTextView = (TextView) itemView.findViewById(R.id.text_genero) ;
+            CiudadTextView = (TextView) itemView.findViewById(R.id.texto_ciudad);
+            FechaTextView = (TextView) itemView.findViewById(R.id.texto_fecha);
+            HoraTextView = (TextView) itemView.findViewById(R.id.texto_hora);
+            TamanioCanchaTextView = (TextView) itemView.findViewById(R.id.texto_tamanio_cancha);
+            GeneroTextView = (TextView) itemView.findViewById(R.id.texto_genero);
+            NivelTextView = (TextView) itemView.findViewById(R.id.texto_nivel);
+            CupoTextView = (TextView) itemView.findViewById(R.id.texto_cupo);
+            IDTextView = (TextView) itemView.findViewById(R.id.item_id);
         }
+
     }
 }

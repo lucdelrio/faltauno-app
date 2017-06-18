@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class PartidoRespuesta {
 
-    @SerializedName("match_id")
+    @SerializedName("idPartido")
     private Long idPartido;
 
     @SerializedName("nombreOrganizador")
@@ -44,11 +44,11 @@ public class PartidoRespuesta {
     @SerializedName("categoria")
     private String categoria;
 
-    public long getIdPartido(){
+    public Long getIdPartido(){
         return idPartido;
     }
 
-    public void setIdPartido(long id){
+    public void setIdPartido(Long id){
         this.idPartido = id;
     }
 

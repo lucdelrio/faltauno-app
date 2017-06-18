@@ -106,8 +106,8 @@
                 android:hint="Fecha"
                 android:layout_alignBaseline="@+id/input_hora"
                 android:layout_alignBottom="@+id/input_hora"
-                android:layout_alignLeft="@+id/label_cancha_de"
-                android:layout_alignStart="@+id/label_cancha_de" />
+                android:layout_alignLeft="@+id/label_tamanio_cancha"
+                android:layout_alignStart="@+id/label_tamanio_cancha" />
 
             <!-- Campo hora-->
             <EditText
@@ -124,7 +124,7 @@
 
             <!-- Spinner cantidad de jugadores-->
             <TextView
-                android:id="@+id/label_cancha_de"
+                android:id="@+id/label_tamanio_cancha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/input_fecha"
@@ -140,10 +140,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="2"
-                android:layout_alignTop="@+id/label_cancha_de"
-                android:layout_toRightOf="@+id/label_cancha_de"
-                android:layout_toEndOf="@+id/label_cancha_de"
-                android:layout_alignBottom="@+id/label_cancha_de" />
+                android:layout_alignTop="@+id/label_tamanio_cancha"
+                android:layout_toRightOf="@+id/label_tamanio_cancha"
+                android:layout_toEndOf="@+id/label_tamanio_cancha"
+                android:layout_alignBottom="@+id/label_tamanio_cancha" />
 
             <!-- Campo cupo-->
             <EditText
@@ -152,8 +152,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:hint="Cupo"
-                android:layout_alignBaseline="@+id/label_cancha_de"
-                android:layout_alignBottom="@+id/label_cancha_de"
+                android:layout_alignBaseline="@+id/label_tamanio_cancha"
+                android:layout_alignBottom="@+id/label_tamanio_cancha"
                 android:layout_alignRight="@+id/input_hora"
                 android:layout_alignEnd="@+id/input_hora" />
 
@@ -162,8 +162,8 @@
                 android:id="@+id/label_genero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/label_cancha_de"
-                android:layout_alignStart="@+id/label_cancha_de"
+                android:layout_alignLeft="@+id/label_tamanio_cancha"
+                android:layout_alignStart="@+id/label_tamanio_cancha"
                 android:layout_below="@+id/selector_tamanio_de_cancha"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
@@ -185,8 +185,8 @@
                 android:id="@+id/label_nivel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/label_cancha_de"
-                android:layout_alignStart="@+id/label_cancha_de"
+                android:layout_alignLeft="@+id/label_tamanio_cancha"
+                android:layout_alignStart="@+id/label_tamanio_cancha"
                 android:layout_below="@+id/selector_genero"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
@@ -208,8 +208,8 @@
                 android:id="@+id/label_categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/label_cancha_de"
-                android:layout_alignStart="@+id/label_cancha_de"
+                android:layout_alignLeft="@+id/label_tamanio_cancha"
+                android:layout_alignStart="@+id/label_tamanio_cancha"
                 android:layout_below="@+id/selector_nivel"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"

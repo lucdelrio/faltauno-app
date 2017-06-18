@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview_partido"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:contentPadding="7dp">
+
+
+    <TableLayout
+        android:id="@+id/table_principal"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/fila_ciudad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/label_ciudad"
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:text="Ciudad: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/texto_ciudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_ciudad"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/fila_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/label_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/texto_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_fecha"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/fila_hora"
+            android:layout_width="5dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/label_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hora: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/texto_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_hora"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/fila_tamanio_cancha"
+            android:layout_width="5dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/label_tamanio_cancha"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:text="@string/tamanio"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/texto_tamanio_cancha"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_tamanio_cancha"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/item_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/label_tamanio_cancha"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp"
+                android:visibility="invisible" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/fila_genero"
+            android:layout_width="300dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/texto_genero"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/separador_genero"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/texto_genero"
+                android:text="/"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/texto_nivel"
+                android:layout_width="125dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/separador_genero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <RelativeLayout
+        android:id="@+id/contenedor_cupo"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/texto_cupo"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="50dp"
+            android:textColor="@color/colorAccent"
+            android:gravity="right"/>
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 public class Partido implements Serializable {
 
-    @SerializedName("match_id")
-    private Integer idPartido;
+    @SerializedName("idPartido")
+    private Long idPartido;
 
     @SerializedName("nombreOrganizador")
     private String nombreOrganizador;
@@ -59,6 +59,10 @@ public class Partido implements Serializable {
 
     public long getIdPartido(){
         return idPartido;
+    }
+
+    public void setIdPartido(Long id){
+        this.idPartido = id;
     }
 
     public void setNombreOrganizador(String nombreOrganizador){
