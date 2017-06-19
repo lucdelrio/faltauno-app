@@ -34,7 +34,7 @@ public class Partido implements Serializable {
     private String ciudad;
 
     @SerializedName("cupo")
-    private String cupo;
+    private Integer cupo;
 
     @SerializedName("nivel")
     private String nivel;
@@ -43,7 +43,7 @@ public class Partido implements Serializable {
     private String categoria;
 
     public Partido(String nombreOrganizador, String email, Integer tamanioDeCancha, String hora, String fecha, String genero,
-                   String direccion, String ciudad, String nivel, String categoria, String cupo) {
+                   String direccion, String ciudad, String nivel, String categoria, Integer cupo) {
         this.setNombreOrganizador(nombreOrganizador);
         this.setEmail(email);
         this.setTamanioDeCancha(tamanioDeCancha);
@@ -145,11 +145,11 @@ public class Partido implements Serializable {
         return nivel;
     }
 
-    public void setCupo(String cupo) {
+    public void setCupo(Integer cupo) {
         this.cupo = cupo;
     }
 
-    public String getCupo(){
+    public Integer getCupo(){
         return cupo;
     }
 }
