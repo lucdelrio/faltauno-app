@@ -47,7 +47,6 @@ public class MostrarPartido extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle index = intent.getExtras();
         this.idPartido =  Integer.parseInt(index.get("index").toString());
-        Button boton = (Button) findViewById(R.id.boton_postularse_a_partido);
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
         direccion = (TextView) findViewById(R.id.out_put_direccion_seleccionado);
@@ -64,14 +63,12 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
-        Button btnPostularse = (Button) findViewById(R.id.boton_postularse_a_partido);
-        btnPostularse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentAddNewMatch = new Intent(MostrarPartido.this, Postulacion.class);
-                startActivity(intentAddNewMatch);
-            }
-        });
+
+
+        Intent postulacionPartido = new Intent(MostrarPartido.this, Postulacion.class);
+        postulacionPartido.putExtra("idPartido", this.idPartido);
+        startActivity(postulacionPartido);
+
     }
 
     private void getMatch(){

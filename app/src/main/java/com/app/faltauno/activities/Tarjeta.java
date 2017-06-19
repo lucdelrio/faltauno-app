@@ -71,7 +71,6 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView FechaYHoraTextView;
-        public TextView HoraTextView;
         public TextView TamanioYLugarView;
         public TextView GeneroNivelTextView;
         public TextView CupoTextView;

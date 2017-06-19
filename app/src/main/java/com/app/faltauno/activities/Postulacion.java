@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.faltauno.R;
+import com.app.faltauno.request.Communicator;
+import com.app.faltauno.response.Jugador;
 
 /**
  * Created by Rodrigo on 18/06/2017.
@@ -16,24 +19,50 @@ import com.app.faltauno.R;
 
 public class Postulacion extends AppCompatActivity {
 
+    private Communicator communicator;
     EditText nombrePostulante;
+
+    private Long idPartido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.postulacion);
 
+        communicator = new Communicator();
+
+        Intent intent = getIntent();
+        Bundle index = intent.getExtras();
+
+        this.idPartido =  Long.parseLong(index.get("idPartido").toString());
+
+        System.out.println(index.get("idPartido"));
+        System.out.println(idPartido);
         nombrePostulante = (EditText) findViewById(R.id.input_nombre_ingresado);
     }
 
     public void onAceptarNombrePostulacionButtonClick(View view) {
+
         String nombrePostulanteAPartido = nombrePostulante.getText().toString();
 
         if (TextUtils.isEmpty(nombrePostulanteAPartido)) {
             toastErrorNombreVacio(view);
         }else{
-
+            Jugador jugadorPostulado = new Jugador(this.idPartido, nombrePostulanteAPartido);
+            crearPostulacion(jugadorPostulado);
         }
+
+    }
+
+    private void crearPostulacion(Jugador jugadorPostulado){
+
+        communicator.postJugador(jugadorPostulado, this);
+    }
+
+    public void actualizar(){
+
+        Intent intentMainActivity = new Intent(Postulacion.this, MainActivity.class);
+        startActivity(intentMainActivity);
 
     }
 

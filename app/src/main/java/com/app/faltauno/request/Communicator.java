@@ -3,6 +3,8 @@ package com.app.faltauno.request;
 import android.widget.Toast;
 
 import com.app.faltauno.activities.CrearPartido;
+import com.app.faltauno.activities.Postulacion;
+import com.app.faltauno.response.Jugador;
 import com.app.faltauno.response.Partido;
 
 import com.app.faltauno.services.ApiService;
@@ -18,9 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Communicator {
 
-    //private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
+    private static final String SERVER_URL = "http://192.168.100.107:8080/faltauno-api/";
     //private static final String SERVER_URL = "http://192.168.43.117:8080/faltauno-api/";
-    private static final String SERVER_URL = "http://192.168.1.10:8080/faltauno-api/";
+    //private static final String SERVER_URL = "http://192.168.1.10:8080/faltauno-api/";
 
     private static Retrofit retrofit = null;
 
@@ -62,6 +64,33 @@ public class Communicator {
                 activity.notificarListaDePartidos();
 
                 Toast toastPartidoCreado = Toast.makeText(activity.getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
+                toastPartidoCreado.show();
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+                Toast toastErrorDeConexion = Toast.makeText(activity.getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                toastErrorDeConexion.show();
+            }
+        });
+    }
+
+    public void postJugador(Jugador jugadorPostulado, final Postulacion activity)  {
+
+        ApiService service = getClient().create(ApiService.class);
+        Jugador jugador = new Jugador(jugadorPostulado.getIdPartido(), jugadorPostulado.getNombreJugador());
+
+        Call<Void> call = service.postJugador(jugador);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                activity.actualizar();
+
+                Toast toastPartidoCreado = Toast.makeText(activity.getApplicationContext(), "Postulación exitosa", Toast.LENGTH_LONG);
                 toastPartidoCreado.show();
 
             }
