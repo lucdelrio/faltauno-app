@@ -39,7 +39,7 @@
         <activity
             android:name=".activities.Postulacion"
             android:parentActivityName=".activities.MostrarPartido"
-            android:label="Ingreso de datos para Postulacion">
+            android:label="Postulacion a partido">
         </activity>
 
     </application>

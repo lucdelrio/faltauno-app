@@ -13,6 +13,7 @@ import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,7 +26,7 @@ import retrofit2.Response;
 
 public class MostrarPartido extends AppCompatActivity {
 
-    private Integer idPartido;
+    Integer idPartido;
     TextView organizador;
     TextView direccion;
     TextView ciudad;
@@ -36,6 +37,7 @@ public class MostrarPartido extends AppCompatActivity {
     TextView nivel;
     TextView categoria;
     TextView tamanioDeCancha;
+    Long idPartidoParaPasar;
 
     private List<PartidoRespuesta> listaDePartidos;
 
@@ -47,6 +49,7 @@ public class MostrarPartido extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle index = intent.getExtras();
         this.idPartido =  Integer.parseInt(index.get("index").toString());
+        this.idPartidoParaPasar  = Long.parseLong(idPartido.toString());
         Button boton = (Button) findViewById(R.id.boton_postularse_a_partido);
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
@@ -68,15 +71,17 @@ public class MostrarPartido extends AppCompatActivity {
         btnPostularse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentAddNewMatch = new Intent(MostrarPartido.this, Postulacion.class);
-                startActivity(intentAddNewMatch);
+                PasarDatosDelPartido.setListaDePartidos(listaDePartidos);
+                PasarDatosDelPartido.setIdPartido(idPartidoParaPasar);
+                //pasarListaDePartidos();
+                Intent intentPostulacion = new Intent(MostrarPartido.this, Postulacion.class);
+                startActivity(intentPostulacion);
             }
         });
     }
 
     private void getMatch(){
         ApiService service = Communicator.getClient().create(ApiService.class);
-
         Call<List<PartidoRespuesta>> call = service.getListaDePartidos();
 
         call.enqueue(new Callback<List<PartidoRespuesta>>() {
@@ -112,6 +117,12 @@ public class MostrarPartido extends AppCompatActivity {
         this.nivel.setText(listaDePartidos.get(id).getNivel());
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
+    }
+
+    public void pasarListaDePartidos(){
+        Intent itemintent = new Intent(this,Postulacion.class);
+        itemintent.putExtra("lista_partidos",(Serializable) this.listaDePartidos);
+        startActivityForResult(itemintent, 0);
     }
 
 }
