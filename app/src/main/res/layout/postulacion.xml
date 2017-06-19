@@ -12,10 +12,10 @@
         android:id="@+id/input_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ingrese su nombre: "
-        android:gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:textSize="50dp"/>
+        android:gravity="center_horizontal"
+        android:text="Ingrese su nombre: "
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/input_nombre_ingresado"

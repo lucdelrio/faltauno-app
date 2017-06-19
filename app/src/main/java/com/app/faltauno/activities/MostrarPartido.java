@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Button;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
@@ -64,12 +63,20 @@ public class MostrarPartido extends AppCompatActivity {
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
 
-
         Intent postulacionPartido = new Intent(MostrarPartido.this, Postulacion.class);
         postulacionPartido.putExtra("idPartido", this.idPartido);
         startActivity(postulacionPartido);
 
     }
+
+    public void onMostrarJugadoresButtonClick(View view) {
+
+        Intent jugadoresPartido = new Intent(MostrarPartido.this, JugadoresPostulados.class);
+        jugadoresPartido.putExtra("idPartidoActual", this.idPartido);
+        startActivity(jugadoresPartido);
+
+    }
+
 
     private void getMatch(){
         ApiService service = Communicator.getClient().create(ApiService.class);

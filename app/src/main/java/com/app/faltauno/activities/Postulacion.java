@@ -29,15 +29,13 @@ public class Postulacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.postulacion);
 
-        communicator = new Communicator();
+        this.communicator = new Communicator();
 
         Intent intent = getIntent();
         Bundle index = intent.getExtras();
 
         this.idPartido =  Long.parseLong(index.get("idPartido").toString());
 
-        System.out.println(index.get("idPartido"));
-        System.out.println(idPartido);
         nombrePostulante = (EditText) findViewById(R.id.input_nombre_ingresado);
     }
 

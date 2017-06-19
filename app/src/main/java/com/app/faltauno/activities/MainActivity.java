@@ -28,8 +28,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
     static View.OnClickListener myOnClickListener;
 
     List<PartidoRespuesta> getPartidoRespuesta;
@@ -45,13 +43,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Display a indeterminate progress bar on title bar
-        //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_main);
 
         myOnClickListener = new MyOnClickListener(this);
-        setContentView(R.layout.activity_main);
 
         getPartidoRespuesta = new ArrayList<>();
 
