@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
@@ -46,6 +47,7 @@ public class MostrarPartido extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle index = intent.getExtras();
         this.idPartido =  Integer.parseInt(index.get("index").toString());
+        Button boton = (Button) findViewById(R.id.boton_postularse_a_partido);
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
         direccion = (TextView) findViewById(R.id.out_put_direccion_seleccionado);
@@ -62,7 +64,14 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
-
+        Button btnPostularse = (Button) findViewById(R.id.boton_postularse_a_partido);
+        btnPostularse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentAddNewMatch = new Intent(MostrarPartido.this, Postulacion.class);
+                startActivity(intentAddNewMatch);
+            }
+        });
     }
 
     private void getMatch(){

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:label="Postularse a partido">
+
+    <TextView
+        android:id="@+id/input_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingrese su nombre: "
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:textSize="50dp"/>
+
+    <EditText
+        android:id="@+id/input_nombre_ingresado"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_below="@+id/input_nombre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
+
+    <!-- Boton para postularse -->
+    <RelativeLayout
+        android:id="@+id/contenedor_boton_guardar_nuevo_partido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#000"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/boton_postularse_a_partido"
+            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+            tools:targetApi="21"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:onClick="onAceptarNombrePostulacionButtonClick"
+            android:text="Aceptar"
+            android:textSize="20dp"
+            android:background="#000"
+            android:textColor="@color/colorWhite"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
