@@ -157,24 +157,28 @@ public class CrearPartido extends AppCompatActivity{
         String categoria = this.categoria.getSelectedItem().toString();
 
         String editCupo = this.cupo.getText().toString();
-        Integer cupo = Integer.parseInt(editCupo);
 
-        if(!TextUtils.isEmpty(nombreOrganizador) && !TextUtils.isEmpty(email) &&
-                !TextUtils.isEmpty(editTamanioDeCancha) &&
-                !TextUtils.isEmpty(hora) && !TextUtils.isEmpty(fecha) &&
-                !TextUtils.isEmpty(genero) && !TextUtils.isEmpty(direccion) &&
-                !TextUtils.isEmpty(ciudad) && !TextUtils.isEmpty(nivel) &&
-                !TextUtils.isEmpty(categoria) && !TextUtils.isEmpty(editCupo)) {
+        if(TextUtils.isEmpty(nombreOrganizador) || TextUtils.isEmpty(email) ||
+                TextUtils.isEmpty(editTamanioDeCancha) ||
+                TextUtils.isEmpty(hora) || TextUtils.isEmpty(fecha) ||
+                TextUtils.isEmpty(genero) || TextUtils.isEmpty(direccion) ||
+                TextUtils.isEmpty(ciudad) || TextUtils.isEmpty(nivel) ||
+                TextUtils.isEmpty(categoria) || TextUtils.isEmpty(editCupo)) {
 
-            Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
-                                                        hora, fecha, genero, direccion, ciudad,
-                                                        nivel, categoria, cupo);
-
-            crearPartido(datosDePartido);
+            toastErrorEnFormulario(view);
 
         }
+        else if (Integer.parseInt(editCupo) < 1 || Integer.parseInt(editCupo) > Integer.parseInt(editTamanioDeCancha) * 2) {
+            toastCupoInvalido(view);
+        }
         else {
-            toastErrorEnFormulario(view);
+            Integer cupo = Integer.parseInt(editCupo);
+
+            Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
+                    hora, fecha, genero, direccion, ciudad,
+                    nivel, categoria, cupo);
+
+            crearPartido(datosDePartido);
         }
     }
 
@@ -194,9 +198,9 @@ public class CrearPartido extends AppCompatActivity{
         formErrorToast.show();
     }
 
-    public void showMatchCreatedToast(View view){
-        Toast matchCreatedToast = Toast.makeText(getApplicationContext(), "Partido creado exitosamente", Toast.LENGTH_LONG);
-        matchCreatedToast.show();
+    public void toastCupoInvalido(View view){
+        Toast cupoInvalidoToast = Toast.makeText(getApplicationContext(), "Cupo inválido", Toast.LENGTH_SHORT);
+        cupoInvalidoToast.show();
     }
 
 }

@@ -99,7 +99,7 @@ public class MostrarPartido extends AppCompatActivity {
         this.fecha.setText(listaDePartidos.get(id).getFecha());
         this.hora.setText(listaDePartidos.get(id).getHora());
         this.genero.setText(listaDePartidos.get(id).getGenero());
-        this.cupo.setText(listaDePartidos.get(id).getCupo());
+        this.cupo.setText(listaDePartidos.get(id).getCupo().toString());
         this.nivel.setText(listaDePartidos.get(id).getNivel());
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
