@@ -47,12 +47,10 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
         setIndexPartido(position);
 
-        holder.CiudadTextView.setText(partidoRespuesta.getCiudad());
-        holder.FechaTextView.setText(partidoRespuesta.getFecha());
-        holder.HoraTextView.setText(partidoRespuesta.getHora());
-        holder.TamanioCanchaTextView.setText(partidoRespuesta.getTamanioDeCancha().toString());
-        holder.GeneroTextView.setText(partidoRespuesta.getGenero());
-        holder.NivelTextView.setText(partidoRespuesta.getNivel());
+        holder.TamanioYLugarView.setText("Fútbol " + partidoRespuesta.getTamanioDeCancha().toString() +
+                " en " + partidoRespuesta.getCiudad());
+        holder.FechaYHoraTextView.setText(partidoRespuesta.getFecha() + " " + partidoRespuesta.getHora() + "hs.");
+        holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
 
@@ -72,12 +70,10 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView CiudadTextView;
-        public TextView FechaTextView;
+        public TextView FechaYHoraTextView;
         public TextView HoraTextView;
-        public TextView TamanioCanchaTextView;
-        public TextView GeneroTextView;
-        public TextView NivelTextView;
+        public TextView TamanioYLugarView;
+        public TextView GeneroNivelTextView;
         public TextView CupoTextView;
         public TextView IDTextView;
 
@@ -85,12 +81,9 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
             super(itemView);
 
-            CiudadTextView = (TextView) itemView.findViewById(R.id.texto_ciudad);
-            FechaTextView = (TextView) itemView.findViewById(R.id.texto_fecha);
-            HoraTextView = (TextView) itemView.findViewById(R.id.texto_hora);
-            TamanioCanchaTextView = (TextView) itemView.findViewById(R.id.texto_tamanio_cancha);
-            GeneroTextView = (TextView) itemView.findViewById(R.id.texto_genero);
-            NivelTextView = (TextView) itemView.findViewById(R.id.texto_nivel);
+            FechaYHoraTextView = (TextView) itemView.findViewById(R.id.texto_fecha_y_hora);
+            TamanioYLugarView = (TextView) itemView.findViewById(R.id.texto_tamanio_y_lugar);
+            GeneroNivelTextView = (TextView) itemView.findViewById(R.id.texto_genero_nivel);
             CupoTextView = (TextView) itemView.findViewById(R.id.texto_cupo);
             IDTextView = (TextView) itemView.findViewById(R.id.item_id);
         }

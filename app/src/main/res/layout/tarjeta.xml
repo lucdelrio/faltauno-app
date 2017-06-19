@@ -16,87 +16,12 @@
         android:layout_height="wrap_content">
 
         <TableRow
-            android:id="@+id/fila_ciudad"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/label_ciudad"
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:text="Ciudad: "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/texto_ciudad"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/label_ciudad"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/fila_fecha"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/label_fecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fecha: "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/texto_fecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/label_fecha"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/fila_hora"
-            android:layout_width="5dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/label_hora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hora: "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/texto_hora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/label_hora"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-        </TableRow>
-
-        <TableRow
             android:id="@+id/fila_tamanio_cancha"
             android:layout_width="5dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/label_tamanio_cancha"
-                android:layout_width="5dp"
-                android:layout_height="match_parent"
-                android:text="@string/tamanio"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/texto_tamanio_cancha"
-                android:layout_width="5dp"
+                android:id="@+id/texto_tamanio_y_lugar"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/label_tamanio_cancha"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -113,33 +38,28 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/fila_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/texto_fecha_y_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow
             android:id="@+id/fila_genero"
             android:layout_width="300dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/texto_genero"
-                android:layout_width="70dp"
+                android:id="@+id/texto_genero_nivel"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/separador_genero"
-                android:layout_width="5dp"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@id/texto_genero"
-                android:text="/"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/texto_nivel"
-                android:layout_width="125dp"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@id/separador_genero"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp"/>
 
         </TableRow>
 
