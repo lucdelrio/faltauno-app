@@ -36,6 +36,12 @@
             android:label="Detalles de Partido">
         </activity>
 
+        <activity
+            android:name=".activities.Postulacion"
+            android:parentActivityName=".activities.MostrarPartido"
+            android:label="Ingreso de datos para Postulacion">
+        </activity>
+
     </application>
 
 </manifest>

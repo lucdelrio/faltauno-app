@@ -1,6 +1,5 @@
 package com.app.faltauno.activities;
 
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,20 +13,15 @@ import android.widget.Spinner;
 //Para campo Fecha
 import android.app.DatePickerDialog;
 import android.widget.TimePicker;
+import android.app.TimePickerDialog;
 
 //Para dar mensaje que se creo partido
 import android.widget.Toast;
 
-//Para campo Hora
-
-
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.Partido;
-
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class CrearPartido extends AppCompatActivity{
 
