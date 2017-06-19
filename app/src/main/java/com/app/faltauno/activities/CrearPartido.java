@@ -144,7 +144,10 @@ public class CrearPartido extends AppCompatActivity{
 
         String nombreOrganizador = organizador.getText().toString();
         String email = this.email.getText().toString();
-        String tamanioDeCancha = this.tamanio_de_cancha.getSelectedItem().toString();
+
+        String editTamanioDeCancha = this.tamanio_de_cancha.getSelectedItem().toString();
+        Integer tamanioDeCancha = Integer.parseInt(editTamanioDeCancha);
+
         String hora = this.hora.getText().toString();
         String fecha = this.fecha.getText().toString();
         String genero = this.genero.getSelectedItem().toString();
@@ -152,16 +155,18 @@ public class CrearPartido extends AppCompatActivity{
         String ciudad = this.ciudad.getText().toString();
         String nivel = this.nivel.getSelectedItem().toString();
         String categoria = this.categoria.getSelectedItem().toString();
-        String cupo = this.cupo.getText().toString();
+
+        String editCupo = this.cupo.getText().toString();
+        Integer cupo = Integer.parseInt(editCupo);
 
         if(!TextUtils.isEmpty(nombreOrganizador) && !TextUtils.isEmpty(email) &&
-                !TextUtils.isEmpty(tamanioDeCancha) &&
+                !TextUtils.isEmpty(editTamanioDeCancha) &&
                 !TextUtils.isEmpty(hora) && !TextUtils.isEmpty(fecha) &&
                 !TextUtils.isEmpty(genero) && !TextUtils.isEmpty(direccion) &&
                 !TextUtils.isEmpty(ciudad) && !TextUtils.isEmpty(nivel) &&
-                !TextUtils.isEmpty(categoria) && !TextUtils.isEmpty(cupo)) {
+                !TextUtils.isEmpty(categoria) && !TextUtils.isEmpty(editCupo)) {
 
-            Partido datosDePartido = new Partido(nombreOrganizador, email, Integer.parseInt(tamanioDeCancha),
+            Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
                                                         hora, fecha, genero, direccion, ciudad,
                                                         nivel, categoria, cupo);
 

@@ -36,7 +36,7 @@ public class PartidoRespuesta {
     private String ciudad;
 
     @SerializedName("cupo")
-    private String cupo;
+    private Integer cupo;
 
     @SerializedName("nivel")
     private String nivel;
@@ -124,11 +124,11 @@ public class PartidoRespuesta {
         return nivel;
     }
 
-    public void setCupo(String cupo) {
+    public void setCupo(Integer cupo) {
         this.cupo = cupo;
     }
 
-    public String getCupo(){
+    public Integer getCupo(){
         return cupo;
     }
 

@@ -53,7 +53,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         holder.TamanioCanchaTextView.setText(partidoRespuesta.getTamanioDeCancha().toString());
         holder.GeneroTextView.setText(partidoRespuesta.getGenero());
         holder.NivelTextView.setText(partidoRespuesta.getNivel());
-        holder.CupoTextView.setText(partidoRespuesta.getCupo());
+        holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
 
     }
