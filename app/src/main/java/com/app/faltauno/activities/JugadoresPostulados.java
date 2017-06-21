@@ -1,5 +1,6 @@
 package com.app.faltauno.activities;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +50,7 @@ public class JugadoresPostulados extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle index = intent.getExtras();
 
-        this.idPartido =  Long.parseLong(index.get("idPartidoActual").toString());
+        this.idPartido =  Long.parseLong(index.get("idPartido").toString());
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -60,6 +61,10 @@ public class JugadoresPostulados extends AppCompatActivity {
         jugadores = (TextView) findViewById(R.id.output_jugadores);
 
         getJugadores();
+
+        //Quita boton back de Action Bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 
     private void getJugadores(){

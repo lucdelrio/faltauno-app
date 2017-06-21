@@ -45,6 +45,7 @@ public class MostrarPartido extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle index = intent.getExtras();
+
         this.idPartido =  Integer.parseInt(index.get("index").toString());
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
@@ -62,19 +63,15 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
-
         Intent postulacionPartido = new Intent(MostrarPartido.this, Postulacion.class);
         postulacionPartido.putExtra("idPartido", this.idPartido);
         startActivity(postulacionPartido);
-
     }
 
     public void onMostrarJugadoresButtonClick(View view) {
-
         Intent jugadoresPartido = new Intent(MostrarPartido.this, JugadoresPostulados.class);
-        jugadoresPartido.putExtra("idPartidoActual", this.idPartido);
+        jugadoresPartido.putExtra("idPartido", this.idPartido);
         startActivity(jugadoresPartido);
-
     }
 
 
@@ -105,7 +102,6 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     private void mostrarDatosPartido(int id) {
-
         organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
         this.direccion.setText(listaDePartidos.get(id).getDireccion());
         this.ciudad.setText(listaDePartidos.get(id).getCiudad());

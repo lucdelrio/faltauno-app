@@ -22,6 +22,7 @@ public class Postulacion extends AppCompatActivity {
 
     private Communicator communicator;
     EditText nombrePostulante;
+    View v;
 
     private Long idPartido;
 
@@ -39,18 +40,9 @@ public class Postulacion extends AppCompatActivity {
 
         nombrePostulante = (EditText) findViewById(R.id.input_nombre_ingresado);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
-
-    //Cuando se pulsa boton atras deberia volver a actividad anterior
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return false;
+        //Quita boton back de Action Bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 
     public void onAceptarNombrePostulacionButtonClick(View view) {
@@ -80,6 +72,11 @@ public class Postulacion extends AppCompatActivity {
 
     public void toastErrorNombreVacio(View view){
         Toast formErrorToast = Toast.makeText(getApplicationContext(), "Debe ingresar un nombre para poder postularse", Toast.LENGTH_SHORT);
+        formErrorToast.show();
+    }
+
+    public void toastNoPasoActivity(View view){
+        Toast formErrorToast = Toast.makeText(getApplicationContext(), "No se paso la activity", Toast.LENGTH_SHORT);
         formErrorToast.show();
     }
 
