@@ -15,37 +15,42 @@
         android:roundIcon="@mipmap/falta_uno"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activities.MainActivity"
             android:icon="@mipmap/falta_uno"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.CrearPartido"
             android:parentActivityName=".activities.MainActivity"
             android:label="Crear partido">
         </activity>
+
         <activity
-            android:name=".activities.MostrarPartido"
+            android:name="com.app.faltauno.activities.MostrarPartido"
             android:parentActivityName=".activities.MainActivity"
             android:label="Detalles de Partido">
         </activity>
 
         <activity
-            android:name=".activities.Postulacion"
-            android:parentActivityName=".activities.MostrarPartido"
+            android:name="com.app.faltauno.activities.Postulacion"
+            android:parentActivityName="com.app.faltauno.activities.MostrarPartido"
             android:label="Postulación">
         </activity>
 
         <activity
-            android:name=".activities.JugadoresPostulados"
-            android:parentActivityName=".activities.MostrarPartido"
+            android:name="com.app.faltauno.activities.JugadoresPostulados"
+            android:parentActivityName="com.app.faltauno.activities.MostrarPartido"
             android:label="Jugadores">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.faltauno.activities.MostrarPartido" />
         </activity>
 
     </application>

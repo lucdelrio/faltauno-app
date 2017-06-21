@@ -3,6 +3,7 @@ package com.app.faltauno.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -37,6 +38,19 @@ public class Postulacion extends AppCompatActivity {
         this.idPartido =  Long.parseLong(index.get("idPartido").toString());
 
         nombrePostulante = (EditText) findViewById(R.id.input_nombre_ingresado);
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    //Cuando se pulsa boton atras deberia volver a actividad anterior
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 
     public void onAceptarNombrePostulacionButtonClick(View view) {
