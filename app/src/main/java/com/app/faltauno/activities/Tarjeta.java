@@ -54,6 +54,11 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
 
+        if(partidoRespuesta.getCupo().equals(0)){
+            holder.CupoTextView.setText("√");
+            holder.CupoTextView.setTextColor(holder.CupoTextView.getContext().getResources().getColor(R.color.colorAccentGreen));
+
+        }
     }
 
     @Override
