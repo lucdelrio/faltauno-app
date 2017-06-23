@@ -1,6 +1,8 @@
 package com.app.faltauno.activities;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,8 +59,9 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         if(partidoRespuesta.getCupo().equals(0)){
             holder.CupoTextView.setText("√");
             holder.CupoTextView.setTextColor(holder.CupoTextView.getContext().getResources().getColor(R.color.colorAccentGreen));
-
+            holder.Tarjeta.setCardBackgroundColor(Color.GRAY);
         }
+
     }
 
     @Override
@@ -80,6 +83,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         public TextView GeneroNivelTextView;
         public TextView CupoTextView;
         public TextView IDTextView;
+        public CardView Tarjeta;
 
         public ViewHolder(View itemView) {
 
@@ -90,6 +94,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             GeneroNivelTextView = (TextView) itemView.findViewById(R.id.texto_genero_nivel);
             CupoTextView = (TextView) itemView.findViewById(R.id.texto_cupo);
             IDTextView = (TextView) itemView.findViewById(R.id.item_id);
+            Tarjeta = (CardView) itemView.findViewById(R.id.cardview_partido);
         }
 
     }
