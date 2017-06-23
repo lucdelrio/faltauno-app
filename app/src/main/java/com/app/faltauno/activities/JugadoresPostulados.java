@@ -64,7 +64,6 @@ public class JugadoresPostulados extends AppCompatActivity {
 
         //Quita boton back de Action Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        //getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 
     private void getJugadores(){

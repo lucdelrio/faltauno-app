@@ -48,7 +48,8 @@
             android:text="Postularme"
             android:textColor="@color/colorWhite"
             android:textSize="16dp"
-            tools:targetApi="21" />
+            tools:targetApi="21"
+            android:visibility="visible" />
 
     </RelativeLayout>
 

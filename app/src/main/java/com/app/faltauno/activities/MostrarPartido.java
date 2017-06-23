@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.app.faltauno.R;
@@ -25,6 +26,8 @@ import retrofit2.Response;
 public class MostrarPartido extends AppCompatActivity {
 
     private Integer idPartido;
+    /*************/
+    private Integer cupoPartido;
     TextView organizador;
     TextView direccion;
     TextView ciudad;
@@ -47,6 +50,8 @@ public class MostrarPartido extends AppCompatActivity {
         Bundle index = intent.getExtras();
 
         this.idPartido =  Integer.parseInt(index.get("index").toString());
+        /**************/
+        this.cupoPartido = Integer.parseInt(index.get("cupo").toString());
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
         direccion = (TextView) findViewById(R.id.out_put_direccion_seleccionado);
@@ -60,10 +65,15 @@ public class MostrarPartido extends AppCompatActivity {
         tamanioDeCancha = (TextView) findViewById(R.id.out_put_tamanio_de_cancha_seleccionado);
 
         getMatch();
+
+        Button miBotonB = (Button) findViewById(R.id.boton_postularse_a_partido);
+        if(this.cupoPartido.equals(0)){
+            miBotonB.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
-        Intent postulacionPartido = new Intent(MostrarPartido.this, Postulacion.class);
+        Intent postulacionPartido = new Intent(getApplicationContext(), Postulacion.class);
         postulacionPartido.putExtra("idPartido", this.idPartido);
         startActivity(postulacionPartido);
     }
@@ -112,6 +122,11 @@ public class MostrarPartido extends AppCompatActivity {
         this.nivel.setText(listaDePartidos.get(id).getNivel());
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
+
+        if(listaDePartidos.get(id).getCupo().equals(0)){
+            this.cupo.setText("COMPLETO");
+            this.cupo.setTextColor(this.cupo.getContext().getResources().getColor(R.color.colorAccentGreen));
+        }
     }
 
 }

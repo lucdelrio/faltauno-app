@@ -51,8 +51,8 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
                 " en " + partidoRespuesta.getCiudad());
         holder.FechaYHoraTextView.setText(partidoRespuesta.getFecha() + " " + partidoRespuesta.getHora() + "hs.");
         holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
-        holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
+        holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
 
     }
 

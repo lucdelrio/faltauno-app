@@ -2,17 +2,18 @@ package com.app.faltauno.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.Jugador;
+
 
 /**
  * Created by Rodrigo on 18/06/2017.
@@ -22,9 +23,10 @@ public class Postulacion extends AppCompatActivity {
 
     private Communicator communicator;
     EditText nombrePostulante;
-    View v;
 
     private Long idPartido;
+    /***********/
+    private Integer cupoPartido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,6 @@ public class Postulacion extends AppCompatActivity {
 
         //Quita boton back de Action Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        //getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 
     public void onAceptarNombrePostulacionButtonClick(View view) {
