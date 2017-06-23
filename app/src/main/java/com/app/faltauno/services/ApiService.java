@@ -14,6 +14,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ApiService {
 
@@ -23,12 +25,13 @@ public interface ApiService {
     @GET("matches")
     Call <List<PartidoRespuesta>> getListaDePartidos();
 
+    @POST("matches/update")
+    Call <Void> putPartido(@Body PartidoRespuesta partido);
 
     @POST("players")
     Call <Void> postJugador(@Body Jugador jugador);
 
     @GET("players")
     Call <List<JugadorRespuesta>> getListaDeJugadores();
-
 
 }

@@ -7,6 +7,7 @@ import com.app.faltauno.activities.Postulacion;
 import com.app.faltauno.response.Jugador;
 import com.app.faltauno.response.Partido;
 
+import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
 import okhttp3.OkHttpClient;
@@ -92,6 +93,29 @@ public class Communicator {
 
                 Toast toastPartidoCreado = Toast.makeText(activity.getApplicationContext(), "Postulación exitosa", Toast.LENGTH_LONG);
                 toastPartidoCreado.show();
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+                Toast toastErrorDeConexion = Toast.makeText(activity.getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                toastErrorDeConexion.show();
+            }
+        });
+    }
+
+    public void putPartido(PartidoRespuesta datosDePartido, final Postulacion activity)  {
+
+        ApiService service = getClient().create(ApiService.class);
+
+        Call<Void> call = service.putPartido(datosDePartido);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                activity.notificarActualizacionDePartido();
 
             }
 

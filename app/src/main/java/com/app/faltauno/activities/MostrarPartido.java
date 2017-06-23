@@ -35,6 +35,7 @@ public class MostrarPartido extends AppCompatActivity {
     TextView nivel;
     TextView categoria;
     TextView tamanioDeCancha;
+    private Long idPartidoMostrado;
 
     private List<PartidoRespuesta> listaDePartidos;
 
@@ -63,14 +64,16 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
+
         Intent postulacionPartido = new Intent(MostrarPartido.this, Postulacion.class);
-        postulacionPartido.putExtra("idPartido", this.idPartido);
+        postulacionPartido.putExtra("idPartido", this.idPartidoMostrado);
         startActivity(postulacionPartido);
     }
 
     public void onMostrarJugadoresButtonClick(View view) {
+
         Intent jugadoresPartido = new Intent(MostrarPartido.this, JugadoresPostulados.class);
-        jugadoresPartido.putExtra("idPartido", this.idPartido);
+        jugadoresPartido.putExtra("idPartido", this.idPartidoMostrado);
         startActivity(jugadoresPartido);
     }
 
@@ -102,6 +105,8 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     private void mostrarDatosPartido(int id) {
+
+        this.idPartidoMostrado = listaDePartidos.get(id).getIdPartido();
         organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
         this.direccion.setText(listaDePartidos.get(id).getDireccion());
         this.ciudad.setText(listaDePartidos.get(id).getCiudad());
