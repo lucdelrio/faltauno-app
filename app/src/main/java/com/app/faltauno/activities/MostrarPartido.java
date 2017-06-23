@@ -27,8 +27,6 @@ import retrofit2.Response;
 public class MostrarPartido extends AppCompatActivity {
 
     private Integer idPartido;
-    /*************/
-    private Integer cupoPartido;
     TextView organizador;
     TextView direccion;
     TextView ciudad;
@@ -39,6 +37,7 @@ public class MostrarPartido extends AppCompatActivity {
     TextView nivel;
     TextView categoria;
     TextView tamanioDeCancha;
+    private Long idPartidoMostrado;
 
     private List<PartidoRespuesta> listaDePartidos;
 
@@ -51,8 +50,6 @@ public class MostrarPartido extends AppCompatActivity {
         Bundle index = intent.getExtras();
 
         this.idPartido =  Integer.parseInt(index.get("index").toString());
-        /**************/
-        this.cupoPartido = Integer.parseInt(index.get("cupo").toString());
 
         organizador = (TextView) findViewById(R.id.out_put_organizador_seleccionado);
         direccion = (TextView) findViewById(R.id.out_put_direccion_seleccionado);
@@ -74,14 +71,16 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
-        Intent postulacionPartido = new Intent(getApplicationContext(), Postulacion.class);
-        postulacionPartido.putExtra("idPartido", this.idPartido);
+
+        Intent postulacionPartido = new Intent(MostrarPartido.this, Postulacion.class);
+        postulacionPartido.putExtra("idPartido", this.idPartidoMostrado);
         startActivity(postulacionPartido);
     }
 
     public void onMostrarJugadoresButtonClick(View view) {
+
         Intent jugadoresPartido = new Intent(MostrarPartido.this, JugadoresPostulados.class);
-        jugadoresPartido.putExtra("idPartido", this.idPartido);
+        jugadoresPartido.putExtra("idPartido", this.idPartidoMostrado);
         startActivity(jugadoresPartido);
     }
 
@@ -113,6 +112,8 @@ public class MostrarPartido extends AppCompatActivity {
     }
 
     private void mostrarDatosPartido(int id) {
+
+        this.idPartidoMostrado = listaDePartidos.get(id).getIdPartido();
         organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
         this.direccion.setText(listaDePartidos.get(id).getDireccion());
         this.ciudad.setText(listaDePartidos.get(id).getCiudad());

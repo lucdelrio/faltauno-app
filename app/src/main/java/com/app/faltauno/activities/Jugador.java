@@ -43,8 +43,6 @@ public class Jugador extends RecyclerView.Adapter<Jugador.ViewHolder> {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.jugador, parent, false);
 
-        view.setOnClickListener(MainActivity.myOnClickListener);
-
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
