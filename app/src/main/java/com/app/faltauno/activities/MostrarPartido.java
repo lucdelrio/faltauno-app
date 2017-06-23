@@ -20,10 +20,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by Rodrigo on 08/06/2017.
- */
-
 public class MostrarPartido extends AppCompatActivity {
 
     private Integer idPartido;
@@ -64,10 +60,6 @@ public class MostrarPartido extends AppCompatActivity {
 
         getMatch();
 
-        Button miBotonB = (Button) findViewById(R.id.boton_postularse_a_partido);
-        if(this.cupoPartido.equals(0)){
-            miBotonB.setVisibility(View.INVISIBLE);
-        }
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
@@ -125,6 +117,8 @@ public class MostrarPartido extends AppCompatActivity {
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
 
+        ocultarBotonPostularse(listaDePartidos.get(id).getCupo());
+
         if(listaDePartidos.get(id).getCupo().equals(0)){
             this.cupo.setText("COMPLETO");
             this.cupo.setTextColor(this.cupo.getContext().getResources().getColor(R.color.colorAccentGreen));
@@ -133,6 +127,13 @@ public class MostrarPartido extends AppCompatActivity {
         if(listaDePartidos.get(id).getCupo().equals(1)){
             String rojo = "#FF0000";
             this.cupo.setTextColor(Color.parseColor(rojo));
+        }
+    }
+
+    private void ocultarBotonPostularse(Integer cupoPartido){
+        Button postularseButton = (Button) findViewById(R.id.boton_postularse_a_partido);
+        if(cupoPartido == 0){
+            postularseButton.setVisibility(View.INVISIBLE);
         }
     }
 
