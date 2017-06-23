@@ -3,10 +3,12 @@ package com.app.faltauno.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.faltauno.R;
@@ -22,9 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by Rodrigo on 18/06/2017.
- */
+
 
 public class Postulacion extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class Postulacion extends AppCompatActivity {
 
         //Quita boton back de Action Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        //getSupportActionBar().setDisplayShowHomeEnabled(false);
+
     }
 
     public void onAceptarNombrePostulacionButtonClick(View view) {

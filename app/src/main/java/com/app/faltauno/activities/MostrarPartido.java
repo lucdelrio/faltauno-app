@@ -1,10 +1,12 @@
 package com.app.faltauno.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.app.faltauno.R;
@@ -61,6 +63,11 @@ public class MostrarPartido extends AppCompatActivity {
         tamanioDeCancha = (TextView) findViewById(R.id.out_put_tamanio_de_cancha_seleccionado);
 
         getMatch();
+
+        Button miBotonB = (Button) findViewById(R.id.boton_postularse_a_partido);
+        if(this.cupoPartido.equals(0)){
+            miBotonB.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
@@ -117,6 +124,16 @@ public class MostrarPartido extends AppCompatActivity {
         this.nivel.setText(listaDePartidos.get(id).getNivel());
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
+
+        if(listaDePartidos.get(id).getCupo().equals(0)){
+            this.cupo.setText("COMPLETO");
+            this.cupo.setTextColor(this.cupo.getContext().getResources().getColor(R.color.colorAccentGreen));
+        }
+
+        if(listaDePartidos.get(id).getCupo().equals(1)){
+            String rojo = "#FF0000";
+            this.cupo.setTextColor(Color.parseColor(rojo));
+        }
     }
 
 }

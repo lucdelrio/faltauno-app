@@ -161,11 +161,10 @@ public class CrearPartido extends AppCompatActivity{
 
             toastErrorEnFormulario(view);
 
-        }
-        else if (Integer.parseInt(editCupo) < 1 || Integer.parseInt(editCupo) > Integer.parseInt(editTamanioDeCancha) * 2) {
+        } else if (Integer.parseInt(editCupo) < 1 || Integer.parseInt(editCupo) > Integer.parseInt(editTamanioDeCancha) * 2) {
             toastCupoInvalido(view);
-        }
-        else {
+
+        } else {
             Integer cupo = Integer.parseInt(editCupo);
 
             Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,

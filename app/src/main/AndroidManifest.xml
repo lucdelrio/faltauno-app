@@ -40,8 +40,10 @@
 
         <activity
             android:name="com.app.faltauno.activities.Postulacion"
-            android:parentActivityName="com.app.faltauno.activities.MostrarPartido"
             android:label="   POSTULARME A PARTIDO">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.faltauno.activities.MostrarPartido" />
         </activity>
 
         <activity

@@ -9,7 +9,6 @@
     card_view:cardUseCompatPadding="true"
     card_view:contentPadding="7dp">
 
-
     <TableLayout
         android:id="@+id/table_principal"
         android:layout_width="220dp"
@@ -77,7 +76,7 @@
             android:layout_height="60dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="50dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorAccentGreen"
             android:gravity="right"/>
     </RelativeLayout>
 
