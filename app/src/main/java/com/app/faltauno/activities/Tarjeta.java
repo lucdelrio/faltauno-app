@@ -62,8 +62,15 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             holder.Tarjeta.setCardBackgroundColor(Color.GRAY);
         }
 
+        if(partidoRespuesta.getCupo().equals(1)) {
+            holder.Tarjeta.setCardBackgroundColor(Color.RED);
+            holder.CupoTextView.setTextColor(holder.CupoTextView.getContext().getResources().getColor(R.color.colorWhite));
+            holder.TamanioYLugarView.setTextColor(holder.TamanioYLugarView.getContext().getResources().getColor(R.color.colorWhite));
+            holder.FechaYHoraTextView.setTextColor(holder.FechaYHoraTextView.getContext().getResources().getColor(R.color.colorWhite));
+            holder.GeneroNivelTextView.setTextColor(holder.GeneroNivelTextView.getContext().getResources().getColor(R.color.colorWhite));
+        }
     }
-
+    
     @Override
     public int getItemCount() {
 
