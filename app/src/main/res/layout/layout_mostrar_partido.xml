@@ -298,7 +298,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_cupo"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorAccentGreen"
         android:textSize="18dp"/>
 
 

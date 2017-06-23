@@ -59,7 +59,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         if(partidoRespuesta.getCupo().equals(0)){
             holder.CupoTextView.setText("√");
             holder.CupoTextView.setTextColor(holder.CupoTextView.getContext().getResources().getColor(R.color.colorAccentGreen));
-            holder.Tarjeta.setCardBackgroundColor(Color.GRAY);
+            holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
         }
 
         if(partidoRespuesta.getCupo().equals(1)) {
@@ -70,7 +70,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             holder.GeneroNivelTextView.setTextColor(holder.GeneroNivelTextView.getContext().getResources().getColor(R.color.colorWhite));
         }
     }
-    
+
     @Override
     public int getItemCount() {
 

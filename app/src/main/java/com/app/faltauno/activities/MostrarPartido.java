@@ -1,6 +1,7 @@
 package com.app.faltauno.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -126,6 +127,11 @@ public class MostrarPartido extends AppCompatActivity {
         if(listaDePartidos.get(id).getCupo().equals(0)){
             this.cupo.setText("COMPLETO");
             this.cupo.setTextColor(this.cupo.getContext().getResources().getColor(R.color.colorAccentGreen));
+        }
+
+        if(listaDePartidos.get(id).getCupo().equals(1)){
+            String rojo = "#FF0000";
+            this.cupo.setTextColor(Color.parseColor(rojo));
         }
     }
 
