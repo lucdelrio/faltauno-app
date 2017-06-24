@@ -18,20 +18,6 @@
         android:gravity="center" >
 
         <Button
-            android:id="@+id/boton_ver_jugadores"
-            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
-            tools:targetApi="21"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:onClick="onMostrarJugadoresButtonClick"
-            android:text="Jugadores"
-            android:textSize="16dp"
-            android:background="#000"
-            android:textColor="@color/colorWhite"/>
-
-        <Button
             android:id="@+id/boton_postularse_a_partido"
             style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
             android:layout_width="wrap_content"
@@ -53,12 +39,44 @@
 
     </RelativeLayout>
 
-    <!--Imagen de portada -->
-    <ImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
+        android:id="@+id/contenedor_imagen"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/imagen_cancha_mostrar_partido" />
+        android:layout_height="200dp">
+
+        <!--Imagen de portada -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/imagen_cancha_mostrar_partido"
+            />
+
+        <Button
+            android:id="@+id/boton_ver_jugadores"
+            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+            tools:targetApi="21"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:onClick="onMostrarJugadoresButtonClick"
+            android:text="Ver jugadores"
+            android:textSize="16dp"
+            android:background="#000"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentBottom="true"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/colorWhite"
+            android:layout_above="@id/boton_ver_jugadores">
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <!-- Texto organizador -->
     <TextView
@@ -67,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/contenedor_imagen"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
@@ -79,7 +97,7 @@
         android:id="@+id/out_put_organizador_seleccionado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/contenedor_imagen"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"

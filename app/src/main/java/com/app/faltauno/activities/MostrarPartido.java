@@ -118,7 +118,7 @@ public class MostrarPartido extends AppCompatActivity {
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
 
         ocultarBotonPostularse(listaDePartidos.get(id).getCupo());
-
+        
         if(listaDePartidos.get(id).getCupo().equals(0)){
             this.cupo.setText("COMPLETO");
             this.cupo.setTextColor(this.cupo.getContext().getResources().getColor(R.color.colorAccentGreen));
