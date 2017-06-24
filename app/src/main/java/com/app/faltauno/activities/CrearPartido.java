@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -118,7 +119,6 @@ public class CrearPartido extends AppCompatActivity{
                 final Calendar c = Calendar.getInstance();
                 int mHora = c.get(Calendar.HOUR);
                 int mMinutos = c.get(Calendar.MINUTE);
-
                 timePickerDialog = new TimePickerDialog(CrearPartido.this,
                         new TimePickerDialog.OnTimeSetListener(){
                             @Override
@@ -126,13 +126,14 @@ public class CrearPartido extends AppCompatActivity{
                                 //String AM_PM;
                                 //int am_pm;
 
-                                hora.setText(horaDelDia + " : " + minuto + "  ");
+                                hora.setText(horaDelDia + " : " + (minuto >= 10 ? String.valueOf(minuto) : "0"+minuto));
                             }
-                        }, mHora, mMinutos, false);
-
+                        }, mHora, mMinutos, DateFormat.is24HourFormat(CrearPartido.this));
                 timePickerDialog.show();
             }
         });
+
+        System.out.println(hora);
 
     }
 
@@ -143,6 +144,8 @@ public class CrearPartido extends AppCompatActivity{
 
         String editTamanioDeCancha = this.tamanio_de_cancha.getSelectedItem().toString();
         Integer tamanioDeCancha = Integer.parseInt(editTamanioDeCancha);
+
+        System.out.println(hora);
 
         String hora = this.hora.getText().toString();
         String fecha = this.fecha.getText().toString();
