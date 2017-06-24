@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 //Para campo Fecha
 import android.app.DatePickerDialog;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.app.TimePickerDialog;
 
@@ -30,8 +31,8 @@ public class CrearPartido extends AppCompatActivity{
     EditText organizador;
     EditText direccion;
     EditText ciudad;
-    EditText fecha;
-    EditText hora;
+    TextView fecha;
+    TextView hora;
     EditText cupo;
     EditText email;
 
@@ -55,10 +56,10 @@ public class CrearPartido extends AppCompatActivity{
 
         organizador = (EditText) findViewById(R.id.input_organizador);
         email = (EditText) findViewById(R.id.input_email);
-        hora = (EditText) findViewById(R.id.input_hora);
+        hora = (TextView) findViewById(R.id.input_hora);
         direccion = (EditText) findViewById(R.id.input_direccion);
         ciudad = (EditText) findViewById(R.id.input_ciudad);
-        fecha = (EditText) findViewById(R.id.input_fecha);
+        fecha = (TextView) findViewById(R.id.input_fecha);
         cupo = (EditText) findViewById(R.id.input_cupo);
 
         //Crear selector de cantidad de jugadores
@@ -94,7 +95,6 @@ public class CrearPartido extends AppCompatActivity{
                 int mAnio = c.get(Calendar.YEAR); // anio actual
                 int mMes = c.get(Calendar.MONTH); // mes actual
                 int mDia = c.get(Calendar.DAY_OF_MONTH); // dia actual
-                int milisegundos = c.get(Calendar.MILLISECOND);
                 //datePickerDialog.getDatePicker().setMinDate(milisegundos);
                 // fecha picker dialog
                 datePickerDialog = new DatePickerDialog(CrearPartido.this,
@@ -109,6 +109,7 @@ public class CrearPartido extends AppCompatActivity{
                 datePickerDialog.show();
             }
         });
+
 
         hora.setOnClickListener(new View.OnClickListener() {
 
@@ -128,6 +129,7 @@ public class CrearPartido extends AppCompatActivity{
                                 hora.setText(horaDelDia + " : " + minuto + "  ");
                             }
                         }, mHora, mMinutos, false);
+
                 timePickerDialog.show();
             }
         });

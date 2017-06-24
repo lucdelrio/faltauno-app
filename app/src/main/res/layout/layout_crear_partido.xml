@@ -58,76 +58,83 @@
                 android:layout_alignLeft="@+id/input_email"
                 android:layout_alignStart="@+id/input_email"
                 android:layout_alignRight="@+id/input_email"
-                android:layout_alignEnd="@+id/input_email" />
+                android:layout_alignEnd="@+id/input_email"
+                android:maxLength="45"/>
 
             <!-- Campo email organizador -->
             <EditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/input_direccion"
+                android:layout_alignLeft="@+id/input_direccion"
+                android:layout_alignRight="@+id/input_direccion"
+                android:layout_alignStart="@+id/input_direccion"
+                android:layout_below="@+id/input_organizador"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:layout_below="@+id/input_organizador"
-                android:layout_alignLeft="@+id/input_direccion"
-                android:layout_alignStart="@+id/input_direccion"
-                android:layout_alignRight="@+id/input_direccion"
-                android:layout_alignEnd="@+id/input_direccion" />
+                android:maxLength="45" />
 
             <!-- Campo direccion-->
             <EditText
                 android:id="@+id/input_direccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/input_ciudad"
+                android:layout_alignLeft="@+id/input_ciudad"
+                android:layout_alignRight="@+id/input_ciudad"
+                android:layout_alignStart="@+id/input_ciudad"
+                android:layout_below="@+id/input_email"
                 android:hint="Dirección"
                 android:inputType="textPostalAddress"
-                android:layout_below="@+id/input_email"
-                android:layout_alignLeft="@+id/input_ciudad"
-                android:layout_alignStart="@+id/input_ciudad"
-                android:layout_alignRight="@+id/input_ciudad"
-                android:layout_alignEnd="@+id/input_ciudad" />
+                android:maxLength="45" />
 
             <!-- Campo ciudad-->
             <EditText
                 android:id="@+id/input_ciudad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/input_hora"
+                android:layout_alignStart="@+id/input_hora"
+                android:layout_below="@+id/input_direccion"
                 android:layout_marginTop="14dp"
                 android:hint="Ciudad"
                 android:inputType="textPostalAddress"
-                android:layout_below="@+id/input_direccion"
-                android:layout_alignLeft="@+id/input_fecha"
-                android:layout_alignStart="@+id/input_fecha" />
-
-            <!-- Campo fecha-->
-            <EditText
-                android:id="@+id/input_fecha"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="Fecha"
-                android:layout_alignBaseline="@+id/input_hora"
-                android:layout_alignBottom="@+id/input_hora"
-                android:layout_alignLeft="@+id/label_tamanio_cancha"
-                android:layout_alignStart="@+id/label_tamanio_cancha" />
+                android:maxLength="45" />
 
             <!-- Campo hora-->
-            <EditText
+            <TextView
                 android:id="@+id/input_hora"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/input_fecha"
+                android:layout_alignBottom="@+id/input_fecha"
+                android:layout_alignLeft="@+id/label_tamanio_cancha"
+                android:layout_alignStart="@+id/label_tamanio_cancha"
+                android:hint="Hora"
+                android:inputType="time"
+                android:textAlignment="center"
+                android:layout_toLeftOf="@+id/selector_tamanio_de_cancha"
+                android:layout_toStartOf="@+id/selector_tamanio_de_cancha" />
+
+            <!-- Campo fecha-->
+            <TextView
+                android:id="@+id/input_fecha"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/input_ciudad"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="100dp"
                 android:layout_marginTop="20dp"
-                android:hint="Hora"
-                android:inputType="time" />
+                android:hint="Fecha"
+                android:textAlignment="center" />
 
             <!-- Spinner cantidad de jugadores-->
             <TextView
                 android:id="@+id/label_tamanio_cancha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/input_fecha"
+                android:layout_below="@+id/input_hora"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
@@ -150,12 +157,15 @@
                 android:id="@+id/input_cupo"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="Cupo"
                 android:layout_alignBaseline="@+id/label_tamanio_cancha"
                 android:layout_alignBottom="@+id/label_tamanio_cancha"
-                android:layout_alignRight="@+id/input_hora"
-                android:layout_alignEnd="@+id/input_hora" />
+                android:layout_alignEnd="@+id/input_fecha"
+                android:layout_alignRight="@+id/input_fecha"
+                android:autoText="false"
+                android:hint="Cupo"
+                android:inputType="number"
+                android:maxLength="2"
+                android:singleLine="false" />
 
             <!-- Spinner genero-->
             <TextView
