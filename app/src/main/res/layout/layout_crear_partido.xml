@@ -10,7 +10,7 @@
 
     <!-- Footer aligned to bottom -->
     <RelativeLayout
-        android:id="@+id/contenedor_boton_guardar_nuevo_partido"
+        android:id="@+id/contenedor_boton_postularse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -40,7 +40,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@id/contenedor_boton_guardar_nuevo_partido">
+        android:layout_above="@id/contenedor_boton_postularse">
 
         <RelativeLayout
             android:layout_width="match_parent"

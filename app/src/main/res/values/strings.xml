@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Falta Uno</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_activity_one">ActivityOne</string>
     <string name="title_activity_two">ActivityTwo</string>
     <string name="title_activity_three">ActivityThree</string>
@@ -30,6 +27,5 @@
         <item>Adultos</item>
         <item>Mixto</item>
     </string-array>
-    <string name="tamanio">F:</string>
 
 </resources>

@@ -19,13 +19,12 @@
 
         <Button
             android:id="@+id/boton_postularse_a_partido"
-            tools:targetApi="21"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:onClick="onAceptarNombrePostulacionButtonClick"
-            android:text="Aceptar"
+            android:text="Confirmar"
             android:textSize="20dp"
             android:background="#000"
             android:textColor="@color/colorWhite"/>

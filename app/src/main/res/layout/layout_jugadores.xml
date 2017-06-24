@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context="com.app.faltauno.activities.JugadoresPostulados">
 
+    <TextView
+        android:id="@+id/label_sin_jugadores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:gravity="center_horizontal"
+        android:text="No hay jugadores postulados"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:visibility="invisible" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,6 +27,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
+
+    </RelativeLayout>
+
+    <!-- Boton para postularse -->
+    <RelativeLayout
+        android:id="@+id/contenedor_boton_postularse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_gravity="center_horizontal|end"
+        android:background="#000"
+        android:gravity="center"
+        android:visibility="invisible">
+
+        <Button
+            android:id="@+id/boton_postularse_a_partido"
+            style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#000"
+            android:gravity="center"
+            android:onClick="onMostrarPartidoPostularseButtonClick"
+            android:text="Postularme"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp"
+            android:visibility="visible"
+            tools:targetApi="21" />
 
     </RelativeLayout>
 
