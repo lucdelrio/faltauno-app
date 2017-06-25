@@ -305,7 +305,7 @@
         android:layout_below="@+id/out_put_categoria"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:text="CUPO:"
+        android:text="JUGADORES FALTANTES:"
         android:textSize="18dp"
         android:textStyle="bold"/>
 
@@ -317,6 +317,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/out_put_cupo"
+        android:textStyle="bold"
         android:textColor="@color/colorAccentGreen"
         android:textSize="18dp"/>
 

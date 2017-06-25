@@ -68,6 +68,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             holder.TamanioYLugarView.setTextColor(holder.TamanioYLugarView.getContext().getResources().getColor(R.color.colorWhite));
             holder.FechaYHoraTextView.setTextColor(holder.FechaYHoraTextView.getContext().getResources().getColor(R.color.colorWhite));
             holder.GeneroNivelTextView.setTextColor(holder.GeneroNivelTextView.getContext().getResources().getColor(R.color.colorWhite));
+            holder.LetraCupo.setTextColor(holder.LetraCupo.getContext().getResources().getColor(R.color.colorWhite));
         }
     }
 
@@ -91,6 +92,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         public TextView CupoTextView;
         public TextView IDTextView;
         public CardView Tarjeta;
+        public TextView LetraCupo;
 
         public ViewHolder(View itemView) {
 
@@ -102,6 +104,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             CupoTextView = (TextView) itemView.findViewById(R.id.texto_cupo);
             IDTextView = (TextView) itemView.findViewById(R.id.item_id);
             Tarjeta = (CardView) itemView.findViewById(R.id.cardview_partido);
+            LetraCupo = (TextView) itemView.findViewById(R.id.cupo_letra);
         }
 
     }

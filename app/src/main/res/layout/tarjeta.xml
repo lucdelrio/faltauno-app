@@ -72,12 +72,30 @@
 
         <TextView
             android:id="@+id/texto_cupo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorAccentGreen"
+            android:gravity="right"/>
+
+        <TextView
+            android:id="@+id/cupo_letra"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="50dp"
-            android:textColor="@color/colorAccentGreen"
+            android:textSize="15dp"
+            android:text="CUPO"
+            android:textStyle="bold"
+            android:foregroundGravity="center"
+            android:layout_below="@id/texto_cupo"
+            android:textColor="@color/cardview_dark_background"
+            android:layout_alignParentRight="true"
             android:gravity="right"/>
+
     </RelativeLayout>
 
 

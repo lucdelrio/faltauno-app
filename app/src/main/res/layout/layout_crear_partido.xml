@@ -27,7 +27,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:onClick="onMatchCreationButtonClick"
-            android:text="Crear partido"
+            android:text="CONFIRMAR"
             android:background="#000"/>
 
     </RelativeLayout>
@@ -155,17 +155,16 @@
             <!-- Campo cupo-->
             <EditText
                 android:id="@+id/input_cupo"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/label_tamanio_cancha"
-                android:layout_alignBottom="@+id/label_tamanio_cancha"
-                android:layout_alignEnd="@+id/input_fecha"
-                android:layout_alignRight="@+id/input_fecha"
+                android:layout_below="@id/input_fecha"
+                android:layout_marginTop="10dp"
                 android:autoText="false"
-                android:hint="Cupo"
+                android:hint="Jugadores Faltantes"
                 android:inputType="number"
                 android:maxLength="2"
-                android:singleLine="false" />
+                android:singleLine="false"
+                android:layout_marginLeft="180dp"/>
 
             <!-- Spinner genero-->
             <TextView
