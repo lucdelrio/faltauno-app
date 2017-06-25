@@ -78,7 +78,7 @@ public class Postulacion extends AppCompatActivity {
     private boolean validarNombre(String nombreJugador, View view){
         boolean nombreRepetido = false;
         for(int i = 0; i < listaDeJugadores.size(); i++) {
-            if (nombreJugador.equals(listaDeJugadores.get(i).getNombreJugador().toString())) {
+            if (nombreJugador.equals(listaDeJugadores.get(i).getNombreJugador().toString()) && listaDeJugadores.get(i).getIdPartido() == idPartido) {
                 nombreRepetido = true;
             }
         }

@@ -68,13 +68,14 @@
             android:layout_alignParentBottom="true"
             />
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/borde"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="@color/colorWhite"
             android:layout_above="@id/boton_ver_jugadores">
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -318,6 +319,5 @@
         android:layout_toRightOf="@id/out_put_cupo"
         android:textColor="@color/colorAccentGreen"
         android:textSize="18dp"/>
-
 
 </RelativeLayout>
