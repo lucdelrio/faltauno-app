@@ -1,6 +1,5 @@
 package com.app.faltauno.activities;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +7,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.faltauno.R;
@@ -114,6 +116,33 @@ public class JugadoresPostulados extends AppCompatActivity {
 
         recyclerView.setAdapter(recyclerViewadapter);
 
+        if(!(getJugadorRespuesta.size() > 0)){
+
+            mostrarAvisoPartidoVacio();
+            mostrarBotonPostularse();
+        }
+
+    }
+
+    private void mostrarAvisoPartidoVacio(){
+        TextView avisoPartidoVacio = (TextView) findViewById(R.id.label_sin_jugadores);
+        avisoPartidoVacio.setVisibility(View.VISIBLE);
+
+    }
+
+    private void mostrarBotonPostularse(){
+        RelativeLayout contenedorBotonPostularse = (RelativeLayout) findViewById(R.id.contenedor_boton_postularse);
+        contenedorBotonPostularse.setVisibility(View.VISIBLE);
+
+        Button postularseButton = (Button) findViewById(R.id.boton_postularse_a_partido);
+        postularseButton.setVisibility(View.VISIBLE);
+    }
+
+    public void onMostrarPartidoPostularseButtonClick(View view) {
+
+        Intent postulacionPartido = new Intent(JugadoresPostulados.this, Postulacion.class);
+        postulacionPartido.putExtra("idPartido", this.idPartido);
+        startActivity(postulacionPartido);
     }
 
 }

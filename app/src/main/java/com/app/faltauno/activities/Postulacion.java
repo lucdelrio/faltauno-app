@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.Jugador;
+import com.app.faltauno.response.JugadorRespuesta;
 import com.app.faltauno.response.Partido;
 import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
@@ -35,6 +36,7 @@ public class Postulacion extends AppCompatActivity {
 
     EditText nombrePostulante;
     View v;
+    private List<JugadorRespuesta> listaDeJugadores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class Postulacion extends AppCompatActivity {
 
         //Quita boton back de Action Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        getJugadores();
     }
 
     public void onAceptarNombrePostulacionButtonClick(View view) {
@@ -61,6 +63,8 @@ public class Postulacion extends AppCompatActivity {
 
         if (TextUtils.isEmpty(nombrePostulanteAPartido)) {
             toastErrorNombreVacio(view);
+        }else if(validarNombre(nombrePostulanteAPartido, view)){
+            toastJugadorRepetido(view);
         }else{
             Jugador jugadorPostulado = new Jugador(this.idPartido, nombrePostulanteAPartido);
 
@@ -69,6 +73,16 @@ public class Postulacion extends AppCompatActivity {
             crearPostulacion(jugadorPostulado);
         }
 
+    }
+
+    private boolean validarNombre(String nombreJugador, View view){
+        boolean nombreRepetido = false;
+        for(int i = 0; i < listaDeJugadores.size(); i++) {
+            if (nombreJugador.equals(listaDeJugadores.get(i).getNombreJugador().toString()) && listaDeJugadores.get(i).getIdPartido() == idPartido) {
+                nombreRepetido = true;
+            }
+        }
+        return nombreRepetido;
     }
 
     private void descontarCupo(){
@@ -120,6 +134,26 @@ public class Postulacion extends AppCompatActivity {
         return descuentoExitoso;
     }
 
+    private void getJugadores(){
+        ApiService service = Communicator.getClient().create(ApiService.class);
+
+        Call<List<JugadorRespuesta>> call = service.getListaDeJugadores();
+
+        call.enqueue(new Callback<List<JugadorRespuesta>>() {
+            @Override
+            public void onFailure(Call<List<JugadorRespuesta>> call, Throwable t) {
+                Log.d("APIPlug", "Error Occured: " + t.getMessage());
+
+            }
+
+            @Override
+            public void onResponse(Call<List<JugadorRespuesta>> call, Response<List<JugadorRespuesta>> response) {
+
+                listaDeJugadores = response.body();
+            }
+        });
+    }
+
     public void notificarActualizacionDePartido(){
 
         Intent jugadoresPostulados = new Intent(Postulacion.this, JugadoresPostulados.class);
@@ -142,6 +176,11 @@ public class Postulacion extends AppCompatActivity {
 
     public void toastErrorNombreVacio(View view){
         Toast formErrorToast = Toast.makeText(getApplicationContext(), "Debe ingresar un nombre para poder postularse", Toast.LENGTH_SHORT);
+        formErrorToast.show();
+    }
+
+    public void toastJugadorRepetido(View view){
+        Toast formErrorToast = Toast.makeText(getApplicationContext(), "Ya existe ese nombre de jugador, por favor elija otro", Toast.LENGTH_SHORT);
         formErrorToast.show();
     }
 

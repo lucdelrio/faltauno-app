@@ -7,10 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
+import com.app.faltauno.response.JugadorRespuesta;
 import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
@@ -36,6 +39,9 @@ public class MostrarPartido extends AppCompatActivity {
     private Long idPartidoMostrado;
 
     private List<PartidoRespuesta> listaDePartidos;
+    private List<JugadorRespuesta> listaDeJugadores;
+    private int cantidadJugadores = 0;
+    View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +65,8 @@ public class MostrarPartido extends AppCompatActivity {
         tamanioDeCancha = (TextView) findViewById(R.id.out_put_tamanio_de_cancha_seleccionado);
 
         getMatch();
-
     }
+
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
 
@@ -103,7 +109,45 @@ public class MostrarPartido extends AppCompatActivity {
         });
     }
 
+    private void getJugadores(){
+        ApiService service = Communicator.getClient().create(ApiService.class);
+
+        Call<List<JugadorRespuesta>> call = service.getListaDeJugadores();
+
+        call.enqueue(new Callback<List<JugadorRespuesta>>() {
+            @Override
+            public void onFailure(Call<List<JugadorRespuesta>> call, Throwable t) {
+                Log.d("APIPlug", "Error Occured: " + t.getMessage());
+
+            }
+
+            @Override
+            public void onResponse(Call<List<JugadorRespuesta>> call, Response<List<JugadorRespuesta>> response) {
+
+                listaDeJugadores = response.body();
+
+                if(listaDeJugadores.size()>0) {
+                    int cantidadDeJugadores = 0;
+                    for (int i = 0; i < listaDeJugadores.size(); i ++){
+                        if (listaDeJugadores.get(i).getIdPartido() == idPartidoMostrado){
+                            cantidadDeJugadores ++;
+                        }
+                    }
+                    if (cantidadDeJugadores == 0){
+                        ocultarBotonJugadores(true);
+                    }else{
+                        System.out.println("Cupo completo");
+                        ocultarBotonJugadores(false);
+                    }
+                }else{
+                    ocultarBotonJugadores(true);
+                }
+            }
+        });
+    }
+
     private void mostrarDatosPartido(int id) {
+        getJugadores();
 
         this.idPartidoMostrado = listaDePartidos.get(id).getIdPartido();
         organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
@@ -135,6 +179,17 @@ public class MostrarPartido extends AppCompatActivity {
         if(cupoPartido == 0){
             postularseButton.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void ocultarBotonJugadores(boolean ocultarBoton){
+
+        if(ocultarBoton){
+            Button verJugadoresButton = (Button) findViewById(R.id.boton_ver_jugadores);
+            RelativeLayout borde = (RelativeLayout) findViewById(R.id.borde);
+            verJugadoresButton.setVisibility(View.INVISIBLE);
+            borde.setVisibility(View.INVISIBLE);
+        }
+
     }
 
 }
