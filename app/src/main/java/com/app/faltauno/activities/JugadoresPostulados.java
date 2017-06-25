@@ -116,26 +116,6 @@ public class JugadoresPostulados extends AppCompatActivity {
 
         recyclerView.setAdapter(recyclerViewadapter);
 
-        if(!(getJugadorRespuesta.size() > 0)){
-
-            mostrarAvisoPartidoVacio();
-            mostrarBotonPostularse();
-        }
-
-    }
-
-    private void mostrarAvisoPartidoVacio(){
-        TextView avisoPartidoVacio = (TextView) findViewById(R.id.label_sin_jugadores);
-        avisoPartidoVacio.setVisibility(View.VISIBLE);
-
-    }
-
-    private void mostrarBotonPostularse(){
-        RelativeLayout contenedorBotonPostularse = (RelativeLayout) findViewById(R.id.contenedor_boton_postularse);
-        contenedorBotonPostularse.setVisibility(View.VISIBLE);
-
-        Button postularseButton = (Button) findViewById(R.id.boton_postularse_a_partido);
-        postularseButton.setVisibility(View.VISIBLE);
     }
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
