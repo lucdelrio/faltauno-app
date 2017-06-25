@@ -65,18 +65,8 @@ public class MostrarPartido extends AppCompatActivity {
         tamanioDeCancha = (TextView) findViewById(R.id.out_put_tamanio_de_cancha_seleccionado);
 
         getMatch();
-        //getJugadores();
     }
 
-/*
-    public void contarJugadores(){
-        for(int i = 0; i < listaDeJugadores.size(); i++){
-            if(listaDeJugadores.get(i).getIdPartido() == this.idPartido){
-               this.cantidadJugadores++;
-            }
-        }
-    }
-*/
 
     public void onMostrarPartidoPostularseButtonClick(View view) {
 
@@ -119,7 +109,6 @@ public class MostrarPartido extends AppCompatActivity {
         });
     }
 
-/*
     private void getJugadores(){
         ApiService service = Communicator.getClient().create(ApiService.class);
 
@@ -129,18 +118,36 @@ public class MostrarPartido extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<JugadorRespuesta>> call, Throwable t) {
                 Log.d("APIPlug", "Error Occured: " + t.getMessage());
+
             }
 
             @Override
             public void onResponse(Call<List<JugadorRespuesta>> call, Response<List<JugadorRespuesta>> response) {
+
                 listaDeJugadores = response.body();
-                contarJugadores();
+
+                if(listaDeJugadores.size()>0) {
+                    int cantidadDeJugadores = 0;
+                    for (int i = 0; i < listaDeJugadores.size(); i ++){
+                        if (listaDeJugadores.get(i).getIdPartido() == idPartidoMostrado){
+                            cantidadDeJugadores ++;
+                        }
+                    }
+                    if (cantidadDeJugadores == 0){
+                        ocultarBotonJugadores(true);
+                    }else{
+                        System.out.println("Cupo completo");
+                        ocultarBotonJugadores(false);
+                    }
+                }else{
+                    ocultarBotonJugadores(true);
+                }
             }
         });
     }
-*/
 
     private void mostrarDatosPartido(int id) {
+        getJugadores();
 
         this.idPartidoMostrado = listaDePartidos.get(id).getIdPartido();
         organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
@@ -154,14 +161,7 @@ public class MostrarPartido extends AppCompatActivity {
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
 
-/*
-        if(this.cantidadJugadores == 0){
-            ocultarBotonJugadores();
-        }
-*/
-
         ocultarBotonPostularse(listaDePartidos.get(id).getCupo());
-
 
         if(listaDePartidos.get(id).getCupo().equals(0)){
             this.cupo.setText("COMPLETO");
@@ -181,15 +181,15 @@ public class MostrarPartido extends AppCompatActivity {
         }
     }
 
-/*
-    private void ocultarBotonJugadores(){
-        Button verJugadoresButton = (Button) findViewById(R.id.boton_ver_jugadores);
-        RelativeLayout borde = (RelativeLayout) findViewById(R.id.borde);
-        verJugadoresButton.setVisibility(View.INVISIBLE);
-        borde.setVisibility(View.INVISIBLE);
+    private void ocultarBotonJugadores(boolean ocultarBoton){
+
+        if(ocultarBoton){
+            Button verJugadoresButton = (Button) findViewById(R.id.boton_ver_jugadores);
+            RelativeLayout borde = (RelativeLayout) findViewById(R.id.borde);
+            verJugadoresButton.setVisibility(View.INVISIBLE);
+            borde.setVisibility(View.INVISIBLE);
+        }
+
     }
-*/
-
-
 
 }
