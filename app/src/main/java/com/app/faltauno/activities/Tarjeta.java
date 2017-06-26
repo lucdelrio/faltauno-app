@@ -2,8 +2,6 @@ package com.app.faltauno.activities;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.GregorianCalendar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,9 +13,12 @@ import com.app.faltauno.R;
 import com.app.faltauno.response.PartidoRespuesta;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.text.DateFormat;
+
 
 public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
@@ -57,7 +58,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         holder.TamanioYLugarView.setText("Fútbol " + partidoRespuesta.getTamanioDeCancha().toString() +
                 " en " + partidoRespuesta.getCiudad());
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date fecha = format.parse(partidoRespuesta.getFecha());
             FechaALetra aLetra = new FechaALetra();
@@ -69,7 +70,6 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             e.printStackTrace();
         }
 
-
         holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
@@ -78,6 +78,23 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             holder.CupoTextView.setText("√");
             holder.CupoTextView.setTextColor(holder.CupoTextView.getContext().getResources().getColor(R.color.colorAccentGreen));
             holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
+        }
+
+        try {
+            Date fecha = format.parse(partidoRespuesta.getFecha());
+            final Calendar calendario = Calendar.getInstance();
+            String diaActual = calendario.get(Calendar.DAY_OF_MONTH)+ "/" + calendario.get(Calendar.MONTH) + "/" + calendario.get(Calendar.YEAR);
+            Date fechaActual = format.parse(diaActual);
+
+            System.out.println(fechaActual);
+            System.out.println(fecha.before(fechaActual));
+            System.out.println(fecha.getMonth());
+            /*if ((fechaActual.before(fecha))){
+                holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
+            }*/
+
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         if(partidoRespuesta.getCupo().equals(1)) {

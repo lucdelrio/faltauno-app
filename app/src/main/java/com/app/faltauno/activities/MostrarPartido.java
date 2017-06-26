@@ -18,6 +18,7 @@ import com.app.faltauno.response.JugadorRespuesta;
 import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -157,7 +158,7 @@ public class MostrarPartido extends AppCompatActivity {
         this.direccion.setText(listaDePartidos.get(id).getDireccion());
         this.ciudad.setText(listaDePartidos.get(id).getCiudad());
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat format = new java.text.SimpleDateFormat("dd/MM/yyyy");
         try {
             Date fecha = format.parse(listaDePartidos.get(id).getFecha());
             FechaALetra aLetra = new FechaALetra();
