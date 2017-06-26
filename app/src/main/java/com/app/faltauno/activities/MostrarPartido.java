@@ -168,7 +168,7 @@ public class MostrarPartido extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        this.hora.setText(listaDePartidos.get(id).getHora());
+        this.hora.setText(listaDePartidos.get(id).getHora() + " hs.");
         this.genero.setText(listaDePartidos.get(id).getGenero());
         this.cupo.setText(listaDePartidos.get(id).getCupo().toString());
         this.nivel.setText(listaDePartidos.get(id).getNivel());

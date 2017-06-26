@@ -59,7 +59,7 @@
                 android:layout_alignStart="@+id/input_email"
                 android:layout_alignRight="@+id/input_email"
                 android:layout_alignEnd="@+id/input_email"
-                android:maxLength="45"/>
+                android:maxLength="20"/>
 
             <!-- Campo email organizador -->
             <EditText
@@ -73,7 +73,7 @@
                 android:layout_below="@+id/input_organizador"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:maxLength="45" />
+                android:maxLength="40" />
 
             <!-- Campo direccion-->
             <EditText
@@ -87,7 +87,7 @@
                 android:layout_below="@+id/input_email"
                 android:hint="Dirección"
                 android:inputType="textPostalAddress"
-                android:maxLength="45" />
+                android:maxLength="36" />
 
             <!-- Campo ciudad-->
             <EditText
@@ -100,7 +100,7 @@
                 android:layout_marginTop="14dp"
                 android:hint="Ciudad"
                 android:inputType="textPostalAddress"
-                android:maxLength="45" />
+                android:maxLength="25" />
 
             <!-- Campo hora-->
             <TextView

@@ -125,7 +125,7 @@ public class CrearPartido extends AppCompatActivity{
                                 //String AM_PM;
                                 //int am_pm;
 
-                                hora.setText(horaDelDia + " : " + (minuto >= 10 ? String.valueOf(minuto) : "0"+minuto));
+                                hora.setText(horaDelDia + ":" + (minuto >= 10 ? String.valueOf(minuto) : "0"+minuto));
                             }
                         }, mHora, mMinutos, DateFormat.is24HourFormat(CrearPartido.this));
                 timePickerDialog.show();
