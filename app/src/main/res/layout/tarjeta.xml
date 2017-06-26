@@ -11,7 +11,7 @@
 
     <TableLayout
         android:id="@+id/table_principal"
-        android:layout_width="220dp"
+        android:layout_width="292dp"
         android:layout_height="wrap_content">
 
         <TableRow
