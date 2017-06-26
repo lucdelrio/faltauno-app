@@ -9,6 +9,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,11 +36,19 @@ public class MainActivity extends AppCompatActivity {
 
     private List<PartidoRespuesta> listaDePartidos;
 
+    private List<PartidoRespuesta> listaDePartidosMasculinos;
+
+    private List<PartidoRespuesta> listaDePartidosFemeninos;
+
+    private List<PartidoRespuesta> listaDePartidosMixtos;
+
     RecyclerView recyclerView;
 
     RecyclerView.LayoutManager recyclerViewlayoutManager;
 
     RecyclerView.Adapter recyclerViewadapter;
+
+    MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +85,32 @@ public class MainActivity extends AppCompatActivity {
         getMatches();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_filtro, menu);
+        item = menu.findItem(R.id.menu_filtro);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.filtro_masculino:
+                getMatchesMale();
+                return true;
+            case R.id.filtro_femenino:
+                getMatchesFemale();
+                return true;
+            case R.id.filtro_mixto:
+                getMatchesMixtos();
+                return true;
+            case R.id.filtro_todos:
+                getMatches();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void getMatches(){
         ApiService service = Communicator.getClient().create(ApiService.class);
         Call<List<PartidoRespuesta>> call = service.getListaDePartidos();
@@ -96,6 +132,99 @@ public class MainActivity extends AppCompatActivity {
 
                 if(listaDePartidos.size()>0) {
                     mostrarListaDePartidos(listaDePartidos);
+
+                }else{
+
+                    Toast toastErrorDeConexion = Toast.makeText(getApplicationContext(), "Sin partidos disponibles", Toast.LENGTH_LONG);
+                    toastErrorDeConexion.show();
+                }
+            }
+        });
+    }
+
+    private void getMatchesMale(){
+        ApiService service = Communicator.getClient().create(ApiService.class);
+        Call<List<PartidoRespuesta>> call = service.getPartidosMasculino();
+
+        call.enqueue(new Callback<List<PartidoRespuesta>>() {
+            @Override
+            public void onFailure(Call<List<PartidoRespuesta>> call, Throwable t) {
+
+                Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                conectionErrorToast.show();
+
+            }
+
+            @Override
+            public void onResponse(Call<List<PartidoRespuesta>> call, Response<List<PartidoRespuesta>> response) {
+                Log.d("APIPlug", "Successfully response fetched" );
+
+                listaDePartidosMasculinos = response.body();
+
+                if(listaDePartidosMasculinos.size()>0) {
+                    mostrarListaDePartidos(listaDePartidosMasculinos);
+
+                }else{
+
+                    Toast toastErrorDeConexion = Toast.makeText(getApplicationContext(), "Sin partidos disponibles", Toast.LENGTH_LONG);
+                    toastErrorDeConexion.show();
+                }
+            }
+        });
+    }
+
+    private void getMatchesFemale(){
+        ApiService service = Communicator.getClient().create(ApiService.class);
+        Call<List<PartidoRespuesta>> call = service.getPartidosFemenino();
+
+        call.enqueue(new Callback<List<PartidoRespuesta>>() {
+            @Override
+            public void onFailure(Call<List<PartidoRespuesta>> call, Throwable t) {
+
+                Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                conectionErrorToast.show();
+
+            }
+
+            @Override
+            public void onResponse(Call<List<PartidoRespuesta>> call, Response<List<PartidoRespuesta>> response) {
+                Log.d("APIPlug", "Successfully response fetched" );
+
+                listaDePartidosFemeninos = response.body();
+
+                if(listaDePartidosFemeninos.size()>0) {
+                    mostrarListaDePartidos(listaDePartidosFemeninos);
+
+                }else{
+
+                    Toast toastErrorDeConexion = Toast.makeText(getApplicationContext(), "Sin partidos disponibles", Toast.LENGTH_LONG);
+                    toastErrorDeConexion.show();
+                }
+            }
+        });
+    }
+
+    private void getMatchesMixtos(){
+        ApiService service = Communicator.getClient().create(ApiService.class);
+        Call<List<PartidoRespuesta>> call = service.getPartidosMixto();
+
+        call.enqueue(new Callback<List<PartidoRespuesta>>() {
+            @Override
+            public void onFailure(Call<List<PartidoRespuesta>> call, Throwable t) {
+
+                Toast conectionErrorToast = Toast.makeText(getApplicationContext(), "Error de Conexión", Toast.LENGTH_LONG);
+                conectionErrorToast.show();
+
+            }
+
+            @Override
+            public void onResponse(Call<List<PartidoRespuesta>> call, Response<List<PartidoRespuesta>> response) {
+                Log.d("APIPlug", "Successfully response fetched" );
+
+                listaDePartidosMixtos = response.body();
+
+                if(listaDePartidosMixtos.size()>0) {
+                    mostrarListaDePartidos(listaDePartidosMixtos);
 
                 }else{
 

@@ -34,4 +34,12 @@ public interface ApiService {
     @GET("players")
     Call <List<JugadorRespuesta>> getListaDeJugadores();
 
+    @GET("matches/male")
+    Call <List<PartidoRespuesta>> getPartidosMasculino();
+
+    @GET("matches/female")
+    Call <List<PartidoRespuesta>> getPartidosFemenino();
+
+    @GET("matches/mix")
+    Call <List<PartidoRespuesta>> getPartidosMixto();
 }
