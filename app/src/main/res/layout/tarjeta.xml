@@ -40,7 +40,8 @@
         <TableRow
             android:id="@+id/fila_fecha"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/texto_fecha_y_hora"
@@ -53,7 +54,8 @@
         <TableRow
             android:id="@+id/fila_genero"
             android:layout_width="300dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/texto_genero_nivel"

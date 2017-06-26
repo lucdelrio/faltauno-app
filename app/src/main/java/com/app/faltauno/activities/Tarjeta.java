@@ -57,11 +57,14 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         //Typeface allStar = Typeface.createFromAsset(context.getAssets(),"fonts/all_star_resort.ttf");
         //Typeface varsity = Typeface.createFromAsset(context.getAssets(),"fonts/varsity_regular.ttf");
         Typeface colleged = Typeface.createFromAsset(context.getAssets(),"fonts/colleged.ttf");
+        //Typeface college_b = Typeface.createFromAsset(context.getAssets(),"fonts/college_b.ttf");
+        Typeface athletic = Typeface.createFromAsset(context.getAssets(),"fonts/athletic.ttf");
 
         setIndexPartido(position);
 
-        holder.TamanioYLugarView.setText("Fútbol " + partidoRespuesta.getTamanioDeCancha().toString() +
+        holder.TamanioYLugarView.setText("Futbol " + partidoRespuesta.getTamanioDeCancha().toString() +
                 " en " + partidoRespuesta.getCiudad());
+        holder.TamanioYLugarView.setTypeface(athletic);
 
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -71,11 +74,15 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             holder.FechaYHoraTextView.setText(aLetra.getDia(fecha.getDay()) + " " +
                     partidoRespuesta.getFecha() + "   " +partidoRespuesta.getHora() + "hs.");
 
+            holder.FechaYHoraTextView.setTypeface(athletic);
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+        holder.LetraCupo.setTypeface(athletic);
         holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
+        holder.GeneroNivelTextView.setTypeface(athletic);
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
         holder.CupoTextView.setTypeface(colleged);
