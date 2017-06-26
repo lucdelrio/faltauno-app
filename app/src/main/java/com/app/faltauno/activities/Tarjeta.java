@@ -58,21 +58,11 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         holder.TamanioYLugarView.setText("Fútbol " + partidoRespuesta.getTamanioDeCancha().toString() +
                 " en " + partidoRespuesta.getCiudad());
 
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date fecha = format.parse(partidoRespuesta.getFecha());
-            FechaALetra aLetra = new FechaALetra();
-
-            holder.FechaYHoraTextView.setText(aLetra.getDia(fecha.getDay()) + " " +
-                    partidoRespuesta.getFecha() + "   " +partidoRespuesta.getHora() + "hs.");
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
+        holder.Tarjeta.setCardBackgroundColor(Color.WHITE);
+
 
         if(partidoRespuesta.getCupo().equals(0)){
             holder.CupoTextView.setText("√");
@@ -80,23 +70,6 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
         }
 
-        try {
-            Date fechaPartido = format.parse(partidoRespuesta.getFecha());
-            final Calendar calendario = Calendar.getInstance();
-            String diaActual = calendario.get(Calendar.DAY_OF_MONTH)+ "/" + calendario.get(Calendar.MONTH) + "/" + calendario.get(Calendar.YEAR);
-            Date fechaActual = format.parse(diaActual);
-
-            Integer mes = fechaActual.getMonth();
-            mes ++;
-
-            if (( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())) ||
-                    (mes > fechaPartido.getMonth())){
-                holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
-            }
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
         if(partidoRespuesta.getCupo().equals(1)) {
             holder.Tarjeta.setCardBackgroundColor(Color.RED);

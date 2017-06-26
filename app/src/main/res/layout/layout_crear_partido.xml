@@ -17,18 +17,27 @@
         android:background="#000"
         android:gravity="right">
 
+        <ImageView
+            android:id="@+id/silbato"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/silbato"
+            android:layout_alignParentRight="true"
+          />
+
+
         <!-- Boton crear partido -->
         <Button
             android:id="@+id/guardar_nuevo_partido_boton"
             tools:targetApi="21"
             android:textColor="@color/colorWhite"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:onClick="onMatchCreationButtonClick"
             android:text="CONFIRMAR"
-            android:background="#000"/>
+            android:layout_toLeftOf="@id/silbato"
+            android:background="#000" />
 
     </RelativeLayout>
 
