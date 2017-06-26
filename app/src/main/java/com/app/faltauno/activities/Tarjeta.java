@@ -64,7 +64,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             FechaALetra aLetra = new FechaALetra();
 
             holder.FechaYHoraTextView.setText(aLetra.getDia(fecha.getDay()) + " " +
-                                                partidoRespuesta.getFecha() + "   " +partidoRespuesta.getHora() + "hs.");
+                    partidoRespuesta.getFecha() + "   " +partidoRespuesta.getHora() + "hs.");
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
             mes ++;
 
             if (( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())) ||
-                    (fechaActual.getMonth() > fechaPartido.getMonth())){
+                    (mes > fechaPartido.getMonth())){
                 holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
             }
 

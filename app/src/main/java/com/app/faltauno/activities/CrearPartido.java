@@ -23,7 +23,12 @@ import android.widget.Toast;
 import com.app.faltauno.R;
 import com.app.faltauno.request.Communicator;
 import com.app.faltauno.response.Partido;
+
+import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
+
+import static android.R.attr.id;
 
 public class CrearPartido extends AppCompatActivity{
 
@@ -132,8 +137,6 @@ public class CrearPartido extends AppCompatActivity{
             }
         });
 
-        System.out.println(hora);
-
     }
 
     public void onMatchCreationButtonClick(View view) {
@@ -143,8 +146,6 @@ public class CrearPartido extends AppCompatActivity{
 
         String editTamanioDeCancha = this.tamanio_de_cancha.getSelectedItem().toString();
         Integer tamanioDeCancha = Integer.parseInt(editTamanioDeCancha);
-
-        System.out.println(hora);
 
         String hora = this.hora.getText().toString();
         String fecha = this.fecha.getText().toString();
@@ -169,13 +170,39 @@ public class CrearPartido extends AppCompatActivity{
             toastCupoInvalido(view);
 
         } else {
-            Integer cupo = Integer.parseInt(editCupo);
 
-            Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
-                    hora, fecha, genero, direccion, ciudad,
-                    nivel, categoria, cupo);
+            java.text.DateFormat format = new java.text.SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date fechaPartido = format.parse(fecha);
+                final Calendar calendario = Calendar.getInstance();
+                String diaActual = calendario.get(Calendar.DAY_OF_MONTH)+ "/" + calendario.get(Calendar.MONTH) + "/" + calendario.get(Calendar.YEAR);
+                Date fechaActual = format.parse(diaActual);
 
-            crearPartido(datosDePartido);
+                Integer mes = fechaActual.getMonth();
+                mes ++;
+                System.out.println("Mes Partido: " + fechaPartido.getMonth());
+                System.out.println("Mes Actual: " + fechaActual.getMonth());
+                System.out.println("Condición");
+                System.out.println(( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())) ||
+                        (fechaActual.getMonth() > fechaPartido.getMonth()));
+
+                if ((mes > fechaPartido.getMonth())){
+                    toastFechaInvalida(view);
+                }else{
+                    Integer cupo = Integer.parseInt(editCupo);
+
+                    /*Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
+                            hora, fecha, genero, direccion, ciudad,
+                            nivel, categoria, cupo);
+
+                            ( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())
+
+                    crearPartido(datosDePartido);*/
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -186,8 +213,8 @@ public class CrearPartido extends AppCompatActivity{
 
     }
     private void crearPartido(Partido datosDePartido){
-        
-	    communicator.postPartido(datosDePartido, this);
+
+        communicator.postPartido(datosDePartido, this);
     }
 
     public void toastErrorEnFormulario(View view){
@@ -198,6 +225,12 @@ public class CrearPartido extends AppCompatActivity{
     public void toastCupoInvalido(View view){
         Toast cupoInvalidoToast = Toast.makeText(getApplicationContext(), "Cupo inválido", Toast.LENGTH_SHORT);
         cupoInvalidoToast.show();
+    }
+
+
+    public void toastFechaInvalida(View view){
+        Toast fechaInvalidaToast = Toast.makeText(getApplicationContext(), "Fecha inválida", Toast.LENGTH_SHORT);
+        fechaInvalidaToast.show();
     }
 
 }
