@@ -180,24 +180,18 @@ public class CrearPartido extends AppCompatActivity{
 
                 Integer mes = fechaActual.getMonth();
                 mes ++;
-                System.out.println("Mes Partido: " + fechaPartido.getMonth());
-                System.out.println("Mes Actual: " + fechaActual.getMonth());
-                System.out.println("Condición");
-                System.out.println(( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())) ||
-                        (fechaActual.getMonth() > fechaPartido.getMonth()));
 
-                if ((mes > fechaPartido.getMonth())){
+                if ((fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth()) ||
+                        (mes > fechaPartido.getMonth())){
                     toastFechaInvalida(view);
                 }else{
                     Integer cupo = Integer.parseInt(editCupo);
 
-                    /*Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
+                    Partido datosDePartido = new Partido(nombreOrganizador, email, tamanioDeCancha,
                             hora, fecha, genero, direccion, ciudad,
                             nivel, categoria, cupo);
 
-                            ( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())
-
-                    crearPartido(datosDePartido);*/
+                    crearPartido(datosDePartido);
                 }
 
             } catch (ParseException e) {
