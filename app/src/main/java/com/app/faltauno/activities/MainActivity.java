@@ -4,12 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,19 +34,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity {
+//public class MainActivity extends AppCompatActivity implements ActionBar.OnNavigationListener {
+public class MainActivity extends AppCompatActivity{
 
     static View.OnClickListener myOnClickListener;
-
     List<PartidoRespuesta> getPartidoRespuesta;
-
     private List<PartidoRespuesta> listaDePartidos;
-
     RecyclerView recyclerView;
-
     RecyclerView.LayoutManager recyclerViewlayoutManager;
-
     RecyclerView.Adapter recyclerViewadapter;
+    MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +74,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_filtro, menu);
+        item = menu.findItem(R.id.menu_filtro);
+        return true;
+    }
+
+        @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
 
         getMatches();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.filtro_masculino:
+                Intent jugadoresPartido = new Intent(this, CrearPartido.class);
+                startActivity(jugadoresPartido);
+                return true;
+            case R.id.filtro_femenino:
+                Intent postulacion = new Intent(this, CrearPartido.class);
+                startActivity(postulacion);
+                return true;
+            case R.id.filtro_mixto:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void getMatches(){

@@ -40,7 +40,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
                 app:elevation="4dp"
-                app:backgroundTint="@color/colorAccent"
+                app:backgroundTint="@color/colorAmarillo"
                 app:borderWidth="0dp"
                 app:rippleColor="#fcfcfc" />
 

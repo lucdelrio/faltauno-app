@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.app.faltauno.activities.MostrarPartido"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <item
+        android:id="@+id/menu_filtro"
+        android:icon="?android:attr/actionModeFindDrawable"
+        app:showAsAction="always"
+        tools:targetApi="lollipop"
+        android:title="Filtro">
+        <menu>
+            <item
+                android:id="@+id/filtro_masculino"
+                android:title="MASCULINO" />
+            <item
+                android:id="@+id/filtro_femenino"
+                android:title="FEMENINO" />
+            <item
+                android:id="@+id/filtro_mixto"
+                android:title="MIXTO    " />
+        </menu>
+    </item>
+</menu>

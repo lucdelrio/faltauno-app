@@ -155,16 +155,16 @@
             <!-- Campo cupo-->
             <EditText
                 android:id="@+id/input_cupo"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/input_fecha"
                 android:layout_marginTop="10dp"
                 android:autoText="false"
-                android:hint="Jugadores Faltantes"
+                android:hint="Cupo"
                 android:inputType="number"
                 android:maxLength="2"
                 android:singleLine="false"
-                android:layout_marginLeft="180dp"/>
+                android:layout_marginLeft="250dp"/>
 
             <!-- Spinner genero-->
             <TextView

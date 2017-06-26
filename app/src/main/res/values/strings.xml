@@ -8,22 +8,26 @@
     <string name="title_activity_three">ActivityThree</string>
     <string name="title_activity_four">ActivityFour</string>
     <string name="title_activity_match_creation">ActivityMatchCreation</string>
+
     <string-array name="opciones_genero">
         <item>Masculino</item>
         <item>Femenino</item>
         <item>Mixto</item>
     </string-array>
+
     <string-array name="opciones_tamanio_de_cancha">
         <item>5</item>
         <item>7</item>
         <item>9</item>
         <item>11</item>
     </string-array>
+
     <string-array name="opciones_nivel">
         <item>Amateur</item>
         <item>SemiProfesional</item>
         <item>Profesional</item>
     </string-array>
+
     <string-array name="opciones_categoria">
         <item>Niños</item>
         <item>Adolescentes</item>
@@ -31,5 +35,11 @@
         <item>Mixto</item>
     </string-array>
     <string name="tamanio">F:</string>
+
+    <string-array name="opciones_filtro">
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>Mixto</item>
+    </string-array>
 
 </resources>
