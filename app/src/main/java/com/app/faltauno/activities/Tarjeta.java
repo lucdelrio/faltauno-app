@@ -2,6 +2,7 @@ package com.app.faltauno.activities;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,14 +54,31 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
         PartidoRespuesta partidoRespuesta =  getPartidoRespuesta.get(position);
 
+        //Typeface allStar = Typeface.createFromAsset(context.getAssets(),"fonts/all_star_resort.ttf");
+        //Typeface varsity = Typeface.createFromAsset(context.getAssets(),"fonts/varsity_regular.ttf");
+        Typeface colleged = Typeface.createFromAsset(context.getAssets(),"fonts/colleged.ttf");
+
         setIndexPartido(position);
 
         holder.TamanioYLugarView.setText("Fútbol " + partidoRespuesta.getTamanioDeCancha().toString() +
                 " en " + partidoRespuesta.getCiudad());
 
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = format.parse(partidoRespuesta.getFecha());
+            FechaALetra aLetra = new FechaALetra();
+
+            holder.FechaYHoraTextView.setText(aLetra.getDia(fecha.getDay()) + " " +
+                    partidoRespuesta.getFecha() + "   " +partidoRespuesta.getHora() + "hs.");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
+        holder.CupoTextView.setTypeface(colleged);
         holder.Tarjeta.setCardBackgroundColor(Color.WHITE);
 
 
