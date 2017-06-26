@@ -81,17 +81,18 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
         }
 
         try {
-            Date fecha = format.parse(partidoRespuesta.getFecha());
+            Date fechaPartido = format.parse(partidoRespuesta.getFecha());
             final Calendar calendario = Calendar.getInstance();
             String diaActual = calendario.get(Calendar.DAY_OF_MONTH)+ "/" + calendario.get(Calendar.MONTH) + "/" + calendario.get(Calendar.YEAR);
             Date fechaActual = format.parse(diaActual);
 
-            System.out.println(fechaActual);
-            System.out.println(fecha.before(fechaActual));
-            System.out.println(fecha.getMonth());
-            /*if ((fechaActual.before(fecha))){
+            Integer mes = fechaActual.getMonth();
+            mes ++;
+
+            if (( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())) ||
+                    (fechaActual.getMonth() > fechaPartido.getMonth())){
                 holder.Tarjeta.setCardBackgroundColor(Color.LTGRAY);
-            }*/
+            }
 
         } catch (ParseException e) {
             e.printStackTrace();
