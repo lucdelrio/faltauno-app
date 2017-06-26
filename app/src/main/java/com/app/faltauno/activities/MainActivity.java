@@ -154,21 +154,21 @@ public class MainActivity extends AppCompatActivity {
             TextView textViewName = (TextView) viewHolder.itemView.findViewById(R.id.item_id);
 
             String idPartido = (String) textViewName.getText();
-            /*****************/
+
             Integer cupoPartido = -1;
 
             int idItemSeleccionado = 0;
             for (char i = 0; i < getPartidoRespuesta.size(); i++) {
                 if (idPartido.equals(getPartidoRespuesta.get(i).getIdPartido().toString())){
                     idItemSeleccionado = i;
-                    /*************/
+
                     cupoPartido = getPartidoRespuesta.get(i).getCupo();
                 }
             }
 
             Intent detalleDePartido = new Intent(MainActivity.this, MostrarPartido.class);
             detalleDePartido.putExtra("index", idItemSeleccionado);
-            /***************/
+
             detalleDePartido.putExtra("cupo", cupoPartido);
             startActivity(detalleDePartido);
         }

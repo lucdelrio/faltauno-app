@@ -102,8 +102,7 @@ public class CrearPartido extends AppCompatActivity{
                         new DatePickerDialog.OnDateSetListener(){
                             @Override
                             public void onDateSet(DatePicker view, int anio, int meseDelAnio, int dayOfMonth) {
-                                //Set dia, mes y año en el EditText
-                                //view.setMinDate(System.currentTimeMillis());
+
                                 fecha.setText(dayOfMonth + "/" + (meseDelAnio + 1) + "/" + anio);
                             }
                         }, mAnio, mMes, mDia);

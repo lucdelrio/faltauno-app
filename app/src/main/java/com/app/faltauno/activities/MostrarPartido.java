@@ -2,6 +2,7 @@ package com.app.faltauno.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +18,8 @@ import com.app.faltauno.response.JugadorRespuesta;
 import com.app.faltauno.response.PartidoRespuesta;
 import com.app.faltauno.services.ApiService;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -153,7 +156,17 @@ public class MostrarPartido extends AppCompatActivity {
         organizador.setText(listaDePartidos.get(id).getNombreOrganizador());
         this.direccion.setText(listaDePartidos.get(id).getDireccion());
         this.ciudad.setText(listaDePartidos.get(id).getCiudad());
-        this.fecha.setText(listaDePartidos.get(id).getFecha());
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = format.parse(listaDePartidos.get(id).getFecha());
+            FechaALetra aLetra = new FechaALetra();
+
+            this.fecha.setText(aLetra.getDia(fecha.getDay()) + " " + listaDePartidos.get(id).getFecha());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         this.hora.setText(listaDePartidos.get(id).getHora());
         this.genero.setText(listaDePartidos.get(id).getGenero());
         this.cupo.setText(listaDePartidos.get(id).getCupo().toString());

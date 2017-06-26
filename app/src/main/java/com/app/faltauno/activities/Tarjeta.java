@@ -2,6 +2,8 @@ package com.app.faltauno.activities;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.GregorianCalendar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,9 @@ import android.widget.TextView;
 import com.app.faltauno.R;
 import com.app.faltauno.response.PartidoRespuesta;
 
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
@@ -51,7 +56,20 @@ public class Tarjeta extends RecyclerView.Adapter<Tarjeta.ViewHolder> {
 
         holder.TamanioYLugarView.setText("Fútbol " + partidoRespuesta.getTamanioDeCancha().toString() +
                 " en " + partidoRespuesta.getCiudad());
-        holder.FechaYHoraTextView.setText(partidoRespuesta.getFecha() + " " + partidoRespuesta.getHora() + "hs.");
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = format.parse(partidoRespuesta.getFecha());
+            FechaALetra aLetra = new FechaALetra();
+
+            holder.FechaYHoraTextView.setText(aLetra.getDia(fecha.getDay()) + " " +
+                                                partidoRespuesta.getFecha() + " " +partidoRespuesta.getHora() + "hs.");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         holder.GeneroNivelTextView.setText(partidoRespuesta.getGenero() + " / " + partidoRespuesta.getNivel());
         holder.IDTextView.setText(partidoRespuesta.getIdPartido().toString());
         holder.CupoTextView.setText(partidoRespuesta.getCupo().toString());
