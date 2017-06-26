@@ -20,12 +20,15 @@ import com.app.faltauno.services.ApiService;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.R.attr.format;
 
 public class MostrarPartido extends AppCompatActivity {
 
@@ -140,7 +143,6 @@ public class MostrarPartido extends AppCompatActivity {
                     if (cantidadDeJugadores == 0){
                         ocultarBotonJugadores(true);
                     }else{
-                        System.out.println("Cupo completo");
                         ocultarBotonJugadores(false);
                     }
                 }else{
@@ -175,7 +177,7 @@ public class MostrarPartido extends AppCompatActivity {
         this.categoria.setText(listaDePartidos.get(id).getCategoria());
         this.tamanioDeCancha.setText(listaDePartidos.get(id).getTamanioDeCancha().toString());
 
-        ocultarBotonPostularse(listaDePartidos.get(id).getCupo());
+        ocultarBotonPostularse(id);
 
         if(listaDePartidos.get(id).getCupo().equals(0)){
             this.cupo.setText("COMPLETO");
@@ -188,11 +190,34 @@ public class MostrarPartido extends AppCompatActivity {
         }
     }
 
-    private void ocultarBotonPostularse(Integer cupoPartido){
+    private void ocultarBotonPostularse(Integer id){
         Button postularseButton = (Button) findViewById(R.id.boton_postularse_a_partido);
-        if(cupoPartido == 0){
+
+        DateFormat format = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fechaPartido = format.parse(listaDePartidos.get(id).getFecha());
+            final Calendar calendario = Calendar.getInstance();
+            String diaActual = calendario.get(Calendar.DAY_OF_MONTH)+ "/" + calendario.get(Calendar.MONTH) + "/" + calendario.get(Calendar.YEAR);
+            Date fechaActual = format.parse(diaActual);
+
+            Integer mes = fechaActual.getMonth();
+            mes ++;
+
+            if (( (fechaActual.getDate() > fechaPartido.getDate()) && (mes == fechaPartido.getMonth())) ||
+                    (fechaActual.getMonth() > fechaPartido.getMonth())){
+                postularseButton.setVisibility(View.INVISIBLE);
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        if(listaDePartidos.get(id).getCupo() == 0){
             postularseButton.setVisibility(View.INVISIBLE);
         }
+
+
     }
 
     private void ocultarBotonJugadores(boolean ocultarBoton){
